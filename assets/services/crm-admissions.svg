@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" width="100%" height="100%">
+  <rect width="440" height="220" rx="12" fill="#f8fafc"/>
+  <rect width="440" height="220" rx="12" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <!-- Titlebar -->
+  <path d="M0 12 C0 5.37 5.37 0 12 0 L428 0 C434.63 0 440 5.37 440 12 L440 30 L0 30 Z" fill="#f1f5f9"/>
+  <line x1="0" y1="30" x2="440" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="16" cy="15" r="3.5" fill="#f87171"/>
+  <circle cx="28" cy="15" r="3.5" fill="#fbbf24"/>
+  <circle cx="40" cy="15" r="3.5" fill="#34d399"/>
+  <text x="56" y="19" fill="#334155" font-size="9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Admissions Pipeline CRM</text>
+  <rect x="334" y="8" width="92" height="14" rx="7" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="342" y="18" fill="#15803d" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">WhatsApp Sync ON</text>
+  <!-- Pipeline Kanban Columns -->
+  <!-- Col 1: Inquiries -->
+  <rect x="14" y="38" width="130" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="22" y="46" width="6" height="6" rx="1" fill="#f59e0b"/>
+  <text x="32" y="52" fill="#334155" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Inquiries (142)</text>
+  <!-- Card 1.1 -->
+  <rect x="20" y="60" width="118" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="26" y="74" fill="#0f172a" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Aarav Sharma - Gr 9</text>
+  <rect x="26" y="80" width="46" height="13" rx="3" fill="#fef3c7"/>
+  <text x="30" y="89" fill="#b45309" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Entrance Test</text>
+  <!-- Card 1.2 -->
+  <rect x="20" y="108" width="118" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="26" y="122" fill="#0f172a" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Diya Patel - Gr 11</text>
+  <rect x="26" y="128" width="42" height="13" rx="3" fill="#e0e7ff"/>
+  <text x="30" y="137" fill="#4338ca" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Counseling</text>
+  <!-- Col 2: Interview -->
+  <rect x="154" y="38" width="132" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="162" y="46" width="6" height="6" rx="1" fill="#3b82f6"/>
+  <text x="172" y="52" fill="#334155" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Interview (42)</text>
+  <!-- Card 2.1 -->
+  <rect x="160" y="60" width="120" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="166" y="74" fill="#0f172a" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Rohan Verma - Gr 10</text>
+  <rect x="166" y="80" width="48" height="13" rx="3" fill="#dbeafe"/>
+  <text x="170" y="89" fill="#1e40af" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Today 2:30 PM</text>
+  <!-- Card 2.2 -->
+  <rect x="160" y="108" width="120" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="166" y="122" fill="#0f172a" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Ananya Sen - Gr 6</text>
+  <rect x="166" y="128" width="38" height="13" rx="3" fill="#dcfce7"/>
+  <text x="170" y="137" fill="#15803d" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Shortlisted</text>
+  <!-- Col 3: Enrolled -->
+  <rect x="296" y="38" width="130" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="304" y="46" width="6" height="6" rx="1" fill="#10b981"/>
+  <text x="314" y="52" fill="#334155" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Enrolled (112)</text>
+  <!-- Card 3.1 -->
+  <rect x="302" y="60" width="118" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="308" y="74" fill="#0f172a" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Aditya Nair - Gr 11</text>
+  <rect x="308" y="80" width="56" height="13" rx="3" fill="#dcfce7"/>
+  <text x="312" y="89" fill="#15803d" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Fee Confirmed</text>
+</svg>

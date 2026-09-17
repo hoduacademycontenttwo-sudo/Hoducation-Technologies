@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoducation Technologies | Software Engineered To Power Education</title>
+    <meta name="description" content="Hoducation Technologies builds custom software, enterprise ERPs, CRMs, CMS platforms, and intelligent automations alongside our flagship product AcadOS." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hoducation.tech/" />
+    <meta name="google-site-verification" content="google998e20008c30ebee" />
+
+    <!-- Open Graph / Meta Security Trust -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hoducation.tech/" />
+    <meta property="og:title" content="Hoducation Technologies | Software Engineered To Power Education" />
+    <meta property="og:description" content="Hoducation Technologies builds custom software, enterprise ERPs, CRMs, and intelligent automations." />
+    <meta property="og:site_name" content="Hoducation Technologies" />
+
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts: Inter & Plus Jakarta Sans (Professional IT Display) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.5.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/ht-logo.jpg" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Vanilla JS -->
+    <script type="module" src="main.js"></script>
+
+    <!-- React + TypeScript Products & Enquiry Component -->
+    <script type="module" src="/src/mountEnquiry.tsx"></script>
+  </head>
+  <body>
+    <!-- Background Video -->
+    <div class="bg" aria-hidden="true">
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- 1) Unified Sticky Floating White Navbar -->
+    <header class="header">
+        <div class="freehand-navbar">
+          <!-- Brand Logo & Name -->
+          <a href="#home" class="freehand-brand" aria-label="Hoducation Home">
+            <span class="freehand-brand-icon">
+              <img src="/ht-logo.jpg" alt="Hoducation Technologies Logo" class="brand-logo-img" width="34" height="34" />
+            </span>
+            <span class="freehand-brand-text">Hoducation Technologies</span>
+          </a>
+
+          <!-- Nav Menu with Dropdown Chevrons -->
+          <nav class="freehand-nav" aria-label="Main Navigation">
+            <div class="freehand-nav-item has-dropdown">
+              <a href="#services" class="freehand-nav-link">
+                <span>Services</span>
+                <i class="fa-solid fa-chevron-down nav-caret"></i>
+              </a>
+              <div class="freehand-dropdown">
+                <a href="#services" class="dropdown-row" data-card="1">
+                  <i class="fa-solid fa-code"></i>
+                  <div>
+                    <span class="dd-title">Custom Software &amp; Portals</span>
+                    <span class="dd-desc">Bespoke web apps &amp; internal tools</span>
+                  </div>
+                </a>
+                <a href="#services" class="dropdown-row" data-card="2">
+                  <i class="fa-solid fa-layer-group"></i>
+                  <div>
+                    <span class="dd-title">Enterprise ERP Systems</span>
+                    <span class="dd-desc">Fees, inventory, staff &amp; operations</span>
+                  </div>
+                </a>
+                <a href="#services" class="dropdown-row" data-card="3">
+                  <i class="fa-solid fa-users"></i>
+                  <div>
+                    <span class="dd-title">CRM &amp; Admissions</span>
+                    <span class="dd-desc">Lead pipelines &amp; WhatsApp API</span>
+                  </div>
+                </a>
+                <a href="#services" class="dropdown-row" data-card="4">
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                  <div>
+                    <span class="dd-title">Intelligent Automations</span>
+                    <span class="dd-desc">Event-driven workflows &amp; 24/7 sync</span>
+                  </div>
+                </a>
+                <a href="#services" class="dropdown-row" data-card="5">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <div>
+                    <span class="dd-title">CMS &amp; Web Platforms</span>
+                    <span class="dd-desc">Headless CMS &amp; digital publishing</span>
+                  </div>
+                </a>
+                <a href="#services" class="dropdown-row" data-card="6">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <span class="dd-title">EdTech Platform (AcadOS)</span>
+                    <span class="dd-desc">5-in-1 institutional OS &amp; OMR grading</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="freehand-nav-item has-dropdown">
+              <a href="#process" class="freehand-nav-link">
+                <span>Process</span>
+                <i class="fa-solid fa-chevron-down nav-caret"></i>
+              </a>
+              <div class="freehand-dropdown">
+                <a href="#process" class="dropdown-row">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                  <div>
+                    <span class="dd-title">6-Stage Lifecycle</span>
+                    <span class="dd-desc">Analysis, Validation, UI, Build &amp; Motion</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="freehand-nav-item has-dropdown">
+              <a href="#services" class="freehand-nav-link">
+                <span>Products</span>
+                <i class="fa-solid fa-chevron-down nav-caret"></i>
+              </a>
+              <div class="freehand-dropdown">
+                <a href="#services" class="dropdown-row">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <span class="dd-title">AcadOS</span>
+                    <span class="dd-desc">5-in-1 institutional OS</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="freehand-nav-item">
+              <a href="#about" class="freehand-nav-link">
+                <span>About Us</span>
+              </a>
+            </div>
+
+            <div class="freehand-nav-item">
+              <a href="#contact" class="freehand-nav-link">
+                <span>Contact</span>
+              </a>
+            </div>
+          </nav>
+
+          <!-- Right: Orange Action CTA & Mobile Burger -->
+          <div class="freehand-actions">
+            <a href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20request%20a%20demo." target="_blank" rel="noopener noreferrer" class="btn-orange-demo">
+              REQUEST A DEMO
+            </a>
+
+            <!-- Mobile / Compressed Action Button -->
+            <button
+              class="burger-btn"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+            >
+              <img src="/ht-logo.jpg" alt="Hoducation Logo" class="compressed-ht-logo" />
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Single Viewport Page -->
+      <div class="page" id="home">
+        <!-- 2) Hero -->
+        <main class="hero">
+        <!-- Trust Row -->
+        <div class="trust-row anim" style="--d: 0.05s;">
+          <div class="trust-avatars">
+            <div class="avatar a1" title="CRM">
+              <div class="avatar-inner">
+                <i class="fa-solid fa-users"></i>
+              </div>
+            </div>
+            <div class="avatar a2" title="ERP">
+              <div class="avatar-inner">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+            </div>
+            <div class="avatar a3" title="CMS">
+              <div class="avatar-inner">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+            </div>
+            <div class="avatar a4" title="Automations">
+              <div class="avatar-inner">
+                <i class="fa-solid fa-bolt-lightning"></i>
+              </div>
+            </div>
+            <div class="avatar a5" title="Custom Software">
+              <div class="avatar-inner">
+                <i class="fa-solid fa-code"></i>
+              </div>
+            </div>
+          </div>
+          <div class="trust-pill">
+            <span class="trust-text">Trusted by 30+ Organizations</span>
+          </div>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="headline anim">
+          <span class="headline-line line-1">We Build Software</span>
+          <span class="headline-line line-2">That Grows Your Business</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="subhead anim" style="--d: 0.28s;">
+          Hoducation Technologies builds custom software, ERPs, CRMs, CMS platforms,
+          and intelligent automations engineered to scale modern organizations.
+        </p>
+
+        <!-- CTA -->
+        <div class="cta-wrap anim" style="--d: 0.4s;">
+          <a href="#services" class="btn-cta">Explore Services</a>
+        </div>
+      </main>
+
+      <!-- 3) Core Modules Footer -->
+      <div class="stats-footer-wrap" id="modules">
+        <footer class="stats-footer">
+          <div class="stat-item anim" style="--d: 0.5s;">
+            <span class="stat-icon"><i class="fa-solid fa-users"></i></span>
+            <span class="stat-value">CRM</span>
+            <span class="stat-label">Customer Intelligence</span>
+          </div>
+
+          <div class="stat-item anim" style="--d: 0.56s;">
+            <span class="stat-icon"><i class="fa-solid fa-layer-group"></i></span>
+            <span class="stat-value">ERP</span>
+            <span class="stat-label">Streamline Operations</span>
+          </div>
+
+          <div class="stat-item anim" style="--d: 0.62s;">
+            <span class="stat-icon"><i class="fa-solid fa-file-lines"></i></span>
+            <span class="stat-value">CMS</span>
+            <span class="stat-label">Web &amp; Portals</span>
+          </div>
+
+          <div class="stat-item anim" style="--d: 0.68s;">
+            <span class="stat-icon"><i class="fa-solid fa-bolt-lightning"></i></span>
+            <span class="stat-value">Automations</span>
+            <span class="stat-label">Intelligent Workflows</span>
+          </div>
+
+          <div class="stat-item anim" style="--d: 0.74s;">
+            <span class="stat-icon"><i class="fa-solid fa-code"></i></span>
+            <span class="stat-value">Custom Software</span>
+            <span class="stat-label">Built Around You</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- 4) Interactive Services & Process Section (Image 2 Replica) -->
+    <section class="interactive-process-section" id="services">
+      <div class="process-inner-container">
+        <!-- Top Row: Editorial Statement + Domain Switcher -->
+        <div class="process-top-row">
+          <div class="process-statement-col">
+            <h2 class="process-editorial-heading">Transforming ideas into <span class="cyan-highlight-box">scalable software systems</span> with engineering precision and modern enterprise design.</h2>
+          </div>
+
+          <div class="process-domains-col">
+            <div class="domain-tabs-list">
+              <button class="domain-tab-item active" data-card="1" type="button">
+                <span class="domain-tab-title">EdTech Platforms (AcadOS)</span>
+              </button>
+              <button class="domain-tab-item" data-card="2" type="button">
+                <span class="domain-tab-title">Enterprise ERP Systems</span>
+              </button>
+              <button class="domain-tab-item" data-card="3" type="button">
+                <span class="domain-tab-title">CRM &amp; Admissions</span>
+              </button>
+              <button class="domain-tab-item" data-card="4" type="button">
+                <span class="domain-tab-title">Intelligent Automations</span>
+              </button>
+              <button class="domain-tab-item" data-card="5" type="button">
+                <span class="domain-tab-title">CMS &amp; Web Platforms</span>
+              </button>
+              <button class="domain-tab-item" data-card="6" type="button">
+                <span class="domain-tab-title">Custom Software &amp; Portals</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: 6 Interactive Accordion Cards (Holding all 6 Services) -->
+        <div class="process-cards-row">
+          <!-- Card 01: EdTech Platform (AcadOS) -->
+          <div class="interactive-step-card active" data-step="1">
+            <div class="card-step-header">
+              <span class="step-card-num">01 // EDTECH</span>
+              <h3 class="step-card-title">EdTech Platform (AcadOS)</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                Our flagship 5-in-1 institutional OS featuring automated question paper generation in &lt;60s, computer-vision OMR grading, and CBT tests.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Automated TestMaker</span>
+                <span class="card-tag">99.8% OMR Precision</span>
+                <span class="card-tag">CBT Simulator</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: AcadOS" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 02: Enterprise ERP Systems -->
+          <div class="interactive-step-card" data-step="2">
+            <div class="card-step-header">
+              <span class="step-card-num">02 // ERP</span>
+              <h3 class="step-card-title">Enterprise ERP Systems</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                Unified resource planning for multi-branch organizations, automating fee collection, student records, staff payroll, inventory, and operations.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Multi-Branch Campus</span>
+                <span class="card-tag">Billing &amp; Fees</span>
+                <span class="card-tag">Inventory Management</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: Enterprise ERP" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 03: CRM & Admissions -->
+          <div class="interactive-step-card" data-step="3">
+            <div class="card-step-header">
+              <span class="step-card-num">03 // CRM</span>
+              <h3 class="step-card-title">CRM &amp; Admissions</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                High-velocity lifecycle platforms with multi-tier inquiry management, automated WhatsApp &amp; SMS triggers, and parent communication hubs.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Pipeline Automation</span>
+                <span class="card-tag">WhatsApp / SMS API</span>
+                <span class="card-tag">Parent Portals</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: CRM and Admissions" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 04: Intelligent Automations -->
+          <div class="interactive-step-card" data-step="4">
+            <div class="card-step-header">
+              <span class="step-card-num">04 // AUTO</span>
+              <h3 class="step-card-title">Intelligent Automations</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                Event-driven data pipelines, webhook synchronization, and automated document processing that eliminate human latency and manual errors.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Event-Driven RPA</span>
+                <span class="card-tag">Webhook Handlers</span>
+                <span class="card-tag">24/7 Background Sync</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: Automations" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 05: CMS & Web Platforms -->
+          <div class="interactive-step-card" data-step="5">
+            <div class="card-step-header">
+              <span class="step-card-num">05 // CMS</span>
+              <h3 class="step-card-title">CMS &amp; Web Platforms</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                Ultra-fast, secure, and easily maintainable content-managed websites, resource repositories, and digital publishing engines for institutions.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Headless CMS</span>
+                <span class="card-tag">Blazing Performance</span>
+                <span class="card-tag">SEO Optimized</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: CMS Platforms" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 06: Custom Software & Portals -->
+          <div class="interactive-step-card" data-step="6">
+            <div class="card-step-header">
+              <span class="step-card-num">06 // DEV</span>
+              <h3 class="step-card-title">Custom Software &amp; Portals</h3>
+            </div>
+            <div class="card-step-body">
+              <p class="step-card-desc">
+                Bespoke web applications, client portals, and internal tools engineered around your exact workflow, business logic, and security standards.
+              </p>
+              <div class="card-tags-row">
+                <span class="card-tag">Full-Stack Architecture</span>
+                <span class="card-tag">Role Permissions</span>
+                <span class="card-tag">Scalable APIs</span>
+              </div>
+              <a href="mailto:hello@hoducation.com?subject=Inquiry: Custom Software" class="card-inquire-btn">
+                <span>Inquire Now</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="card-step-footer">
+              <div class="step-indicator-dot">
+                <span class="dot-inner"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Our Process / From Idea to Impact (Scroll-Driven Interactive Infographic) -->
+    <div id="process-root"></div>
+
+    <!-- 6) Leadership Team (About Us Section) -->
+    <section class="leadership-section" id="about">
+      <div class="leadership-container">
+        <!-- Section Header -->
+        <div class="leadership-header">
+          <h2 class="leadership-title">
+            Our Leadership <span class="leadership-title-highlight">Team</span>
+          </h2>
+          <p class="leadership-subtitle">
+            Operators and builders who've shipped at enterprise scale.
+          </p>
+        </div>
+
+        <!-- Leadership Cards Carousel / Row -->
+        <div class="leadership-track-wrap">
+          <div class="leadership-track">
+            <!-- Flanking Left Card -->
+            <div class="leader-card leader-card-flank flank-left">
+              <div class="leader-card-inner">
+                <img src="/leader-prev.png" alt="Leadership Team Member" class="leader-photo" />
+              </div>
+            </div>
+
+            <!-- Card 1: CTO -->
+            <div class="leader-card">
+              <div class="leader-card-inner">
+                <img src="/abhishek-agarwal.jpg" alt="Abhishek Agarwal - CTO" class="leader-photo" />
+                <a href="https://www.linkedin.com/in/abhishek-agarwal-97007313a/" target="_blank" rel="noopener noreferrer" class="leader-linkedin-badge" aria-label="Abhishek Agarwal LinkedIn Profile">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+              <div class="leader-card-info">
+                <h3 class="leader-name">Abhishek Agarwal</h3>
+                <p class="leader-role">CTO</p>
+              </div>
+            </div>
+
+            <!-- Card 2: COO -->
+            <div class="leader-card">
+              <div class="leader-card-inner">
+                <img src="/rohit-jain.jpg" alt="Rohit Jain - COO" class="leader-photo" />
+                <a href="https://www.linkedin.com/in/rohit-jain-522138177/" target="_blank" rel="noopener noreferrer" class="leader-linkedin-badge" aria-label="Rohit Jain LinkedIn Profile">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+              <div class="leader-card-info">
+                <h3 class="leader-name">Rohit Jain</h3>
+                <p class="leader-role">COO</p>
+              </div>
+            </div>
+
+            <!-- Flanking Right Card -->
+            <div class="leader-card leader-card-flank flank-right">
+              <div class="leader-card-inner">
+                <img src="/leader-next.png" alt="Leadership Team Member" class="leader-photo" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Floating Chatbot Assistant Root -->
+    <div id="chatbot-root"></div>
+
+    <!-- 7) Site Footer -->
+    <footer class="site-footer" id="contact">
+      <div class="site-footer-inner">
+        <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
+        <div class="site-footer-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="tel:+919660034117"><i class="fa-solid fa-phone" style="color: #f43f5e; margin-right: 5px;"></i>+91 9660034117</a>
+          <a href="mailto:hoducationtechnologies@gmail.com"><i class="fa-solid fa-envelope" style="color: #60a5fa; margin-right: 5px;"></i>hoducationtechnologies@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button class="back-to-top-btn" id="back-to-top" aria-label="Back to Top">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+      </svg>
+    </button>
+
+    <!-- Mobile Drawer / Sheet -->
+    <div class="mobile-overlay" id="mobile-overlay" hidden>
+      <div
+        class="mobile-sheet"
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation Menu"
+      >
+        <!-- Mobile Header Bar -->
+        <div class="mobile-sheet-header">
+          <div class="mobile-brand">
+            <img src="/ht-logo.jpg" alt="Hoducation Technologies" class="mobile-logo-img" />
+            <span class="mobile-brand-title">Hoducation Technologies</span>
+          </div>
+          <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="mobile-nav">
+          <!-- Home -->
+          <a href="#home" class="mobile-link active">
+            <span>Home</span>
+          </a>
+
+          <!-- Services Accordion -->
+          <div class="mobile-accordion-item">
+            <button class="mobile-accordion-toggle" type="button">
+              <span>Services</span>
+              <i class="fa-solid fa-chevron-down mob-caret"></i>
+            </button>
+            <div class="mobile-accordion-content">
+              <a href="#services" class="mobile-sublink" data-card="1">
+                <i class="fa-solid fa-code"></i>
+                <div>
+                  <span class="mob-sub-title">Custom Software &amp; Portals</span>
+                  <span class="mob-sub-desc">Bespoke web apps &amp; internal tools</span>
+                </div>
+              </a>
+              <a href="#services" class="mobile-sublink" data-card="2">
+                <i class="fa-solid fa-layer-group"></i>
+                <div>
+                  <span class="mob-sub-title">Enterprise ERP Systems</span>
+                  <span class="mob-sub-desc">Fees, inventory, staff &amp; operations</span>
+                </div>
+              </a>
+              <a href="#services" class="mobile-sublink" data-card="3">
+                <i class="fa-solid fa-users"></i>
+                <div>
+                  <span class="mob-sub-title">CRM &amp; Admissions</span>
+                  <span class="mob-sub-desc">Lead pipelines &amp; WhatsApp API</span>
+                </div>
+              </a>
+              <a href="#services" class="mobile-sublink" data-card="4">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <div>
+                  <span class="mob-sub-title">Intelligent Automations</span>
+                  <span class="mob-sub-desc">Event-driven workflows &amp; 24/7 sync</span>
+                </div>
+              </a>
+              <a href="#services" class="mobile-sublink" data-card="5">
+                <i class="fa-solid fa-file-lines"></i>
+                <div>
+                  <span class="mob-sub-title">CMS &amp; Web Platforms</span>
+                  <span class="mob-sub-desc">Headless CMS &amp; digital publishing</span>
+                </div>
+              </a>
+              <a href="#services" class="mobile-sublink" data-card="6">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                  <span class="mob-sub-title">EdTech Platform (AcadOS)</span>
+                  <span class="mob-sub-desc">5-in-1 institutional OS &amp; OMR grading</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Process Accordion -->
+          <div class="mobile-accordion-item">
+            <button class="mobile-accordion-toggle" type="button">
+              <span>Process</span>
+              <i class="fa-solid fa-chevron-down mob-caret"></i>
+            </button>
+            <div class="mobile-accordion-content">
+              <a href="#process" class="mobile-sublink">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <div>
+                  <span class="mob-sub-title">6-Stage Lifecycle</span>
+                  <span class="mob-sub-desc">Analysis, UI, Build &amp; Motion</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Products Accordion -->
+          <div class="mobile-accordion-item">
+            <button class="mobile-accordion-toggle" type="button">
+              <span>Products</span>
+              <i class="fa-solid fa-chevron-down mob-caret"></i>
+            </button>
+            <div class="mobile-accordion-content">
+              <a href="#services" class="mobile-sublink">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                  <span class="mob-sub-title">AcadOS</span>
+                  <span class="mob-sub-desc">5-in-1 institutional OS</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Us -->
+          <a href="#about" class="mobile-link">
+            <span>About Us</span>
+          </a>
+
+          <!-- Contact -->
+          <a href="#contact" class="mobile-link">
+            <span>Contact</span>
+          </a>
+
+          <!-- Direct Phone & Email quick links -->
+          <div class="mobile-contact-chips">
+            <a href="tel:+919660034117" class="mobile-contact-chip">
+              <i class="fa-solid fa-phone"></i> +91 9660034117
+            </a>
+          </div>
+
+          <!-- REQUEST A DEMO (Black CTA) -->
+          <a
+            href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20request%20a%20demo."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-signin"
+          >
+            REQUEST A DEMO
+          </a>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

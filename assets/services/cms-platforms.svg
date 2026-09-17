@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" width="100%" height="100%">
+  <rect width="440" height="220" rx="12" fill="#f8fafc"/>
+  <rect width="440" height="220" rx="12" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <!-- Titlebar -->
+  <path d="M0 12 C0 5.37 5.37 0 12 0 L428 0 C434.63 0 440 5.37 440 12 L440 30 L0 30 Z" fill="#f1f5f9"/>
+  <line x1="0" y1="30" x2="440" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="16" cy="15" r="3.5" fill="#f87171"/>
+  <circle cx="28" cy="15" r="3.5" fill="#fbbf24"/>
+  <circle cx="40" cy="15" r="3.5" fill="#34d399"/>
+  <text x="56" y="19" fill="#334155" font-size="9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Headless CMS &amp; Digital Studio</text>
+  <rect x="360" y="8" width="66" height="14" rx="7" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="368" y="18" fill="#059669" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">SEO: 99/100</text>
+  <!-- Split Screen Editor -->
+  <!-- Left: Content Editor -->
+  <rect x="14" y="38" width="200" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="24" y="54" fill="#64748b" font-size="8" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Document Content</text>
+  <rect x="24" y="62" width="180" height="22" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="32" y="76" fill="#0f172a" font-size="8.5" font-family="monospace"># Annual Admissions 2026</text>
+  <rect x="24" y="92" width="180" height="66" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="32" y="102" width="130" height="5" rx="2" fill="#cbd5e1"/>
+  <rect x="32" y="114" width="150" height="5" rx="2" fill="#e2e8f0"/>
+  <rect x="32" y="126" width="110" height="5" rx="2" fill="#e2e8f0"/>
+  <rect x="32" y="138" width="140" height="5" rx="2" fill="#cbd5e1"/>
+  <rect x="24" y="166" width="70" height="18" rx="4" fill="#2563eb"/>
+  <text x="34" y="178" fill="#ffffff" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Publish Live</text>
+  <!-- Right: Live Site Preview -->
+  <rect x="226" y="38" width="200" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="234" y="46" width="184" height="16" rx="4" fill="#f1f5f9"/>
+  <text x="242" y="57" fill="#64748b" font-size="7.5" font-family="monospace">https://school.edu/admissions</text>
+  <rect x="234" y="70" width="184" height="18" rx="4" fill="#0f172a"/>
+  <rect x="234" y="94" width="90" height="8" rx="3" fill="#2563eb"/>
+  <rect x="234" y="108" width="170" height="4" rx="2" fill="#e2e8f0"/>
+  <rect x="234" y="116" width="150" height="4" rx="2" fill="#e2e8f0"/>
+  <rect x="234" y="130" width="86" height="50" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="330" y="130" width="88" height="50" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+</svg>

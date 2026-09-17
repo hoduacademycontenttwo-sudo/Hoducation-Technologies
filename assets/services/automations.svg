@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" width="100%" height="100%">
+  <rect width="440" height="220" rx="12" fill="#f8fafc"/>
+  <rect width="440" height="220" rx="12" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <!-- Titlebar -->
+  <path d="M0 12 C0 5.37 5.37 0 12 0 L428 0 C434.63 0 440 5.37 440 12 L440 30 L0 30 Z" fill="#f1f5f9"/>
+  <line x1="0" y1="30" x2="440" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="16" cy="15" r="3.5" fill="#f87171"/>
+  <circle cx="28" cy="15" r="3.5" fill="#fbbf24"/>
+  <circle cx="40" cy="15" r="3.5" fill="#34d399"/>
+  <text x="56" y="19" fill="#334155" font-size="9" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Workflow Automation Engine</text>
+  <rect x="340" y="8" width="86" height="14" rx="7" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="348" y="18" fill="#059669" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="600">Active: 24/7 Sync</text>
+  <!-- Flow Canvas Background -->
+  <rect x="14" y="38" width="412" height="168" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- Flow Connection Lines -->
+  <path d="M 108 116 C 140 116, 140 82, 172 82" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+  <path d="M 108 116 C 140 116, 140 150, 172 150" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+  <path d="M 276 82 C 308 82, 308 116, 332 116" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 276 150 C 308 150, 308 116, 332 116" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <!-- Node 1: Trigger -->
+  <rect x="24" y="94" width="84" height="44" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <circle cx="38" cy="116" r="4" fill="#16a34a"/>
+  <text x="48" y="112" fill="#15803d" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Trigger</text>
+  <text x="48" y="124" fill="#4b5563" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Fee Paid Event</text>
+  <!-- Node 2: Receipt Engine -->
+  <rect x="172" y="60" width="104" height="44" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <circle cx="186" cy="82" r="4" fill="#2563eb"/>
+  <text x="196" y="78" fill="#1e40af" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Receipt Engine</text>
+  <text x="196" y="90" fill="#4b5563" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Generate PDF &amp; Sign</text>
+  <!-- Node 3: ERP Update -->
+  <rect x="172" y="128" width="104" height="44" rx="8" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5"/>
+  <circle cx="186" cy="150" r="4" fill="#9333ea"/>
+  <text x="196" y="146" fill="#6b21a8" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">ERP Update</text>
+  <text x="196" y="158" fill="#4b5563" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Balance &amp; Ledger</text>
+  <!-- Node 4: Dispatch -->
+  <rect x="332" y="94" width="84" height="44" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <circle cx="346" cy="116" r="4" fill="#059669"/>
+  <text x="356" y="112" fill="#065f46" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">Dispatched</text>
+  <text x="356" y="124" fill="#4b5563" font-size="7" font-family="-apple-system, BlinkMacSystemFont, sans-serif">WhatsApp + SMS</text>
+  <rect x="160" y="184" width="120" height="14" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="170" y="194" fill="#64748b" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, sans-serif">Execution Latency: 180ms</text>
+</svg>
