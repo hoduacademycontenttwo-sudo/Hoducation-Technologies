@@ -13,10 +13,13 @@ if (galaxyContainer) {
       <Galaxy
         mouseRepulsion={true}
         mouseInteraction={true}
-        density={1.5}
-        glowIntensity={0.5}
-        saturation={0.8}
-        hueShift={240}
+        density={1.0}
+        glowIntensity={0.3}
+        saturation={0.0}
+        hueShift={0}
+        twinkleIntensity={0.3}
+        starSpeed={0.5}
+        speed={1.0}
         transparent={false}
       />
     </React.StrictMode>
