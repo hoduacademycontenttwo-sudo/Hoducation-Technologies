@@ -138,36 +138,28 @@ export const AcadOSShowcase: React.FC = () => {
   return (
     <section className="acados-section" id="acados" aria-label="AcadOS Product Ecosystem">
       <div className="acados-container">
-        {/* Outer 2-Column Header with AcadOS Logo and Tagline */}
+        {/* Outer Header: Official AcadOS Banner requested by user */}
         <div
           ref={headerRef}
           className={`acados-outer-header ${isHeaderRevealed ? 'is-header-revealed' : ''}`}
         >
-          <div className="acados-outer-left">
-            <a
-              href="https://www.acados.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="acados-logo-link"
-              title="Visit AcadOS Website"
-            >
-              <img
-                src="/acados-logo.png"
-                alt="AcadOS Logo"
-                className="acados-header-logo"
-                loading="eager"
-              />
-            </a>
-          </div>
-
-          <div className="acados-outer-right">
-            <h2 className="acados-outer-heading">
-              The Academic Operating System for Modern Institutions.
-            </h2>
-            <p className="acados-outer-subheading">
-              Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration.
-            </p>
-          </div>
+          <a
+            href="https://www.acados.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="acados-banner-link"
+            title="AcadOS - The Academic Operating System for Modern Institutions"
+          >
+            <img
+              src="/acados-banner.png"
+              alt="AcadOS - The Academic Operating System for Modern Institutions. Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration."
+              className="acados-banner-img"
+              loading="eager"
+            />
+            <span className="sr-only">
+              AcadOS - The Academic Operating System for Modern Institutions. Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration.
+            </span>
+          </a>
         </div>
 
         {/* The Big Curved White Box with Reveal Animation */}
