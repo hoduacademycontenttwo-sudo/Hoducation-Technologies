@@ -32,10 +32,10 @@ const MODULES: ModuleData[] = [
       { value: '100%', label: 'CBSE / JEE / NEET' },
     ],
     ctaText: 'Explore',
-    ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20TestMaker%20Paper%20Generator.',
+    ctaLink: 'https://www.acados.app/#/modules/testmaker',
     placeholderLabel: 'TestMaker Interface Preview',
     iconClass: 'fa-solid fa-book-bookmark',
-    imageSrc: '', // Placeholder: user will provide image
+    imageSrc: '', // Placeholder ready for user-provided image
   },
   {
     id: 'cbt',
@@ -49,10 +49,10 @@ const MODULES: ModuleData[] = [
       { value: 'Instant', label: 'Score & Percentile' },
     ],
     ctaText: 'Explore',
-    ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20CBT%20Mock%20Exam%20Platform.',
+    ctaLink: 'https://www.acados.app/#/modules/practice-cbt',
     placeholderLabel: 'CBT Portal Interface Preview',
     iconClass: 'fa-solid fa-laptop-code',
-    imageSrc: '', // Placeholder: user will provide image
+    imageSrc: '', // Placeholder ready for user-provided image
   },
   {
     id: 'omr',
@@ -66,10 +66,10 @@ const MODULES: ModuleData[] = [
       { value: '1-Click', label: 'Result CSV & SMS' },
     ],
     ctaText: 'Explore',
-    ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20OMR%20SmartPhone%20Evaluation.',
+    ctaLink: 'https://www.acados.app/#/modules/omr-evaluation',
     placeholderLabel: 'OMR Smartphone Scanner Preview',
     iconClass: 'fa-solid fa-mobile-screen-button',
-    imageSrc: '', // Placeholder: user will provide image
+    imageSrc: '', // Placeholder ready for user-provided image
   },
   {
     id: 'erp',
@@ -83,32 +83,98 @@ const MODULES: ModuleData[] = [
       { value: '24/7', label: 'WhatsApp Automation' },
     ],
     ctaText: 'Explore',
-    ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20Institute%20ERP%20and%20CRM%20suite.',
+    ctaLink: 'https://www.acados.app/#/modules/erp-crm',
     placeholderLabel: 'ERP & CRM Dashboard Preview',
     iconClass: 'fa-solid fa-chart-pie',
-    imageSrc: '', // Placeholder: user will provide image
+    imageSrc: '', // Placeholder ready for user-provided image
   },
 ];
 
 export const AcadOSShowcase: React.FC = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHeaderRevealed, setIsHeaderRevealed] = useState(false);
+  const [isCardRevealed, setIsCardRevealed] = useState(false);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsHeaderRevealed(true);
+      setIsCardRevealed(true);
+      return;
+    }
+
+    const headerEl = headerRef.current;
+    const cardEl = cardRef.current;
+
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsHeaderRevealed(true);
+          if (headerEl) headerObserver.unobserve(headerEl);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const cardObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCardRevealed(true);
+          if (cardEl) cardObserver.unobserve(cardEl);
+        }
+      },
+      { threshold: 0.08 }
+    );
+
+    if (headerEl) headerObserver.observe(headerEl);
+    if (cardEl) cardObserver.observe(cardEl);
+
+    return () => {
+      headerObserver.disconnect();
+      cardObserver.disconnect();
+    };
+  }, []);
+
   return (
     <section className="acados-section" id="acados" aria-label="AcadOS Product Ecosystem">
       <div className="acados-container">
-        {/* Outer 2-Column Header sitting directly on the grey canvas */}
-        <div className="acados-outer-header">
+        {/* Outer 2-Column Header with AcadOS Logo and Tagline */}
+        <div
+          ref={headerRef}
+          className={`acados-outer-header ${isHeaderRevealed ? 'is-header-revealed' : ''}`}
+        >
           <div className="acados-outer-left">
-            <span className="acados-outer-bullet">•</span>
-            <span className="acados-outer-label">AcadOS Platform</span>
+            <a
+              href="https://www.acados.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="acados-logo-link"
+              title="Visit AcadOS Website"
+            >
+              <img
+                src="/acados-logo.png"
+                alt="AcadOS Logo"
+                className="acados-header-logo"
+                loading="eager"
+              />
+            </a>
           </div>
+
           <div className="acados-outer-right">
             <h2 className="acados-outer-heading">
-              Four institutional engines engineered to power modern education.
+              The Academic Operating System for Modern Institutions.
             </h2>
+            <p className="acados-outer-subheading">
+              Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration.
+            </p>
           </div>
         </div>
 
-        {/* The Big Curved White Box */}
-        <div className="acados-white-card">
+        {/* The Big Curved White Box with Reveal Animation */}
+        <div
+          ref={cardRef}
+          className={`acados-white-card ${isCardRevealed ? 'is-card-revealed' : ''}`}
+        >
           {/* Alternating Modules List */}
           <div className="acados-modules-list">
             {MODULES.map((module, index) => {
@@ -124,10 +190,10 @@ export const AcadOSShowcase: React.FC = () => {
             })}
           </div>
 
-          {/* Bottom Centered Black Pill Button */}
+          {/* Bottom Centered Black Pill Button rendering to https://www.acados.app/ */}
           <div className="acados-footer-cta">
             <a
-              href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20schedule%20a%20complete%20AcadOS%20demo%20for%20our%20institution."
+              href="https://www.acados.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="acados-all-pill"
@@ -170,7 +236,7 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
       },
       {
         threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
@@ -183,61 +249,84 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
     <div
       ref={rowRef}
       className={`acados-row ${isReversed ? 'is-reversed' : ''} ${isVisible ? 'is-revealed' : ''}`}
+      style={{ '--row-idx': index } as React.CSSProperties}
     >
-      {/* Content Column */}
+      {/* Content Column with Bottom-to-Top Wipe Reveal */}
       <div className="acados-content-col">
         {/* Category Dot Badge */}
-        <div className="acados-badge">
-          <span className="acados-badge-dot">•</span>
-          <span className="acados-badge-text">{module.badge}</span>
+        <div className="wipe-mask">
+          <div className="wipe-content wipe-badge">
+            <div className="acados-badge">
+              <span className="acados-badge-dot">•</span>
+              <span className="acados-badge-text">{module.badge}</span>
+            </div>
+          </div>
         </div>
 
         {/* Headline */}
-        <h3 className="acados-module-title">{module.title}</h3>
-
-        {/* Subheading / Description */}
-        <p className="acados-module-desc">{module.description}</p>
-
-        {/* 3 Metrics Row */}
-        <div className="acados-stats-row">
-          {module.stats.map((stat, sIdx) => (
-            <div key={sIdx} className="acados-stat-item">
-              <span className="acados-stat-value">{stat.value}</span>
-              <span className="acados-stat-label">{stat.label}</span>
-            </div>
-          ))}
+        <div className="wipe-mask">
+          <div className="wipe-content wipe-title">
+            <h3 className="acados-module-title">{module.title}</h3>
+          </div>
         </div>
 
-        {/* Explore Link */}
-        <a
-          href={module.ctaLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="acados-explore-link"
-        >
-          <span>{module.ctaText}</span>
-          <span className="acados-arrow-icon">→</span>
-        </a>
+        {/* Subheading / Description */}
+        <div className="wipe-mask">
+          <div className="wipe-content wipe-desc">
+            <p className="acados-module-desc">{module.description}</p>
+          </div>
+        </div>
+
+        {/* 3 Metrics Row */}
+        <div className="wipe-mask">
+          <div className="wipe-content wipe-stats">
+            <div className="acados-stats-row">
+              {module.stats.map((stat, sIdx) => (
+                <div key={sIdx} className="acados-stat-item">
+                  <span className="acados-stat-value">{stat.value}</span>
+                  <span className="acados-stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Explore Button with URL destination */}
+        <div className="wipe-mask">
+          <div className="wipe-content wipe-link">
+            <a
+              href={module.ctaLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="acados-explore-link"
+            >
+              <span>{module.ctaText}</span>
+              <span className="acados-arrow-icon">→</span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      {/* Curved Image Placeholder Box */}
+      {/* Curved Image Placeholder Box with Pan Animation */}
       <div className="acados-visual-col">
         <div className="acados-card-frame">
           {module.imageSrc ? (
-            <img
-              src={module.imageSrc}
-              alt={module.title}
-              className="acados-module-image"
-              loading="lazy"
-            />
+            <div className="image-pan-viewport">
+              <img
+                src={module.imageSrc}
+                alt={module.title}
+                className="acados-module-image image-pan-target"
+                loading="lazy"
+              />
+            </div>
           ) : (
-            <div className="acados-placeholder-box">
+            <div className="acados-placeholder-box image-pan-target">
               <div className="acados-placeholder-inner">
                 <div className="placeholder-icon-wrap">
                   <i className={module.iconClass}></i>
                 </div>
                 <span className="placeholder-text">{module.placeholderLabel}</span>
-                <span className="placeholder-subtext">Image Placeholder</span>
+                <span className="placeholder-subtext">Awaiting Asset Upload</span>
               </div>
             </div>
           )}

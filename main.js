@@ -197,8 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Scroll spy based on sections & navbar compression
-  window.addEventListener("scroll", () => {
+  // Scroll spy based on sections & navbar compression with requestAnimationFrame ticking
+  let isScrollTicking = false;
+
+  function handleScrollUpdate() {
     const isScrolled = window.scrollY > SCROLL_THRESHOLD;
 
     if (freehandNavbar) {
@@ -247,6 +249,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (currentId) {
       setActiveAnchor(`#${currentId}`);
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!isScrollTicking) {
+      window.requestAnimationFrame(() => {
+        handleScrollUpdate();
+        isScrollTicking = false;
+      });
+      isScrollTicking = true;
     }
   }, { passive: true });
 
