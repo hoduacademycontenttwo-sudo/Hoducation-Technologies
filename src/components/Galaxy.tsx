@@ -36,6 +36,7 @@ uniform float uMouseActiveFactor;
 uniform float uAutoCenterRepulsion;
 uniform bool uTransparent;
 uniform float uLightMode;
+uniform float uStarScale;
 
 varying vec2 vUv;
 
@@ -71,14 +72,15 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 float Star(vec2 uv, float flare) {
+  uv /= uStarScale;
   float d = length(uv);
-  float m = (0.05 * uGlowIntensity) / d;
+  float m = (0.028 * uGlowIntensity) / d;
   float rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
   m += rays * flare * uGlowIntensity;
   uv *= MAT45;
   rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
   m += rays * 0.3 * flare * uGlowIntensity;
-  m *= smoothstep(1.0, 0.2, d);
+  m *= smoothstep(0.7, 0.05, d);
   return m;
 }
 
@@ -95,7 +97,7 @@ vec3 StarLayer(vec2 uv) {
       float seed = Hash21(si);
       float size = fract(seed * 345.32);
       float glossLocal = tri(uStarSpeed / (PERIOD * seed + 1.0));
-      float flareSize = smoothstep(0.9, 1.0, size) * glossLocal;
+      float flareSize = smoothstep(0.95, 1.0, size) * glossLocal;
 
       float red = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 1.0)) + STAR_COLOR_CUTOFF;
       float blu = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 3.0)) + STAR_COLOR_CUTOFF;
@@ -155,7 +157,7 @@ void main() {
 
   for (float i = 0.0; i < 1.0; i += 1.0 / NUM_LAYER) {
     float depth = fract(i + uStarSpeed * uSpeed);
-    float scale = mix(20.0 * uDensity, 0.5 * uDensity, depth);
+    float scale = mix(28.0 * uDensity, 1.5 * uDensity, depth);
     float fade = depth * smoothstep(1.0, 0.9, depth);
     col += StarLayer(uv * scale + i * 453.32) * fade;
   }
@@ -194,6 +196,7 @@ export interface GalaxyProps extends React.HTMLAttributes<HTMLDivElement> {
   autoCenterRepulsion?: number;
   transparent?: boolean;
   lightMode?: boolean;
+  starScale?: number;
 }
 
 export default function Galaxy({
@@ -214,6 +217,7 @@ export default function Galaxy({
   autoCenterRepulsion = 0,
   transparent = false,
   lightMode = false,
+  starScale = 0.55,
   className = '',
   ...rest
 }: GalaxyProps) {
@@ -286,7 +290,8 @@ export default function Galaxy({
         uMouseActiveFactor: { value: 0.0 },
         uAutoCenterRepulsion: { value: autoCenterRepulsion },
         uTransparent: { value: transparent },
-        uLightMode: { value: lightMode ? 1 : 0 }
+        uLightMode: { value: lightMode ? 1 : 0 },
+        uStarScale: { value: starScale }
       }
     });
 
@@ -371,7 +376,8 @@ export default function Galaxy({
     repulsionStrength,
     autoCenterRepulsion,
     transparent,
-    lightMode
+    lightMode,
+    starScale
   ]);
 
   return (

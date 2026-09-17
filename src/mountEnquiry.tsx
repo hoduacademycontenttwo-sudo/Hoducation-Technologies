@@ -13,12 +13,13 @@ if (galaxyContainer) {
       <Galaxy
         mouseRepulsion={true}
         mouseInteraction={true}
-        density={1.0}
-        glowIntensity={0.3}
+        density={1.1}
+        glowIntensity={0.25}
         saturation={0.0}
         hueShift={0}
+        starScale={0.55}
         twinkleIntensity={0.3}
-        starSpeed={0.5}
+        starSpeed={0.4}
         speed={1.0}
         transparent={false}
       />
