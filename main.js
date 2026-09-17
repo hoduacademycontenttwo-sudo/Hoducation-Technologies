@@ -318,20 +318,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(animateStats, 300);
   }
 
-  // -----------------------------------------------------------
-  // 4. Background Video Autoplay Assurance
-  // -----------------------------------------------------------
-  const video = document.querySelector(".bg-video");
-  if (video) {
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay policy fallback: ensure muted and retry on click
-        video.muted = true;
-        document.addEventListener("click", () => video.play(), { once: true });
-      });
-    }
-  }
 
   // -----------------------------------------------------------
   // 5. Expandable Back-to-Top Button
