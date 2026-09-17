@@ -162,7 +162,40 @@ export const ProcessStepCard: React.FC<ProcessStepCardProps> = React.memo(({
   onHover,
   onClick,
 }) => {
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const [isRevealed, setIsRevealed] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsRevealed(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+          observer.unobserve(el);
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const rowStateClass = isActive ? 'is-active' : isPassed ? 'is-passed' : 'is-upcoming';
+  const revealClass = isRevealed ? 'is-revealed' : 'is-hidden';
   const hoverClass = isHovered ? 'is-hovered' : '';
   const sideClass = step.side === 'left' ? 'row-side-left' : 'row-side-right';
 
@@ -247,7 +280,8 @@ export const ProcessStepCard: React.FC<ProcessStepCardProps> = React.memo(({
 
   return (
     <div
-      className={`process-step-row ${sideClass} ${rowStateClass} ${hoverClass}`}
+      ref={rowRef}
+      className={`process-step-row ${sideClass} ${rowStateClass} ${revealClass} ${hoverClass}`}
       data-step={step.id}
     >
       {/* Desktop Left Slot */}
