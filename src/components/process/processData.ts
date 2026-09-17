@@ -61,7 +61,7 @@ export const PROCESS_STEPS: ProcessStepItem[] = [
     side: 'left',
     phaseTags: ['DEPLOY', 'DELIVER', 'MAKE IT REAL'],
     iconType: 'launch',
-    videoUrl: '/step-5-launch-ship.mp4',
+    imageUrl: '/step-5-launch-ship.png',
   },
   {
     id: 6,
@@ -71,6 +71,6 @@ export const PROCESS_STEPS: ProcessStepItem[] = [
     side: 'right',
     phaseTags: ['SUPPORT', 'OPTIMIZE', 'GROW TOGETHER'],
     iconType: 'support',
-    videoUrl: '/step-6-support-growth.mp4',
+    imageUrl: '/step-6-support-growth.png',
   },
 ];
