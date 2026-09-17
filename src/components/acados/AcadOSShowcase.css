@@ -386,6 +386,15 @@
   border-color: #94a3b8;
 }
 
+.acados-card-frame.has-image {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.acados-card-frame.has-image:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
 /* Image Viewport */
 .image-pan-viewport {
   width: 100%;

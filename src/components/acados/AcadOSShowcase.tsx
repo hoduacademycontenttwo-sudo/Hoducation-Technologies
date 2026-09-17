@@ -35,7 +35,7 @@ const MODULES: ModuleData[] = [
     ctaLink: 'https://www.acados.app/#/modules/testmaker',
     placeholderLabel: 'TestMaker Interface Preview',
     iconClass: 'fa-solid fa-book-bookmark',
-    imageSrc: '', // Placeholder ready for user-provided image
+    imageSrc: '/acados-testmaker.png',
   },
   {
     id: 'cbt',
@@ -301,7 +301,7 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
 
       {/* Curved Image Placeholder Box with Pan Animation */}
       <div className="acados-visual-col">
-        <div className="acados-card-frame">
+        <div className={`acados-card-frame ${module.imageSrc ? 'has-image' : ''}`}>
           {module.imageSrc ? (
             <div className="image-pan-viewport">
               <img
