@@ -6,7 +6,6 @@ export interface ProcessStepItem {
   side: 'left' | 'right';
   phaseTags: string[];
   iconType: 'discovery' | 'requirements' | 'development' | 'demo' | 'launch' | 'support';
-  videoUrl?: string;
   gifUrl?: string;
   mediaUrl?: string;
   imageUrl?: string;
