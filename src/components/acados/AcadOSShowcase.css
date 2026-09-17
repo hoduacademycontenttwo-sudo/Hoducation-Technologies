@@ -354,18 +354,24 @@
    -------------------------------------------------------------------------- */
 .acados-visual-col {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .acados-card-frame {
   width: 100%;
-  aspect-ratio: 16 / 10.5;
-  min-height: 380px;
-  border-radius: clamp(28px, 3.8vw, 42px);
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  border-radius: clamp(24px, 3.5vw, 42px);
   overflow: hidden;
   position: relative;
   background: #f4f5f7;
   border: 1.5px dashed #cbd5e1;
   box-shadow: 0 14px 35px -10px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -394,17 +400,21 @@
 .image-pan-viewport {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   overflow: hidden;
   border-radius: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .acados-module-image {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: inherit;
   transform-origin: center center;
@@ -432,11 +442,12 @@
 .acados-placeholder-box {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: clamp(16px, 3vw, 28px);
   box-sizing: border-box;
   background: radial-gradient(100% 100% at 50% 50%, #ffffff 0%, #f1f3f6 100%);
   transform-origin: center center;
@@ -447,8 +458,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: clamp(8px, 1.5vw, 12px);
   text-align: center;
+  max-width: 100%;
 }
 
 .placeholder-icon-wrap {
@@ -528,22 +540,32 @@
 @media (max-width: 992px) {
   .acados-outer-header {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
+    margin-bottom: 32px;
   }
 
   .acados-header-logo {
     height: 48px;
+    max-width: 180px;
+  }
+
+  .acados-outer-heading {
+    font-size: clamp(22px, 3.8vw, 32px);
   }
 
   .acados-white-card {
     border-radius: 32px;
-    padding: 36px 20px;
+    padding: clamp(32px, 5vw, 48px) clamp(18px, 4vw, 32px);
+  }
+
+  .acados-modules-list {
+    gap: 56px;
   }
 
   .acados-row,
   .acados-row.is-reversed {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 
   .acados-row.is-reversed .acados-content-col {
@@ -554,19 +576,128 @@
   .acados-row.is-reversed .acados-visual-col {
     order: 2;
   }
+
+  .acados-card-frame {
+    width: 100%;
+    max-width: 100%;
+    min-height: unset;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 26px;
+  }
 }
 
 @media (max-width: 640px) {
   .acados-section {
-    padding: 50px 14px;
+    padding: clamp(36px, 6vw, 56px) 12px;
+    overflow-x: hidden;
+  }
+
+  .acados-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .acados-outer-header {
+    padding: 0 4px;
+    gap: 12px;
+  }
+
+  .acados-header-logo {
+    height: 40px;
+    max-width: 150px;
+  }
+
+  .acados-outer-heading {
+    font-size: clamp(20px, 5.5vw, 26px);
+    line-height: 1.25;
+  }
+
+  .acados-outer-subheading {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .acados-white-card {
+    border-radius: 24px;
+    padding: 24px 14px;
+    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.04);
+  }
+
+  .acados-modules-list {
+    gap: 44px;
+  }
+
+  .acados-module-title {
+    font-size: clamp(22px, 6.2vw, 28px);
+    margin-bottom: 10px;
+  }
+
+  .acados-module-desc {
+    font-size: 0.84375rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
   }
 
   .acados-stats-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 20px;
+    padding-top: 14px;
+  }
+
+  .acados-stat-item {
+    gap: 3px;
+  }
+
+  .acados-stat-value {
+    font-size: clamp(17px, 5vw, 22px);
+  }
+
+  .acados-stat-label {
+    font-size: 0.5625rem;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
   }
 
   .acados-card-frame {
-    min-height: 260px;
+    width: 100%;
+    max-width: 100%;
+    min-height: unset;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
+  }
+
+  .placeholder-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    font-size: 1.15rem;
+  }
+
+  .placeholder-text {
+    font-size: 0.84375rem;
+  }
+
+  .placeholder-subtext {
+    font-size: 0.625rem;
+  }
+
+  .acados-footer-cta {
+    margin-top: 40px;
+  }
+
+  .acados-all-pill {
+    padding: 12px 26px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .acados-stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 }
