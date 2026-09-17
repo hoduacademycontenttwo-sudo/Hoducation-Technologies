@@ -138,7 +138,7 @@ export const AcadOSShowcase: React.FC = () => {
   return (
     <section className="acados-section" id="acados" aria-label="AcadOS Product Ecosystem">
       <div className="acados-container">
-        {/* Outer Header: Official AcadOS Banner requested by user */}
+        {/* Outer Header: Code-Crafted AcadOS Brand Header Card (Reference-Accurate) */}
         <div
           ref={headerRef}
           className={`acados-outer-header ${isHeaderRevealed ? 'is-header-revealed' : ''}`}
@@ -147,18 +147,59 @@ export const AcadOSShowcase: React.FC = () => {
             href="https://www.acados.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="acados-banner-link"
-            title="AcadOS - The Academic Operating System for Modern Institutions"
+            className="acados-header-card"
+            title="Explore AcadOS - The Academic Operating System for Modern Institutions"
           >
-            <img
-              src="/acados-banner.png"
-              alt="AcadOS - The Academic Operating System for Modern Institutions. Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration."
-              className="acados-banner-img"
-              loading="eager"
-            />
-            <span className="sr-only">
-              AcadOS - The Academic Operating System for Modern Institutions. Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration.
-            </span>
+            {/* Background Decorative Rings & Ambient Curves */}
+            <div className="acados-header-decor" aria-hidden="true">
+              <svg
+                className="acados-header-decor-svg"
+                viewBox="0 0 1000 240"
+                preserveAspectRatio="none"
+              >
+                <g className="decor-arcs-left">
+                  <circle cx="100" cy="40" r="70" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.18" />
+                  <circle cx="100" cy="40" r="100" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.15" />
+                  <circle cx="100" cy="40" r="130" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.12" />
+                  <circle cx="100" cy="40" r="160" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.09" />
+                  <circle cx="100" cy="40" r="190" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.06" />
+                </g>
+                <g className="decor-arcs-right">
+                  <circle cx="920" cy="200" r="75" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.22" />
+                  <circle cx="920" cy="200" r="110" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.18" />
+                  <circle cx="920" cy="200" r="145" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.14" />
+                  <circle cx="920" cy="200" r="180" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.10" />
+                  <circle cx="920" cy="200" r="215" stroke="#b46e82" strokeWidth="1" fill="none" opacity="0.07" />
+                </g>
+              </svg>
+            </div>
+
+            {/* Inner Content Grid: Logo | Divider | Headings */}
+            <div className="acados-header-content">
+              <div className="acados-header-logo-wrap">
+                <img
+                  src="/acados-logo-clean.png"
+                  alt="AcadOS Logo"
+                  className="acados-header-logo"
+                  width="100"
+                  height="88"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="acados-header-separator" aria-hidden="true" />
+
+              <div className="acados-header-info">
+                <h2 className="acados-header-heading">
+                  The Academic Operating System<br className="heading-break" />
+                  for Modern Institutions.
+                </h2>
+                <p className="acados-header-lead">
+                  Four institutional engines engineered to power examinations, intelligent evaluations, and seamless campus administration.
+                </p>
+              </div>
+            </div>
           </a>
         </div>
 
