@@ -498,6 +498,18 @@
   position: relative;
 }
 
+/* Middle Layer: Handles the Directional Pan Animation smoothly */
+.image-pan-layer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Inner Image Layer: Dedicated 100% to the Smooth Zoom Hover Effect */
 .acados-module-image {
   width: 100%;
   height: 100%;
@@ -506,77 +518,76 @@
   object-position: center;
   display: block;
   border-radius: inherit;
+  transform: scale(1.01) translate3d(0, 0, 0);
   transform-origin: center center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.35s ease;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.5s ease;
+  will-change: transform;
 }
 
-/* Zoom Hover Effect: zooms smoothly into the image and pauses background pan */
+/* Zoom Hover Effect: Ultra-smooth scale expansion without keyframe conflict */
 .acados-card-frame:hover .acados-module-image {
-  animation-play-state: paused;
-  transform: scale(1.11) translate3d(0, 0, 0) !important;
-  filter: contrast(1.03) brightness(1.02);
+  transform: scale(1.09) translate3d(0, 0, 0);
+  filter: contrast(1.02) brightness(1.02);
 }
 
-/* Directional Pan Animations:
+/* Directional Pan Animations on the Pan Layer:
    - If image is in RIGHT (pan-from-right): enters from right, floats right-to-left
    - If image is in LEFT (pan-from-left): enters from left, floats left-to-right */
 @keyframes panRevealFromRight {
   0% {
-    transform: translateX(12%) scale(1.08);
+    transform: translateX(10%);
     opacity: 0.6;
   }
   100% {
-    transform: translateX(0%) scale(1.03);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
 
 @keyframes panFloatRight {
   0% {
-    transform: translateX(0%) scale(1.03);
+    transform: translateX(0%);
   }
   50% {
-    transform: translateX(-3.5%) scale(1.06);
+    transform: translateX(-3%);
   }
   100% {
-    transform: translateX(1.8%) scale(1.03);
+    transform: translateX(1.5%);
   }
 }
 
 @keyframes panRevealFromLeft {
   0% {
-    transform: translateX(-12%) scale(1.08);
+    transform: translateX(-10%);
     opacity: 0.6;
   }
   100% {
-    transform: translateX(0%) scale(1.03);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
 
 @keyframes panFloatLeft {
   0% {
-    transform: translateX(0%) scale(1.03);
+    transform: translateX(0%);
   }
   50% {
-    transform: translateX(3.5%) scale(1.06);
+    transform: translateX(3%);
   }
   100% {
-    transform: translateX(-1.8%) scale(1.03);
+    transform: translateX(-1.5%);
   }
 }
 
-.acados-row.is-revealed .acados-module-image.pan-from-right {
+.acados-row.is-revealed .image-pan-layer.pan-from-right {
   animation: panRevealFromRight 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             panFloatRight 16s ease-in-out 1.3s infinite alternate;
-  will-change: transform, opacity;
+             panFloatRight 18s ease-in-out 1.3s infinite alternate;
 }
 
-.acados-row.is-revealed .acados-module-image.pan-from-left {
+.acados-row.is-revealed .image-pan-layer.pan-from-left {
   animation: panRevealFromLeft 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             panFloatLeft 16s ease-in-out 1.3s infinite alternate;
-  will-change: transform, opacity;
+             panFloatLeft 18s ease-in-out 1.3s infinite alternate;
 }
 
 /* Clean Minimal Placeholder View */

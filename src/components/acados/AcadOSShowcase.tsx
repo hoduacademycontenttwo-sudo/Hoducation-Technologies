@@ -351,13 +351,15 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
           title={`Explore ${module.title}`}
         >
           {module.imageSrc ? (
-            <div className={`image-pan-viewport ${panDirectionClass}`}>
-              <img
-                src={module.imageSrc}
-                alt={module.title}
-                className={`acados-module-image ${panDirectionClass}`}
-                loading="lazy"
-              />
+            <div className="image-pan-viewport">
+              <div className={`image-pan-layer ${panDirectionClass}`}>
+                <img
+                  src={module.imageSrc}
+                  alt={module.title}
+                  className="acados-module-image"
+                  loading="lazy"
+                />
+              </div>
             </div>
           ) : (
             <div className={`acados-placeholder-box ${panDirectionClass}`}>
