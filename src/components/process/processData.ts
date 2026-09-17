@@ -41,7 +41,7 @@ export const PROCESS_STEPS: ProcessStepItem[] = [
     side: 'left',
     phaseTags: ['BUILDING', 'SOLUTIONS', 'TOGETHER'],
     iconType: 'development',
-    videoUrl: '/step-3-design-development.mp4',
+    imageUrl: '/step-3-design-development.png',
   },
   {
     id: 4,
