@@ -4,6 +4,8 @@ import AcadChatbot from './components/AcadChatbot';
 import ProcessSection from './components/process/ProcessSection';
 import Galaxy from './components/Galaxy';
 
+import { AcadOSShowcase } from './components/acados/AcadOSShowcase';
+
 // 1. Interactive WebGL Galaxy Hero Background
 const galaxyContainer = document.getElementById('galaxy-root');
 
@@ -38,7 +40,18 @@ if (chatbotContainer) {
   );
 }
 
-// 3. Process Section Infographic
+// 3. AcadOS Product Ecosystem Showcase
+const acadosContainer = document.getElementById('acados-root');
+
+if (acadosContainer) {
+  createRoot(acadosContainer).render(
+    <React.StrictMode>
+      <AcadOSShowcase />
+    </React.StrictMode>
+  );
+}
+
+// 4. Process Section Infographic
 const processContainer = document.getElementById('process-root');
 
 if (processContainer) {
@@ -48,5 +61,3 @@ if (processContainer) {
     </React.StrictMode>
   );
 }
-
-
