@@ -14,8 +14,9 @@ interface ModuleData {
   stats: ModuleStat[];
   ctaText: string;
   ctaLink: string;
-  cardTheme: string;
-  mockupType: 'testmaker' | 'cbt' | 'omr' | 'erp';
+  placeholderLabel: string;
+  iconClass: string;
+  imageSrc?: string;
 }
 
 const MODULES: ModuleData[] = [
@@ -32,8 +33,9 @@ const MODULES: ModuleData[] = [
     ],
     ctaText: 'Explore',
     ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20TestMaker%20Paper%20Generator.',
-    cardTheme: 'card-theme-testmaker',
-    mockupType: 'testmaker',
+    placeholderLabel: 'TestMaker Interface Preview',
+    iconClass: 'fa-solid fa-book-bookmark',
+    imageSrc: '', // Placeholder: user will provide image
   },
   {
     id: 'cbt',
@@ -48,8 +50,9 @@ const MODULES: ModuleData[] = [
     ],
     ctaText: 'Explore',
     ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20CBT%20Mock%20Exam%20Platform.',
-    cardTheme: 'card-theme-cbt',
-    mockupType: 'cbt',
+    placeholderLabel: 'CBT Portal Interface Preview',
+    iconClass: 'fa-solid fa-laptop-code',
+    imageSrc: '', // Placeholder: user will provide image
   },
   {
     id: 'omr',
@@ -64,8 +67,9 @@ const MODULES: ModuleData[] = [
     ],
     ctaText: 'Explore',
     ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20OMR%20SmartPhone%20Evaluation.',
-    cardTheme: 'card-theme-omr',
-    mockupType: 'omr',
+    placeholderLabel: 'OMR Smartphone Scanner Preview',
+    iconClass: 'fa-solid fa-mobile-screen-button',
+    imageSrc: '', // Placeholder: user will provide image
   },
   {
     id: 'erp',
@@ -80,8 +84,9 @@ const MODULES: ModuleData[] = [
     ],
     ctaText: 'Explore',
     ctaLink: 'https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20want%20to%20know%20more%20about%20Institute%20ERP%20and%20CRM%20suite.',
-    cardTheme: 'card-theme-erp',
-    mockupType: 'erp',
+    placeholderLabel: 'ERP & CRM Dashboard Preview',
+    iconClass: 'fa-solid fa-chart-pie',
+    imageSrc: '', // Placeholder: user will provide image
   },
 ];
 
@@ -89,7 +94,7 @@ export const AcadOSShowcase: React.FC = () => {
   return (
     <section className="acados-section" id="acados" aria-label="AcadOS Product Ecosystem">
       <div className="acados-container">
-        {/* Outer 2-Column Header sitting directly on the grey canvas (as shown in reference) */}
+        {/* Outer 2-Column Header sitting directly on the grey canvas */}
         <div className="acados-outer-header">
           <div className="acados-outer-left">
             <span className="acados-outer-bullet">•</span>
@@ -102,7 +107,7 @@ export const AcadOSShowcase: React.FC = () => {
           </div>
         </div>
 
-        {/* The Big Curved White Box (Matching left red arrow in screenshot) */}
+        {/* The Big Curved White Box */}
         <div className="acados-white-card">
           {/* Alternating Modules List */}
           <div className="acados-modules-list">
@@ -119,7 +124,7 @@ export const AcadOSShowcase: React.FC = () => {
             })}
           </div>
 
-          {/* Bottom Centered Black Pill Button (matching reference "All projects") */}
+          {/* Bottom Centered Black Pill Button */}
           <div className="acados-footer-cta">
             <a
               href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20schedule%20a%20complete%20AcadOS%20demo%20for%20our%20institution."
@@ -215,195 +220,27 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
         </a>
       </div>
 
-      {/* Curved Image Placeholder Box (Matching right red arrow in screenshot) */}
+      {/* Curved Image Placeholder Box */}
       <div className="acados-visual-col">
-        <div className={`acados-card-frame ${module.cardTheme}`}>
-          <MockupPlaceholder type={module.mockupType} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================================
-// Mockup Components Designed Specifically For Each Curved Placeholder Box
-// ============================================================================
-
-interface MockupPlaceholderProps {
-  type: 'testmaker' | 'cbt' | 'omr' | 'erp';
-}
-
-const MockupPlaceholder: React.FC<MockupPlaceholderProps> = ({ type }) => {
-  switch (type) {
-    case 'testmaker':
-      return <TestMakerLaptopMockup />;
-    case 'cbt':
-      return <CBTTitanMockup />;
-    case 'omr':
-      return <OMRPhoneMockup />;
-    case 'erp':
-      return <ERPBrowserMockup />;
-    default:
-      return null;
-  }
-};
-
-/**
- * 1. TestMaker: Laptop Mockup with Magenta/Pink Screen & Ground Glow
- * (Direct replica of Card 1 Vertus AI laptop composition in screenshot)
- */
-const TestMakerLaptopMockup: React.FC = () => {
-  return (
-    <div className="mockup-screen">
-      <div className="laptop-mockup-wrap">
-        <div className="laptop-lid">
-          <div className="laptop-webcam"></div>
-          <div className="laptop-display-screen">
-            <div className="screen-app-top">
-              <span className="screen-app-logo">AcadOS TestMaker</span>
-              <span className="screen-app-tag">6L+ Questions</span>
-            </div>
-            <div className="screen-hero-text">
-              <div className="screen-hero-title">Physics &amp; Chemistry<br />Question Studio</div>
-              <div className="screen-hero-sub">Balanced CBSE &amp; JEE Paper Generator</div>
-            </div>
-            <div className="screen-app-actions">
-              <span className="screen-pill-btn">Generate PDF</span>
-              <span className="screen-pill-btn outline">Marking Scheme</span>
-            </div>
-          </div>
-        </div>
-        <div className="laptop-base">
-          <div className="laptop-notch"></div>
-        </div>
-        <div className="laptop-ground-glow"></div>
-      </div>
-    </div>
-  );
-};
-
-/**
- * 2. CBT Exam Platform: Dark Dashboard with Crimson Red Highlights
- * (Direct replica of Card 2 TitanX dark dashboard composition in screenshot)
- */
-const CBTTitanMockup: React.FC = () => {
-  return (
-    <div className="mockup-screen">
-      <div className="cbt-titan-mock">
-        <div className="cbt-titan-nav">
-          <div className="cbt-titan-dots">
-            <span className="titan-dot"></span>
-            <span className="titan-dot"></span>
-            <span className="titan-dot"></span>
-          </div>
-          <span className="cbt-titan-meta">JEE Advanced CBT Simulator</span>
-          <span className="cbt-titan-timer">02:44:18</span>
-        </div>
-
-        <div className="cbt-titan-grid">
-          <div className="cbt-titan-card highlight-card">
-            <span className="card-top-tag">LIVE TEST ENGINE</span>
-            <span className="card-big-num">0ms</span>
-            <span className="card-desc-mini">Zero latency buffer across 10,000+ concurrent students</span>
-          </div>
-
-          <div className="cbt-titan-card">
-            <span className="card-top-tag">NTA PALETTE</span>
-            <span className="card-big-num">99.4%</span>
-            <span className="card-desc-mini">Instant score &amp; All-India percentile prediction</span>
-          </div>
-        </div>
-
-        <div className="cbt-titan-footer">
-          <span className="cbt-badge-status">
-            <span className="pulse-green"></span>
-            Server Sync Active
-          </span>
-          <button className="cbt-titan-btn">Next Question →</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/**
- * 3. OMR Smartphone Evaluation: Sunset Pastel Card with Mobile Smartphone Mockup
- * (Direct replica of Card 3 Metapic pastel peach/pink composition with phone in screenshot)
- */
-const OMRPhoneMockup: React.FC = () => {
-  return (
-    <div className="mockup-screen">
-      <div className="phone-mockup-wrap">
-        <div className="phone-shell">
-          <div className="phone-dynamic-island"></div>
-          <div className="phone-screen">
-            <div className="phone-scanner-grid">
-              <div className="phone-bubble-row">
-                <span>Q1: A B [C] D</span>
-                <span className="bubble-check">✓ Verified</span>
-              </div>
-              <div className="phone-bubble-row">
-                <span>Q2: [A] B C D</span>
-                <span className="bubble-check">✓ Verified</span>
-              </div>
-              <div className="phone-bubble-row">
-                <span>Q3: A [B] C D</span>
-                <span className="bubble-check">✓ Verified</span>
+        <div className="acados-card-frame">
+          {module.imageSrc ? (
+            <img
+              src={module.imageSrc}
+              alt={module.title}
+              className="acados-module-image"
+              loading="lazy"
+            />
+          ) : (
+            <div className="acados-placeholder-box">
+              <div className="acados-placeholder-inner">
+                <div className="placeholder-icon-wrap">
+                  <i className={module.iconClass}></i>
+                </div>
+                <span className="placeholder-text">{module.placeholderLabel}</span>
+                <span className="placeholder-subtext">Image Placeholder</span>
               </div>
             </div>
-
-            <div className="phone-hud-card">
-              <span className="hud-title">OMR SmartVision 3.0</span>
-              <div className="hud-score">172 / 180</div>
-              <div className="hud-badge">99.8% Accuracy • Evaluated in 0.8s</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/**
- * 4. Institute ERP and CRM: White Browser Framing Dark Analytics Console
- * (Direct replica of Card 4 Alpha Ledger audit desktop browser composition in screenshot)
- */
-const ERPBrowserMockup: React.FC = () => {
-  return (
-    <div className="mockup-screen">
-      <div className="erp-browser-mock">
-        <div className="browser-bar">
-          <div className="browser-dots">
-            <span className="browser-dot"></span>
-            <span className="browser-dot"></span>
-            <span className="browser-dot"></span>
-          </div>
-          <div className="browser-url-pill">app.acados.tech/erp/dashboard</div>
-        </div>
-        <div className="browser-view-content">
-          <div className="erp-center-heading">Campus Operations &amp; Enquiry Audit</div>
-          <div className="erp-dark-console">
-            <div className="console-kpi-row">
-              <div className="console-stat-box">
-                <div className="stat-box-title">Fee Collected</div>
-                <div className="stat-box-num">₹48.6 Lakh</div>
-              </div>
-              <div className="console-stat-box">
-                <div className="stat-box-title">Attendance Sync</div>
-                <div className="stat-box-num">98.2%</div>
-              </div>
-            </div>
-            <div className="console-kpi-row">
-              <div className="console-stat-box">
-                <div className="stat-box-title">CRM Inquiries</div>
-                <div className="stat-box-num">248 Leads</div>
-              </div>
-              <div className="console-stat-box">
-                <div className="stat-box-title">Time Saved</div>
-                <div className="stat-box-num">40%</div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
