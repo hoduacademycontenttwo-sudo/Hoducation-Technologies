@@ -1,140 +1,139 @@
 /* ==========================================================================
    AcadOS Product Suite Showcase
-   Alternating 2-Column Product Display with Device Mockups & Reveal Animations
+   Eloqwnt Design Replica: Curved White Box + Curved Image Placeholders + Mazzard Font
    ========================================================================== */
 
-.acados-section {
-  position: relative;
-  background-color: #ffffff;
-  color: #09090b;
-  padding: clamp(80px, 10vw, 130px) clamp(20px, 4vw, 48px);
-  border-top: 1px solid #e4e4e7;
-  overflow: hidden;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* --------------------------------------------------------------------------
+   0. Mazzard Font Declarations (Exact Typeface from Reference)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Mazzard';
+  src: url('/fonts/MazzardM-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Subtle ambient background glow */
-.acados-section::before {
-  content: '';
-  position: absolute;
-  top: 10%;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(128, 0, 32, 0.03) 0%, rgba(244, 244, 245, 0.5) 50%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
+@font-face {
+  font-family: 'Mazzard';
+  src: url('/fonts/MazzardM-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mazzard';
+  src: url('/fonts/MazzardM-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. Outer Section & Canvas
+   -------------------------------------------------------------------------- */
+.acados-section {
+  position: relative;
+  background-color: #edf0f3; /* Light cool grey canvas as shown in reference */
+  color: #000000;
+  padding: clamp(70px, 8vw, 120px) clamp(18px, 4vw, 56px);
+  overflow: hidden;
+  font-family: 'Mazzard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-top: 1px solid #e2e6ea;
 }
 
 .acados-container {
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
-   1. Section Header
+   2. Outer 2-Column Header (Above the White Curve Box)
    -------------------------------------------------------------------------- */
-.acados-header {
-  text-align: center;
-  max-width: 820px;
-  margin: 0 auto clamp(60px, 8vh, 90px);
+.acados-outer-header {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: flex-start;
+  margin-bottom: clamp(36px, 5vh, 52px);
+  padding: 0 clamp(8px, 2vw, 16px);
 }
 
-.acados-eyebrow {
+.acados-outer-left {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #800020;
-  margin-bottom: 12px;
-  background: rgba(128, 0, 32, 0.05);
-  padding: 6px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(128, 0, 32, 0.1);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.01em;
 }
 
-.eyebrow-dot {
-  width: 7px;
-  height: 7px;
-  background-color: #800020;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(128, 0, 32, 0.6);
-  animation: acadosPulse 2s infinite ease-in-out;
+.acados-outer-bullet {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #111111;
 }
 
-@keyframes acadosPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.6;
-  }
+.acados-outer-right {
+  max-width: 820px;
 }
 
-.acados-main-title {
-  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
-  font-size: clamp(32px, 4.2vw, 50px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-  color: #09090b;
-  margin: 0 0 18px 0;
-}
-
-.acados-title-accent {
-  background: linear-gradient(135deg, #800020 0%, #a81c3a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.acados-main-subtitle {
-  font-size: clamp(16px, 1.8vw, 18.5px);
-  line-height: 1.65;
-  color: #52525b;
-  font-weight: 400;
-  margin: 0 auto;
+.acados-outer-heading {
+  font-family: 'Mazzard', sans-serif;
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #000000;
+  margin: 0;
 }
 
 /* --------------------------------------------------------------------------
-   2. Alternating Modules List
+   3. The Big Curved White Box (Matching Left Red Arrow in Screenshot)
+   -------------------------------------------------------------------------- */
+.acados-white-card {
+  background-color: #ffffff;
+  border-radius: clamp(32px, 4.5vw, 52px); /* High-radius curved corner */
+  padding: clamp(48px, 6.5vw, 96px) clamp(28px, 5vw, 76px);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   4. Alternating Module Rows
    -------------------------------------------------------------------------- */
 .acados-modules-list {
   display: flex;
   flex-direction: column;
-  gap: clamp(70px, 9vw, 110px);
+  gap: clamp(80px, 10vw, 140px);
 }
 
-/* Base Module Row Grid */
 .acados-row {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: clamp(40px, 6vw, 80px);
+  grid-template-columns: 1fr 1.22fr;
+  gap: clamp(36px, 5.5vw, 84px);
   align-items: center;
-  /* Scroll reveal animation styles */
   opacity: 0;
-  transform: translateY(45px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-/* Revealed state on scroll */
 .acados-row.is-revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Reversed Row: Card on Left, Content on Right */
+/* Reverse alternating row: Image Left, Content Right */
 .acados-row.is-reversed {
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.22fr 1fr;
 }
 
 .acados-row.is-reversed .acados-content-col {
@@ -146,110 +145,116 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Content Column Styling
+   5. Content Column Styling (Typography matching Reference)
    -------------------------------------------------------------------------- */
 .acados-content-col {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-right: clamp(0px, 2vw, 24px);
 }
 
-/* Small square badge from reference */
+.acados-row.is-reversed .acados-content-col {
+  padding-right: 0;
+  padding-left: clamp(0px, 2vw, 24px);
+}
+
+/* Category Badge with dot */
 .acados-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #3f3f46;
-  margin-bottom: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111111;
+  margin-bottom: 14px;
 }
 
 .acados-badge-dot {
   font-size: 0.75rem;
-  color: #18181b;
   line-height: 1;
+  color: #000000;
 }
 
 .acados-badge-text {
-  text-transform: capitalize;
+  letter-spacing: -0.01em;
 }
 
-/* Module Main Title */
+/* Main Module Title */
 .acados-module-title {
-  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
-  font-size: clamp(30px, 3.4vw, 44px);
-  font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.03em;
-  color: #09090b;
-  margin: 0 0 16px 0;
+  font-family: 'Mazzard', sans-serif;
+  font-size: clamp(34px, 3.8vw, 50px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #000000;
+  margin: 0 0 18px 0;
 }
 
-/* Descriptive Subheading */
+/* Descriptive Paragraph */
 .acados-module-desc {
+  font-family: 'Mazzard', sans-serif;
   font-size: clamp(15px, 1.4vw, 16.5px);
-  line-height: 1.65;
-  color: #52525b;
+  line-height: 1.62;
+  color: #4b5563;
   font-weight: 400;
-  margin: 0 0 28px 0;
+  margin: 0 0 32px 0;
   max-width: 520px;
 }
 
 /* 3 Metrics Row */
 .acados-stats-row {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: clamp(24px, 3.5vw, 42px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2.5vw, 36px);
   align-items: flex-start;
-  margin-bottom: 32px;
-  padding-top: 24px;
-  border-top: 1px solid #e4e4e7;
+  margin-bottom: 34px;
   width: 100%;
 }
 
 .acados-stat-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .acados-stat-value {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(24px, 2.6vw, 32px);
-  font-weight: 800;
-  line-height: 1.1;
-  color: #09090b;
+  font-family: 'Mazzard', sans-serif;
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: #000000;
   letter-spacing: -0.03em;
 }
 
 .acados-stat-label {
+  font-family: 'Mazzard', sans-serif;
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #71717a;
+  letter-spacing: 0.04em;
+  color: #888888;
+  line-height: 1.35;
 }
 
-/* Minimalist Action Link */
+/* Explore Link with Animated Arrow */
 .acados-explore-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: 'Mazzard', sans-serif;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: #09090b;
+  font-weight: 500;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
   padding: 4px 0;
-  border-bottom: 1.5px solid transparent;
 }
 
 .acados-arrow-icon {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -262,7 +267,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. Visual Mockup Column Styling
+   6. Curved Image Placeholder Boxes (Matching Right Red Arrow in Screenshot)
    -------------------------------------------------------------------------- */
 .acados-visual-col {
   width: 100%;
@@ -270,1024 +275,597 @@
 
 .acados-card-frame {
   width: 100%;
-  background: #0d0f14;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.28), 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-radius: clamp(28px, 3.8vw, 42px); /* High-radius curved corner matching screenshot */
   overflow: hidden;
   position: relative;
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s ease;
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .acados-card-frame:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 32px 75px -15px rgba(0, 0, 0, 0.38), 0 6px 24px rgba(0, 0, 0, 0.18);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 26px 55px -10px rgba(0, 0, 0, 0.2), 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Common Mockup Screen Surface */
+/* Distinct Card Background Environments matching Reference 1, 2, 3, 4 */
+.card-theme-testmaker {
+  background: radial-gradient(130% 130% at 75% 20%, #353840 0%, #17181c 65%, #0e0f12 100%);
+}
+
+.card-theme-cbt {
+  background: radial-gradient(130% 130% at 30% 25%, #2a2c34 0%, #15161b 60%, #0b0c0f 100%);
+}
+
+.card-theme-omr {
+  background: linear-gradient(135deg, #ffd3e2 0%, #ffe0cc 50%, #fed7aa 100%);
+}
+
+.card-theme-erp {
+  background: radial-gradient(130% 130% at 50% 30%, #2b2e36 0%, #141519 70%, #0a0b0d 100%);
+}
+
+/* Common Mockup Screen Canvas */
 .mockup-screen {
   width: 100%;
-  min-height: 380px;
-  padding: 20px;
+  min-height: 420px;
+  padding: clamp(20px, 3vw, 36px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(120% 120% at 50% 0%, #171922 0%, #0d0e13 100%);
-  color: #f1f5f9;
-  font-size: 0.8125rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   user-select: none;
 }
 
-/* Top Window Header Bar */
-.screen-header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 16px;
-}
-
-.window-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.dot-red { background-color: #ef4444; }
-.dot-yellow { background-color: #f59e0b; }
-.dot-green { background-color: #10b981; }
-
-.window-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #94a3b8;
-  letter-spacing: 0.03em;
-}
-
-.window-action-badge {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
 /* --------------------------------------------------------------------------
-   5. Module Mockup 1: TestMaker Paper Generator
+   7. Specific Mockup 1: Laptop with Pink Keyboard Glow (TestMaker)
    -------------------------------------------------------------------------- */
-.testmaker-body {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 16px;
-  flex: 1;
-}
-
-.testmaker-sidebar {
+.laptop-mockup-wrap {
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 12px;
+  align-items: center;
+  perspective: 1200px;
 }
 
-.config-block {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.config-label {
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #64748b;
-  letter-spacing: 0.05em;
-}
-
-.config-pill {
-  font-size: 0.6875rem;
-  padding: 5px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #cbd5e1;
-}
-
-.config-pill.active-pill {
-  background: rgba(128, 0, 32, 0.3);
-  border: 1px solid rgba(128, 0, 32, 0.6);
-  color: #fda4af;
-  font-weight: 600;
-}
-
-.chapter-tags {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.chap-tag {
-  font-size: 0.625rem;
-  padding: 3px 6px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #94a3b8;
-}
-
-.difficulty-bars {
-  display: flex;
-  height: 18px;
-  border-radius: 4px;
+/* Laptop Display Lid */
+.laptop-lid {
+  width: 92%;
+  aspect-ratio: 16 / 10;
+  background: #0f1013;
+  border-radius: 14px 14px 2px 2px;
+  border: 4px solid #23252b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  font-size: 0.5625rem;
-  font-weight: 700;
-  text-align: center;
-  line-height: 18px;
-  color: #ffffff;
-}
-
-.diff-segment.easy { background: #059669; }
-.diff-segment.med { background: #d97706; }
-.diff-segment.hard { background: #dc2626; }
-
-.config-metrics {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 8px;
-}
-
-.metric-chip {
-  font-size: 0.625rem;
-  color: #94a3b8;
-}
-
-.metric-chip strong {
-  color: #f8fafc;
-}
-
-/* Paper Canvas */
-.testmaker-canvas {
-  background: #ffffff;
-  color: #0f172a;
-  border-radius: 12px;
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  font-family: 'Inter', sans-serif;
-}
-
-.paper-watermark {
-  font-size: 0.625rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: #94a3b8;
-  text-align: center;
-}
-
-.paper-title-row {
   display: flex;
+  flex-direction: column;
+}
+
+.laptop-webcam {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #383b44;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.laptop-display-screen {
+  flex: 1;
+  background: linear-gradient(145deg, #1c101c 0%, #2e0821 45%, #6b0f44 100%);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: baseline;
-  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
 }
 
-.paper-exam-name {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #1e293b;
+.laptop-display-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 50%, rgba(244, 63, 94, 0.45) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.paper-marks {
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: #64748b;
-}
-
-.paper-divider {
-  height: 1.5px;
-  background: #cbd5e1;
-  margin: 8px 0 12px 0;
-}
-
-.paper-question-item {
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  line-height: 1.45;
-}
-
-.q-number {
-  font-weight: 800;
-  color: #800020;
-}
-
-.q-text {
-  color: #1e293b;
-  margin-bottom: 8px;
-}
-
-.formula-code {
-  font-family: monospace;
-  background: #f1f5f9;
-  padding: 1px 4px;
-  border-radius: 3px;
-  font-weight: 600;
-}
-
-.q-options-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-}
-
-.opt-item {
-  padding: 4px 6px;
-  border-radius: 4px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  font-size: 0.6875rem;
-  color: #334155;
-}
-
-.opt-correct {
-  background: #ecfdf5;
-  border-color: #a7f3d0;
-  color: #065f46;
-  font-weight: 600;
-}
-
-.paper-export-badge {
-  margin-top: auto;
-  align-self: flex-end;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: #0f172a;
-  color: #ffffff;
-  font-size: 0.625rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
-}
-
-.paper-export-badge i {
-  color: #ef4444;
-}
-
-/* --------------------------------------------------------------------------
-   6. Module Mockup 2: CBT Mock Exam Platform
-   -------------------------------------------------------------------------- */
-.cbt-top-bar {
+.screen-app-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
 }
 
-.cbt-brand-col {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.cbt-logo-badge {
-  background: #800020;
-  color: #ffffff;
+.screen-app-logo {
   font-size: 0.625rem;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-weight: 700;
+  color: #fda4af;
   letter-spacing: 0.06em;
 }
 
-.cbt-test-name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #f1f5f9;
+.screen-app-tag {
+  font-size: 0.5625rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
-.cbt-timer-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #34d399;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-family: monospace;
-  font-size: 0.8125rem;
+.screen-hero-text {
+  position: relative;
+  z-index: 2;
+  margin: auto 0;
+}
+
+.screen-hero-title {
+  font-size: clamp(14px, 1.6vw, 18px);
   font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
 }
 
-.cbt-main-grid {
-  display: grid;
-  grid-template-columns: 1fr 180px;
-  gap: 14px;
-  flex: 1;
+.screen-hero-sub {
+  font-size: 0.625rem;
+  color: #fecdd3;
+  margin-top: 4px;
 }
 
-.cbt-question-pane {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
-  padding: 16px;
+.screen-app-actions {
+  display: flex;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.screen-pill-btn {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #881337;
+}
+
+.screen-pill-btn.outline {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Laptop Keyboard Base */
+.laptop-base {
+  width: 100%;
+  height: 16px;
+  background: linear-gradient(180deg, #2b2e36 0%, #18191e 100%);
+  border-radius: 2px 2px 12px 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.laptop-notch {
+  width: 50px;
+  height: 4px;
+  background: #111215;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Pink ambient glow on the ground beneath laptop */
+.laptop-ground-glow {
+  width: 75%;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(244, 63, 94, 0.5) 0%, transparent 75%);
+  filter: blur(8px);
+  margin-top: -6px;
+}
+
+/* --------------------------------------------------------------------------
+   8. Specific Mockup 2: Dark Dashboard with Red Cards (CBT Simulator)
+   -------------------------------------------------------------------------- */
+.cbt-titan-mock {
+  width: 100%;
+  max-width: 480px;
+  background: #0e0f13;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px;
   display: flex;
   flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
 }
 
-.cbt-pane-header {
+.cbt-titan-nav {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  margin-bottom: 12px;
-}
-
-.q-badge {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
-.q-marks-scheme {
-  font-size: 0.625rem;
-  color: #94a3b8;
-}
-
-.cbt-question-card {
-  flex: 1;
-}
-
-.cbt-q-number {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-}
-
-.cbt-q-desc {
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: #e2e8f0;
-  margin-bottom: 16px;
-}
-
-.cbt-input-simulator {
-  display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  padding: 8px 12px;
-  max-width: 240px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 10px;
 }
 
-.input-prompt {
-  font-size: 0.6875rem;
-  color: #94a3b8;
-}
-
-.input-mock-box {
-  font-family: monospace;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
-.input-cursor {
-  width: 2px;
-  height: 14px;
-  background-color: #38bdf8;
-  animation: acadosBlink 1s infinite;
-}
-
-@keyframes acadosBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.cbt-actions-row {
+.cbt-titan-dots {
   display: flex;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 5px;
 }
 
-.cbt-btn {
-  padding: 6px 12px;
-  border-radius: 6px;
+.titan-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3f424e;
+}
+
+.cbt-titan-meta {
   font-size: 0.6875rem;
   font-weight: 600;
-  cursor: default;
-  border: none;
+  color: #94a3b8;
 }
 
-.btn-secondary { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; }
-.btn-review { background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.4); color: #c084fc; }
-.btn-primary { background: #10b981; color: #ffffff; font-weight: 700; }
+.cbt-titan-timer {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #ef4444;
+  font-family: monospace;
+}
 
-/* Palette Pane */
-.cbt-palette-pane {
-  background: rgba(255, 255, 255, 0.02);
+.cbt-titan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cbt-titan-card {
+  background: #171820;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.candidate-info {
-  display: flex;
-  align-items: center;
   gap: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.cand-avatar {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #800020;
-  color: #ffffff;
-  font-size: 0.625rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cand-meta {
-  display: flex;
-  flex-direction: column;
-}
-
-.cand-name { font-size: 0.6875rem; font-weight: 700; color: #f1f5f9; }
-.cand-roll { font-size: 0.5625rem; color: #64748b; }
-
-.palette-legend {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.5625rem;
-  color: #94a3b8;
-}
-
-.leg-item { display: inline-flex; align-items: center; gap: 4px; }
-.leg-dot { width: 6px; height: 6px; border-radius: 2px; }
-.dot-ans { background: #10b981; }
-.dot-rev { background: #a855f7; }
-.dot-unv { background: #475569; }
-
-.palette-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 4px;
-}
-
-.pal-box {
-  height: 22px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.625rem;
-  font-weight: 700;
-}
-
-.pal-box.answered { background: #059669; color: #ffffff; }
-.pal-box.review { background: #9333ea; color: #ffffff; }
-.pal-box.unvisited { background: rgba(255, 255, 255, 0.08); color: #94a3b8; }
-.pal-box.active { background: #0284c7; color: #ffffff; box-shadow: 0 0 6px #38bdf8; }
-
-.ai-score-pill {
-  margin-top: auto;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 0.625rem;
-  color: #fbbf24;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.sparkle-icon { color: #f59e0b; font-size: 0.75rem; }
-
-/* --------------------------------------------------------------------------
-   7. Module Mockup 3: OMR SmartPhone Evaluation
-   -------------------------------------------------------------------------- */
-.omr-camera-viewport {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 350px;
-  border-radius: 16px;
-  background: #090a0f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  padding: 24px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-/* Targeting Brackets */
-.corner-bracket {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-color: #10b981;
-  border-style: solid;
-  pointer-events: none;
+.cbt-titan-card.highlight-card {
+  background: linear-gradient(145deg, #1f1116 0%, #2b0c15 100%);
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
 }
 
-.corner-bracket.top-left { top: 12px; left: 12px; border-width: 3px 0 0 3px; }
-.corner-bracket.top-right { top: 12px; right: 12px; border-width: 3px 3px 0 0; }
-.corner-bracket.bottom-left { bottom: 12px; left: 12px; border-width: 0 0 3px 3px; }
-.corner-bracket.bottom-right { bottom: 12px; right: 12px; border-width: 0 3px 3px 0; }
-
-/* Pulsing Laser Scan Line */
-.scanner-laser-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #10b981 50%, transparent 100%);
-  box-shadow: 0 0 12px #10b981;
-  animation: laserScan 3s infinite ease-in-out;
-  pointer-events: none;
-  z-index: 5;
-}
-
-@keyframes laserScan {
-  0% { top: 15%; opacity: 0.3; }
-  50% { top: 65%; opacity: 1; }
-  100% { top: 15%; opacity: 0.3; }
-}
-
-.omr-sheet-mock {
-  background: #ffffff;
-  color: #0f172a;
-  border-radius: 8px;
-  padding: 12px 14px;
-  font-family: monospace;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.omr-meta-bar {
-  display: flex;
-  justify-content: space-between;
+.card-top-tag {
   font-size: 0.5625rem;
   font-weight: 700;
-  color: #64748b;
-  border-bottom: 1px dashed #cbd5e1;
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+  color: #f87171;
+  text-transform: uppercase;
 }
 
-.bubble-rows-sample {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.bubble-row-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.bubble-q-num {
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: #334155;
-  width: 20px;
-}
-
-.omr-bubble {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1px solid #94a3b8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.5rem;
-  color: #94a3b8;
-}
-
-.omr-bubble.bubble-filled {
-  background: #0f172a;
-  color: transparent;
-  border-color: #0f172a;
-}
-
-.omr-bubble.detected {
-  position: relative;
-  box-shadow: 0 0 0 2px #10b981;
-}
-
-.vision-lock-tag {
-  font-size: 0.5625rem;
-  color: #059669;
-  font-weight: 700;
-  margin-left: auto;
-}
-
-/* OMR Floating Result Card */
-.omr-result-overlay {
-  position: relative;
-  z-index: 6;
-  background: rgba(15, 23, 42, 0.94);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 12px;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
-}
-
-.omr-result-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-}
-
-.omr-score-metrics {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 0.8fr;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-
-.score-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-title {
-  font-size: 0.5625rem;
-  color: #94a3b8;
-}
-
-.stat-val {
-  font-size: 0.75rem;
+.card-big-num {
+  font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;
+  line-height: 1;
 }
 
-.highlight-stat {
-  color: #34d399;
-}
-
-.omr-export-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.export-pill {
+.card-desc-mini {
   font-size: 0.625rem;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #e2e8f0;
-  display: inline-flex;
+  color: #94a3b8;
+}
+
+.cbt-titan-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cbt-badge-status {
+  font-size: 0.625rem;
+  color: #10b981;
+  display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.export-pill.green-pill {
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #a7f3d0;
-}
-
-/* --------------------------------------------------------------------------
-   8. Module Mockup 4: Institute ERP and CRM Suite
-   -------------------------------------------------------------------------- */
-.erp-top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 14px;
-}
-
-.erp-campus-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #f1f5f9;
-}
-
-.erp-campus-badge i {
-  color: #800020;
-}
-
-.erp-sync-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.6875rem;
-  color: #34d399;
-  font-weight: 600;
-}
-
-.sync-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+.pulse-green {
+  width: 5px;
+  height: 5px;
   background: #10b981;
+  border-radius: 50%;
   box-shadow: 0 0 6px #10b981;
 }
 
-.erp-kpi-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.kpi-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.kpi-title {
+.cbt-titan-btn {
   font-size: 0.625rem;
-  color: #94a3b8;
-}
-
-.kpi-val-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.kpi-number {
-  font-size: 0.9375rem;
-  font-weight: 800;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #ef4444;
   color: #ffffff;
-}
-
-.kpi-badge {
-  font-size: 0.5625rem;
-  font-weight: 700;
-  padding: 2px 5px;
-  border-radius: 4px;
-}
-
-.kpi-badge.positive {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-}
-
-.kpi-badge.neutral {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-}
-
-.kpi-badge.crm-badge {
-  background: rgba(168, 85, 247, 0.15);
-  color: #c084fc;
-}
-
-.kpi-progress {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.kpi-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #800020, #10b981);
-}
-
-.erp-workflow-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  flex: 1;
-}
-
-.crm-funnel-card,
-.erp-log-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.subcard-title {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #cbd5e1;
-}
-
-.funnel-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.funnel-step {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 0.625rem;
-  color: #94a3b8;
-}
-
-.funnel-step.highlight-step {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  font-weight: 700;
-}
-
-.log-items {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.log-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.625rem;
-  color: #94a3b8;
-}
-
-.log-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.log-dot.green { background: #10b981; }
-.log-dot.blue { background: #38bdf8; }
-.log-dot.purple { background: #a855f7; }
-
-.log-text {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.log-time {
-  font-size: 0.5625rem;
-  color: #64748b;
+  border: none;
 }
 
 /* --------------------------------------------------------------------------
-   9. Footer Action Pill (matching reference design "All projects")
+   9. Specific Mockup 3: Pastel Card with Mobile Smartphone (OMR)
+   -------------------------------------------------------------------------- */
+.phone-mockup-wrap {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.phone-shell {
+  width: 220px;
+  height: 380px;
+  background: #090a0f;
+  border-radius: 36px;
+  border: 7px solid #1f2128;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-dynamic-island {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 16px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.phone-screen {
+  flex: 1;
+  background: radial-gradient(120% 120% at 50% 10%, #1e132b 0%, #0d0914 100%);
+  color: #ffffff;
+  padding: 32px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.phone-scanner-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.phone-bubble-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.5625rem;
+}
+
+.bubble-check {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.phone-hud-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hud-title {
+  font-size: 0.5625rem;
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.hud-score {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hud-badge {
+  font-size: 0.5625rem;
+  color: #34d399;
+}
+
+/* --------------------------------------------------------------------------
+   10. Specific Mockup 4: Dark Audit Dashboard (ERP & CRM)
+   -------------------------------------------------------------------------- */
+.erp-browser-mock {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-bar {
+  background: #f1f5f9;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.browser-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.browser-url-pill {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 0.625rem;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.browser-view-content {
+  padding: 18px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.erp-center-heading {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.erp-dark-console {
+  background: #0f1015;
+  border-radius: 12px;
+  padding: 14px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.console-kpi-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.console-stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.stat-box-title {
+  font-size: 0.5625rem;
+  color: #94a3b8;
+}
+
+.stat-box-num {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   11. Bottom Centered Pill Button (Matching Reference "All projects")
    -------------------------------------------------------------------------- */
 .acados-footer-cta {
   display: flex;
   justify-content: center;
-  margin-top: clamp(60px, 8vh, 90px);
+  margin-top: clamp(60px, 8vw, 100px);
 }
 
 .acados-all-pill {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: #09090b;
+  gap: 10px;
+  background-color: #000000;
   color: #ffffff;
-  padding: 14px 32px;
+  padding: 13px 30px;
   border-radius: 999px;
+  font-family: 'Mazzard', sans-serif;
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.25s ease,
-              box-shadow 0.25s ease;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
-}
-
-.pill-arrow {
-  font-size: 0.875rem;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .acados-all-pill:hover {
-  background: #18181b;
+  background-color: #1f2024;
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.35);
-}
-
-.acados-all-pill:hover .pill-arrow {
-  transform: translateX(4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
 }
 
 /* --------------------------------------------------------------------------
-   10. Responsive Breakpoints
+   12. Responsive Adjustments
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
+  .acados-outer-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .acados-white-card {
+    border-radius: 32px;
+    padding: 36px 20px;
+  }
+
   .acados-row,
   .acados-row.is-reversed {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
   }
 
   .acados-row.is-reversed .acados-content-col {
     order: 1;
+    padding-left: 0;
   }
 
   .acados-row.is-reversed .acados-visual-col {
     order: 2;
   }
-
-  .testmaker-body {
-    grid-template-columns: 1fr;
-  }
-
-  .cbt-main-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .erp-workflow-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
   .acados-section {
-    padding: 60px 16px;
+    padding: 50px 14px;
   }
 
   .acados-stats-row {
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-
-  .erp-kpi-row {
-    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .mockup-screen {
-    padding: 14px;
-    min-height: auto;
+    min-height: 340px;
+    padding: 16px;
   }
 
-  .q-options-grid {
-    grid-template-columns: 1fr;
+  .phone-shell {
+    width: 190px;
+    height: 330px;
   }
 }
