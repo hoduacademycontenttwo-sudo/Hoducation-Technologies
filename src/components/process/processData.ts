@@ -51,7 +51,7 @@ export const PROCESS_STEPS: ProcessStepItem[] = [
     side: 'right',
     phaseTags: ['REVIEW', 'FEEDBACK', 'IMPROVE'],
     iconType: 'demo',
-    videoUrl: '/step-4-demo-feedback.mp4',
+    imageUrl: '/step-4-demo-feedback.png',
   },
   {
     id: 5,
