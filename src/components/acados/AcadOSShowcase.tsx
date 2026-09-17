@@ -35,7 +35,7 @@ const MODULES: ModuleData[] = [
     ctaLink: 'https://www.acados.app/#/modules/testmaker',
     placeholderLabel: 'TestMaker Interface Preview',
     iconClass: 'fa-solid fa-book-bookmark',
-    imageSrc: '/acados-testmaker.png',
+    imageSrc: '/acados-testmaker.jpg',
   },
   {
     id: 'cbt',
@@ -52,7 +52,7 @@ const MODULES: ModuleData[] = [
     ctaLink: 'https://www.acados.app/#/modules/practice-cbt',
     placeholderLabel: 'CBT Portal Interface Preview',
     iconClass: 'fa-solid fa-laptop-code',
-    imageSrc: '', // Placeholder ready for user-provided image
+    imageSrc: '/acados-cbt.png',
   },
   {
     id: 'omr',
@@ -69,7 +69,7 @@ const MODULES: ModuleData[] = [
     ctaLink: 'https://www.acados.app/#/modules/omr-evaluation',
     placeholderLabel: 'OMR Smartphone Scanner Preview',
     iconClass: 'fa-solid fa-mobile-screen-button',
-    imageSrc: '', // Placeholder ready for user-provided image
+    imageSrc: '/acados-omr.jpg',
   },
   {
     id: 'erp',
@@ -86,7 +86,7 @@ const MODULES: ModuleData[] = [
     ctaLink: 'https://www.acados.app/#/modules/erp-crm',
     placeholderLabel: 'ERP & CRM Dashboard Preview',
     iconClass: 'fa-solid fa-chart-pie',
-    imageSrc: '', // Placeholder ready for user-provided image
+    imageSrc: '/acados-erp.jpg',
   },
 ];
 
@@ -250,6 +250,7 @@ interface ModuleRowProps {
 const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const panDirectionClass = isReversed ? 'pan-from-left' : 'pan-from-right';
 
   useEffect(() => {
     const el = rowRef.current;
@@ -340,20 +341,26 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
         </div>
       </div>
 
-      {/* Curved Image Placeholder Box with Pan Animation */}
+      {/* Curved Image Card with Directional Pan & Zoom Hover Effect */}
       <div className="acados-visual-col">
-        <div className={`acados-card-frame ${module.imageSrc ? 'has-image' : ''}`}>
+        <a
+          href={module.ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`acados-card-frame ${module.imageSrc ? 'has-image' : ''} ${panDirectionClass}`}
+          title={`Explore ${module.title}`}
+        >
           {module.imageSrc ? (
-            <div className="image-pan-viewport">
+            <div className={`image-pan-viewport ${panDirectionClass}`}>
               <img
                 src={module.imageSrc}
                 alt={module.title}
-                className="acados-module-image image-pan-target"
+                className={`acados-module-image ${panDirectionClass}`}
                 loading="lazy"
               />
             </div>
           ) : (
-            <div className="acados-placeholder-box image-pan-target">
+            <div className={`acados-placeholder-box ${panDirectionClass}`}>
               <div className="acados-placeholder-inner">
                 <div className="placeholder-icon-wrap">
                   <i className={module.iconClass}></i>
@@ -363,7 +370,7 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module, index, isReversed }) => {
               </div>
             </div>
           )}
-        </div>
+        </a>
       </div>
     </div>
   );
