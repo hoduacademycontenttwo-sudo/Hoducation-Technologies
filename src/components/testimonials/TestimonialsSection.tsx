@@ -155,6 +155,9 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           <div className="banner-cta-wrap">
+            <div className="banner-mascot-wrap">
+              <img src="/ht-logo.jpg" alt="Hoducation Mascot" className="banner-mascot-img" />
+            </div>
             <a href="/contact?service=acados" className="btn-testimonial-demo">
               <span>Schedule Institutional Demo</span>
               <i className="fa-solid fa-arrow-right"></i>
