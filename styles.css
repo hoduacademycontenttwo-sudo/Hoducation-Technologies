@@ -20,9 +20,170 @@
   --trust-bg: #28282a;
   --trust-border: rgba(255, 255, 255, 0.4);
   --trust-text: #c4c2c3;
+  --higru: #800020;
   --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-tech: "Space Grotesk", "Plus Jakarta Sans", monospace;
+}
+
+/* ============================================================= */
+/* GLOBAL SITE PRELOADER & SIGNATURE LOADER                      */
+/* Exact replica of user's rotating & breathing point system     */
+/* ============================================================= */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background-color: #07090e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.55s ease;
+  pointer-events: all;
+}
+
+.site-preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.loader {
+  width: 140px;
+  max-height: 900px;
+  transform-origin: 50% 50%;
+  overflow: visible;
+}
+
+.ci1 {
+  fill: var(--higru, #800020);
+  animation: toBig 3s infinite -1.5s;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.ciw {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: breath 3s infinite;
+}
+
+.ci2 {
+  fill: var(--higru, #800020);
+  animation: toBig2 3s infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.points {
+  animation: rot 3s infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(360deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes toBig {
+  0% {
+    transform: scale(1) translateX(0px);
+  }
+  30% {
+    transform: scale(1) translateX(0px);
+  }
+  50% {
+    transform: scale(10) translateX(-4.5px);
+  }
+  80% {
+    transform: scale(10) translateX(-4.5px);
+  }
+  100% {
+    transform: scale(1) translateX(0px);
+  }
+}
+
+@keyframes toBig2 {
+  0% {
+    transform: scale(1) translateX(0px);
+  }
+  30% {
+    transform: scale(1) translateX(0px);
+  }
+  50% {
+    transform: scale(10) translateX(4.5px);
+  }
+  80% {
+    transform: scale(10) translateX(4.5px);
+  }
+  100% {
+    transform: scale(1) translateX(0px);
+  }
+}
+
+@keyframes breath {
+  15% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  65% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+}
+
+.preloader-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.preloader-brand {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.preloader-sub {
+  font-family: var(--font-tech);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #fe6200;
+  text-transform: uppercase;
 }
 
 *, *::before, *::after {

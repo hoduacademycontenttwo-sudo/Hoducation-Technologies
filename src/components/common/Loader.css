@@ -19,113 +19,120 @@
   min-height: 50vh;
 }
 
+.loader,
 .hodu-loader-svg {
-  width: 90px;
-  height: 90px;
-  max-width: 100%;
+  width: 140px;
+  max-height: 900px;
   transform-origin: 50% 50%;
   overflow: visible;
 }
 
-.hodu-loader-svg .ciw {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: hoduBreath 3s infinite ease-in-out;
-  fill: #ffffff;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
-}
-
-.hodu-loader-svg .ci1 {
+.ci1 {
   fill: var(--higru, #800020);
-  animation: hoduToBig 3s infinite -1.5s cubic-bezier(0.45, 0, 0.55, 1);
+  animation: toBig 3s infinite -1.5s;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
 
-.hodu-loader-svg .ci2 {
+.ciw {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: breath 3s infinite;
+}
+
+.ci2 {
   fill: var(--higru, #800020);
-  animation: hoduToBig2 3s infinite cubic-bezier(0.45, 0, 0.55, 1);
+  animation: toBig2 3s infinite;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
 
-.hodu-loader-svg .points {
-  animation: hoduRot 3s infinite cubic-bezier(0.65, 0, 0.35, 1);
+.points {
+  animation: rot 3s infinite;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
 
-@keyframes hoduRot {
+@keyframes rot {
   0% {
     transform: rotate(0deg);
   }
+
   30% {
     transform: rotate(360deg);
   }
+
   50% {
     transform: rotate(360deg);
   }
+
   80% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
 }
 
-@keyframes hoduToBig {
+@keyframes toBig {
   0% {
     transform: scale(1) translateX(0px);
   }
+
   30% {
     transform: scale(1) translateX(0px);
   }
+
   50% {
-    transform: scale(8) translateX(-4.5px);
+    transform: scale(10) translateX(-4.5px);
   }
+
   80% {
-    transform: scale(8) translateX(-4.5px);
+    transform: scale(10) translateX(-4.5px);
   }
+
   100% {
     transform: scale(1) translateX(0px);
   }
 }
 
-@keyframes hoduToBig2 {
+@keyframes toBig2 {
   0% {
     transform: scale(1) translateX(0px);
   }
+
   30% {
     transform: scale(1) translateX(0px);
   }
+
   50% {
-    transform: scale(8) translateX(4.5px);
+    transform: scale(10) translateX(4.5px);
   }
+
   80% {
-    transform: scale(8) translateX(4.5px);
+    transform: scale(10) translateX(4.5px);
   }
+
   100% {
     transform: scale(1) translateX(0px);
   }
 }
 
-@keyframes hoduBreath {
-  0% {
-    transform: scale(1);
-  }
+@keyframes breath {
   15% {
     transform: scale(1);
   }
+
   40% {
     transform: scale(1.1);
   }
+
   65% {
     transform: scale(1);
   }
+
   90% {
     transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
   }
 }

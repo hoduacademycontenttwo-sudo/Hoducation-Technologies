@@ -1,5 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------------------------------------
+  // 0. Site Preloader Dismissal (Signature Animated Loader)
+  // -----------------------------------------------------------
+  const sitePreloader = document.getElementById("site-preloader");
+  if (sitePreloader) {
+    const dismissPreloader = () => {
+      sitePreloader.classList.add("fade-out");
+      setTimeout(() => {
+        sitePreloader.remove();
+      }, 600);
+    };
+
+    if (document.readyState === "complete") {
+      setTimeout(dismissPreloader, 450);
+    } else {
+      window.addEventListener("load", () => {
+        setTimeout(dismissPreloader, 450);
+      });
+      // Fallback safeguard: maximum 2.5s
+      setTimeout(dismissPreloader, 2500);
+    }
+  }
+
+  // -----------------------------------------------------------
   // 1. Mobile Menu Drawer & Navbar Scroll Compression / Expand
   // -----------------------------------------------------------
   const freehandNavbar = document.querySelector(".freehand-navbar");
