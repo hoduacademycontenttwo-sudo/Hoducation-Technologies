@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { getPostBySlug, getRelatedPosts, getAllPosts } from '../../content/blog/blogPosts';
 import { BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
@@ -12,6 +12,9 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
   const [readingProgress, setReadingProgress] = useState<number>(0);
   const [openFaqIndexes, setOpenFaqIndexes] = useState<Record<number, boolean>>({});
   const [activeTocId, setActiveTocId] = useState<string>('');
+  const [copiedLink, setCopiedLink] = useState<boolean>(false);
+  const [newsletterEmail, setNewsletterEmail] = useState<string>('');
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState<boolean>(false);
 
   // Extract slug from prop, URL search param, or pathname
   const slug = useMemo(() => {
@@ -165,10 +168,10 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     };
   }, [post]);
 
-  // Track Reading Scroll Progress
+  // Track Reading Scroll Progress & Active TOC Section
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
+      const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
       const windowHeight =
         document.documentElement.scrollHeight - document.documentElement.clientHeight;
       if (windowHeight > 0) {
@@ -177,21 +180,29 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
       }
 
       // Track active heading for TOC
-      if (post && post.tableOfContents) {
-        const headings = post.tableOfContents.map((item) => document.getElementById(item.id));
+      if (post && post.tableOfContents && post.tableOfContents.length > 0) {
+        const headings = post.tableOfContents
+          .map((item) => document.getElementById(item.id))
+          .filter((el): el is HTMLElement => el !== null);
+
         const scrollPos = window.scrollY + 140;
 
         for (let i = headings.length - 1; i >= 0; i--) {
           const heading = headings[i];
           if (heading && heading.offsetTop <= scrollPos) {
-            setActiveTocId(post.tableOfContents[i].id);
-            break;
+            setActiveTocId(heading.id);
+            return;
           }
+        }
+
+        if (headings.length > 0 && window.scrollY < 300) {
+          setActiveTocId(headings[0].id);
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
     return () => window.removeEventListener('scroll', handleScroll);
   }, [post]);
 
@@ -211,6 +222,42 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     return 'PRODUCT';
   };
 
+  const handleCopyLink = useCallback(() => {
+    if (typeof window !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2400);
+    }
+  }, []);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail) {
+      setNewsletterSubscribed(true);
+      setNewsletterEmail('');
+      setTimeout(() => setNewsletterSubscribed(false), 5000);
+    }
+  };
+
+  const handleTocClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (target) {
+      const topOffset = 100;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      setActiveTocId(id);
+    }
+  };
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : `https://hoducation.tech/blog/${post?.slug || ''}`;
+  const shareText = post ? `${post.title} via Hoducation Technologies` : '';
+
   if (!post) {
     return (
       <div className="post-page-root">
@@ -221,7 +268,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
               <span className="freehand-nav-brand-text">Hoducation Technologies</span>
             </a>
             <div className="freehand-nav-links">
-              <a href="/blog" className="freehand-nav-link active">All Blogs</a>
+              <a href="/#services" className="freehand-nav-link">Services</a>
+              <a href="/#process" className="freehand-nav-link">Process</a>
+              <a href="/#products" className="freehand-nav-link">Products</a>
+              <a href="/blog" className="freehand-nav-link active">Blog</a>
+              <a href="/contact" className="freehand-nav-link">Contact</a>
             </div>
             <a href="/contact" className="freehand-nav-demo-btn">
               <span>REQUEST A DEMO</span>
@@ -229,13 +280,16 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
           </nav>
         </header>
 
-        <main className="post-container" style={{ textAlign: 'center', padding: '160px 24px 100px' }}>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Article Not Found</h1>
-          <p style={{ color: '#575653', marginBottom: '32px' }}>
-            The requested article could not be located. It may have been relocated or updated.
+        <main className="post-container" style={{ textAlign: 'center', padding: '180px 24px 120px' }}>
+          <div className="not-found-badge">404 ARTICLE</div>
+          <h1 style={{ fontFamily: 'var(--fh-font-editorial)', fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', margin: '16px 0' }}>
+            Article Not Located
+          </h1>
+          <p style={{ color: '#575653', maxWidth: '520px', margin: '0 auto 32px', fontSize: '1.05rem', lineHeight: '1.6' }}>
+            The requested technical guide could not be found. It may have been updated or moved into another category.
           </p>
-          <a href="/blog" className="freehand-nav-demo-btn" style={{ display: 'inline-flex' }}>
-            Explore All Insights &rarr;
+          <a href="/blog" className="freehand-cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+            <span>Explore All Engineering Insights</span> &rarr;
           </a>
         </main>
       </div>
@@ -245,9 +299,13 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
   return (
     <div className="post-page-root">
       {/* Top Reading Progress Bar */}
-      <div className="reading-progress-bar" style={{ width: `${readingProgress}%` }} />
+      <div
+        className="reading-progress-bar"
+        style={{ width: `${readingProgress}%` }}
+        aria-hidden="true"
+      />
 
-      {/* Floating Pill Navbar */}
+      {/* Floating Pill Navbar (Matching Freehand.ai and Hoducation Home) */}
       <header className="freehand-nav-wrapper">
         <nav className="freehand-pill-navbar" aria-label="Main Navigation">
           <a href="/" className="freehand-nav-brand">
@@ -271,148 +329,391 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
       </header>
 
       <main className="post-container">
-        {/* Breadcrumb Navigation */}
-        <nav className="post-breadcrumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span className="separator">/</span>
-          <a href="/blog">All Blogs</a>
-          <span className="separator">/</span>
-          <span className="current">{post.category}</span>
-        </nav>
+        {/* Breadcrumb Navigation & Category Bar */}
+        <div className="post-breadcrumb-bar">
+          <a href="/blog" className="post-back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>All blogs</span>
+          </a>
+          <span className="post-breadcrumb-sep">/</span>
+          <span className="freehand-category-badge">{getDisplayCategoryTag(post.category)}</span>
+        </div>
 
-        {/* Article Header */}
-        <header className="post-header">
-          <div className="post-header-tag-wrap">
-            <span className="freehand-category-badge">{getDisplayCategoryTag(post.category)}</span>
-          </div>
-          <h1 className="post-title">{post.title}</h1>
+        {/* Editorial Article Header (Left-Aligned, Freehand Style) */}
+        <header className="post-editorial-header">
+          <h1 className="post-editorial-title">{post.title}</h1>
 
-          <div className="post-meta-strip">
-            <div className="post-author-chip">
+          {post.excerpt && (
+            <p className="post-editorial-lead-desc">
+              {post.excerpt}
+            </p>
+          )}
+
+          {/* Author, Date, Reading Time & Share Bar */}
+          <div className="post-meta-action-row">
+            <div className="post-author-block">
               <img
-                src={post.author.avatar}
+                src={post.author.avatar || '/leader-abhishek.png'}
                 alt={post.author.name}
-                className="post-author-avatar"
+                className="post-author-avatar-img"
               />
-              <span>{post.author.name.toUpperCase()}</span>
+              <div className="post-author-meta">
+                <span className="post-author-name">{post.author.name}</span>
+                <span className="post-author-role-sub">{post.author.role}</span>
+              </div>
+              <div className="post-meta-details-pill">
+                <span>{post.publishedAt.toUpperCase()}</span>
+                <span className="dot-sep">•</span>
+                <span>{post.readingTime.toUpperCase()}</span>
+                {post.updatedAt && (
+                  <>
+                    <span className="dot-sep">•</span>
+                    <span className="updated-tag">UPDATED {post.updatedAt.toUpperCase()}</span>
+                  </>
+                )}
+              </div>
             </div>
-            <span className="post-meta-dot">•</span>
-            <span>{post.publishedAt.toUpperCase()}</span>
-            <span className="post-meta-dot">•</span>
-            <span>{post.readingTime.toUpperCase()}</span>
+
+            {/* Quick Header Share Pill */}
+            <div className="post-header-share-group">
+              <span className="share-label">SHARE</span>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="share-icon-btn"
+                title="Share on X (Twitter)"
+                aria-label="Share on X"
+              >
+                <i className="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="share-icon-btn"
+                title="Share on LinkedIn"
+                aria-label="Share on LinkedIn"
+              >
+                <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareText} - ${currentUrl}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="share-icon-btn"
+                title="Share on WhatsApp"
+                aria-label="Share on WhatsApp"
+              >
+                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              </a>
+              <button
+                type="button"
+                onClick={handleCopyLink}
+                className="share-icon-btn copy-btn"
+                title="Copy Article Link"
+                aria-label="Copy Article Link"
+              >
+                {copiedLink ? (
+                  <i className="fa-solid fa-check" style={{ color: '#10b981' }} aria-hidden="true"></i>
+                ) : (
+                  <i className="fa-solid fa-link" aria-hidden="true"></i>
+                )}
+              </button>
+              {copiedLink && <span className="copied-toast-bubble">Link copied!</span>}
+            </div>
           </div>
         </header>
 
-        {/* Hero Visual Card Banner */}
-        <div className="post-hero-media-wrapper">
+        {/* Hero Media Card Banner */}
+        <div className="post-hero-banner-frame">
           <FreehandCardMedia post={post} variant="hero" />
         </div>
 
-        {/* Executive Summary / Key Takeaways Box */}
-        {post.keyTakeaways && post.keyTakeaways.length > 0 && (
-          <aside className="post-takeaways-card" aria-label="Key Takeaways">
-            <h3 className="takeaways-heading">
-              <span className="takeaways-icon">✱</span>
-              Key Architectural &amp; Strategic Takeaways
-            </h3>
-            <ul className="takeaways-list">
-              {post.keyTakeaways.map((point, index) => (
-                <li key={index}>{point}</li>
-              ))}
-            </ul>
-          </aside>
-        )}
+        {/* 2-Column Layout: Left = Main Prose Article, Right = Sticky Sidebar */}
+        <div className="post-article-layout-grid">
+          {/* Main Article Prose Column */}
+          <div className="post-primary-content-col">
+            <article className="post-prose-card">
+              {/* Key Takeaways Callout Card */}
+              {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                <div className="post-takeaways-callout" aria-label="Key Takeaways">
+                  <div className="takeaways-header-row">
+                    <span className="takeaways-star-icon">✱</span>
+                    <h3 className="takeaways-title">Key Architectural &amp; Strategic Takeaways</h3>
+                  </div>
+                  <ul className="takeaways-points-list">
+                    {post.keyTakeaways.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-        {/* Main Content Layout with Sticky Sidebar */}
-        <div className="post-main-layout">
-          {/* Sidebar TOC */}
-          <aside className="post-sidebar">
-            {post.tableOfContents && post.tableOfContents.length > 0 && (
-              <div className="toc-panel">
-                <h4 className="toc-title">TABLE OF CONTENTS</h4>
-                <nav className="toc-nav">
-                  {post.tableOfContents.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className={`toc-link level-${item.level} ${activeTocId === item.id ? 'active' : ''}`}
-                    >
-                      {item.title}
+              {/* Semantic HTML Article Body */}
+              <div
+                className="post-html-body"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+
+              {/* FAQ Accordion Section */}
+              {post.faqs && post.faqs.length > 0 && (
+                <section className="post-faq-accordion-block" id="faqs">
+                  <div className="faq-block-header">
+                    <span className="faq-tag-pill">KNOWLEDGE BASE</span>
+                    <h3 className="faq-block-title">Frequently Asked Questions</h3>
+                  </div>
+                  <div className="faq-accordion-items">
+                    {post.faqs.map((faq, idx) => (
+                      <div
+                        key={idx}
+                        className={`faq-card-item ${openFaqIndexes[idx] ? 'is-open' : ''}`}
+                      >
+                        <button
+                          type="button"
+                          className="faq-question-btn"
+                          onClick={() => toggleFaq(idx)}
+                          aria-expanded={Boolean(openFaqIndexes[idx])}
+                        >
+                          <span className="faq-question-text">{faq.question}</span>
+                          <span className="faq-chevron-icon" aria-hidden="true">
+                            <i className="fa-solid fa-chevron-down"></i>
+                          </span>
+                        </button>
+                        {openFaqIndexes[idx] && (
+                          <div className="faq-answer-pane">
+                            <p>{faq.answer}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* End of Article Author Bio Card */}
+              <div className="post-author-bio-footer">
+                <img
+                  src={post.author.avatar || '/leader-abhishek.png'}
+                  alt={post.author.name}
+                  className="author-bio-avatar"
+                />
+                <div className="author-bio-text">
+                  <div className="author-bio-head">
+                    <h4>Written by {post.author.name}</h4>
+                    <span className="author-verified-badge">
+                      <i className="fa-solid fa-circle-check" aria-hidden="true"></i> Verified Engineering Lead
+                    </span>
+                  </div>
+                  <div className="author-bio-role">{post.author.role} • Hoducation Technologies</div>
+                  <p className="author-bio-desc">
+                    {post.author.bio ||
+                      'Senior software engineer and systems architect specializing in distributed architectures, enterprise ERP automation, and institutional operating systems.'}
+                  </p>
+                  <div className="author-bio-actions">
+                    <a href="/contact" className="author-contact-link">
+                      Schedule a Consultation with {post.author.name.split(' ')[0]} &rarr;
                     </a>
-                  ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Social Share Bar */}
+              <div className="post-bottom-share-strip">
+                <div className="bottom-share-prompt">
+                  <strong>Found this analysis valuable?</strong> Share it with your engineering and leadership team.
+                </div>
+                <div className="bottom-share-buttons">
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bottom-share-pill linkedin"
+                  >
+                    <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+                  </a>
+                  <a
+                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bottom-share-pill twitter"
+                  >
+                    <i className="fa-brands fa-x-twitter" aria-hidden="true"></i> X
+                  </a>
+                  <a
+                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareText} - ${currentUrl}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bottom-share-pill whatsapp"
+                  >
+                    <i className="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleCopyLink}
+                    className="bottom-share-pill copy"
+                  >
+                    {copiedLink ? (
+                      <>
+                        <i className="fa-solid fa-check" style={{ color: '#10b981' }} aria-hidden="true"></i> Copied!
+                      </>
+                    ) : (
+                      <>
+                        <i className="fa-solid fa-link" aria-hidden="true"></i> Copy Link
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Right Column: Sticky Sidebar */}
+          <aside className="post-sticky-sidebar-col">
+            {/* Table of Contents Card */}
+            {post.tableOfContents && post.tableOfContents.length > 0 && (
+              <div className="sidebar-card toc-card">
+                <div className="sidebar-card-header">
+                  <span className="toc-dot-indicator"></span>
+                  <span className="sidebar-card-title">ON THIS PAGE</span>
+                </div>
+                <nav className="sidebar-toc-nav" aria-label="Table of contents">
+                  {post.tableOfContents.map((item) => {
+                    const isActive = activeTocId === item.id;
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        onClick={(e) => handleTocClick(e, item.id)}
+                        className={`sidebar-toc-link level-${item.level} ${isActive ? 'is-active' : ''}`}
+                      >
+                        <span className="toc-link-text">{item.title}</span>
+                      </a>
+                    );
+                  })}
                 </nav>
               </div>
             )}
 
-            {/* Sidebar Quick Action Card */}
-            <div className="sidebar-cta-card">
-              <h4 className="sidebar-cta-title">Need Custom Software?</h4>
-              <p className="sidebar-cta-desc">
-                Hoducation engineers enterprise ERPs, smart AI automations, and scalable software solutions.
-              </p>
-              <a href="/contact" className="sidebar-cta-btn">
-                Talk to an Architect &rarr;
-              </a>
-            </div>
-          </aside>
-
-          {/* Article Prose Body */}
-          <article className="post-prose">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-
-            {/* FAQ Accordion Section */}
-            {post.faqs && post.faqs.length > 0 && (
-              <section className="post-faq-section" id="faq-section">
-                <h3 className="faq-section-title">Frequently Asked Questions</h3>
-                <div className="faq-accordion-group">
-                  {post.faqs.map((faq, idx) => (
-                    <div
-                      key={idx}
-                      className={`faq-item ${openFaqIndexes[idx] ? 'open' : ''}`}
-                    >
-                      <button
-                        type="button"
-                        className="faq-trigger"
-                        onClick={() => toggleFaq(idx)}
-                        aria-expanded={Boolean(openFaqIndexes[idx])}
-                      >
-                        <span>{faq.question}</span>
-                        <i className="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
-                      </button>
-                      {openFaqIndexes[idx] && (
-                        <div className="faq-answer">
-                          <p>{faq.answer}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+            {/* Quick Facts & Metadata Card */}
+            <div className="sidebar-card metadata-card">
+              <span className="sidebar-card-title">ARTICLE DETAILS</span>
+              <div className="sidebar-meta-list">
+                <div className="sidebar-meta-item">
+                  <span className="meta-item-label">Category</span>
+                  <span className="meta-item-value">{post.category}</span>
                 </div>
-              </section>
-            )}
-
-            {/* Author Bio Card */}
-            <div className="post-author-card">
-              <img
-                src={post.author.avatar}
-                alt={post.author.name}
-                className="author-card-avatar"
-              />
-              <div className="author-card-info">
-                <h4>Written by {post.author.name}</h4>
-                <div className="author-card-role">{post.author.role}</div>
-                <p className="author-card-bio">
-                  {post.author.bio ||
-                    'Senior software engineer and systems architect specializing in distributed architectures, enterprise workflow automation, and educational operating systems.'}
-                </p>
+                <div className="sidebar-meta-item">
+                  <span className="meta-item-label">Published</span>
+                  <span className="meta-item-value">{post.publishedAt}</span>
+                </div>
+                <div className="sidebar-meta-item">
+                  <span className="meta-item-label">Read Time</span>
+                  <span className="meta-item-value">{post.readingTime}</span>
+                </div>
+                <div className="sidebar-meta-item">
+                  <span className="meta-item-label">Audience</span>
+                  <span className="meta-item-value">Founders &amp; Tech Leads</span>
+                </div>
               </div>
             </div>
-          </article>
+
+            {/* Related Hoducation Capabilities */}
+            {post.relatedServices && post.relatedServices.length > 0 && (
+              <div className="sidebar-card services-card">
+                <span className="sidebar-card-title">RELATED SOLUTIONS</span>
+                <div className="sidebar-services-list">
+                  {post.relatedServices.map((svc, sIdx) => (
+                    <a key={sIdx} href={svc.href} className="sidebar-service-item">
+                      <div className="service-item-name">
+                        <span>{svc.name}</span>
+                        <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                      </div>
+                      <p className="service-item-desc">{svc.desc}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* High-Conversion Consultation CTA Card */}
+            <div className="sidebar-card cta-banner-card">
+              <span className="cta-card-badge">ENGINEERING CALL</span>
+              <h4 className="cta-card-title">Need Custom Software in 2026?</h4>
+              <p className="cta-card-desc">
+                Hoducation builds bespoke ERPs, intelligent automations, and scalable cloud applications with 100% intellectual property ownership.
+              </p>
+              <div className="cta-card-buttons">
+                <a href="/contact" className="cta-primary-action-btn">
+                  Talk to an Architect &rarr;
+                </a>
+                <a
+                  href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20consult%20about%20custom%20software."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-whatsapp-action-btn"
+                >
+                  <i className="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Chat
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
 
-        {/* Related Articles Section (Matching Freehand Card Grid) */}
+        {/* Newsletter Subscription Banner ("Stay close to our work.") */}
+        <section className="freehand-cta-section post-newsletter-section">
+          <div className="freehand-cta-box">
+            <div className="freehand-cta-info">
+              <h2 className="freehand-cta-title">
+                Stay close to <span className="freehand-orange-text">our work.</span>
+              </h2>
+              <p className="freehand-cta-desc">
+                Receive monthly architectural breakdowns, engineering post-mortems, and enterprise tech insights directly to your inbox.
+              </p>
+            </div>
+            <div className="freehand-cta-form-area">
+              {newsletterSubscribed ? (
+                <div className="newsletter-success-notice">
+                  <i className="fa-solid fa-circle-check" aria-hidden="true"></i> Thank you! You are now subscribed to Hoducation Engineering Insights.
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="freehand-cta-form">
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your work email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    className="freehand-cta-input"
+                  />
+                  <button type="submit" className="freehand-cta-btn">
+                    SUBSCRIBE
+                  </button>
+                </form>
+              )}
+              <span className="freehand-cta-microcopy">
+                Zero spam. Curated engineering breakdowns only. Unsubscribe at any time.
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Articles Section (Matching Freehand 3-Column Card Grid) */}
         {relatedPosts.length > 0 && (
           <section className="post-related-section">
-            <h3 className="related-heading">Related Engineering Guides</h3>
+            <div className="related-section-header">
+              <div className="related-header-left">
+                <span className="related-kicker-tag">ARCHITECTURAL PLAYBOOKS</span>
+                <h3 className="related-heading">More Related Engineering Guides</h3>
+              </div>
+              <a href="/blog" className="related-view-all-link">
+                View all articles &rarr;
+              </a>
+            </div>
+
             <div className="freehand-cards-grid">
               {relatedPosts.map((related) => (
                 <a
@@ -450,34 +751,6 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
             </div>
           </section>
         )}
-
-        {/* Bottom CTA Banner */}
-        <section className="freehand-cta-section" style={{ marginTop: '60px' }}>
-          <div className="freehand-cta-box">
-            <div className="freehand-cta-info">
-              <h2 className="freehand-cta-title">
-                Ready to architect <span className="freehand-orange-text">your solution?</span>
-              </h2>
-              <p className="freehand-cta-desc">
-                Hoducation engineers enterprise ERPs, intelligent automations, and custom web applications that scale effortlessly.
-              </p>
-            </div>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-              <a href="/contact" className="freehand-cta-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                Schedule Consultation
-              </a>
-              <a
-                href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20am%20interested%20in%20your%20services."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="freehand-nav-demo-btn"
-                style={{ background: '#25d366', color: '#ffffff', textDecoration: 'none' }}
-              >
-                WhatsApp Chat
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Global Site Footer */}

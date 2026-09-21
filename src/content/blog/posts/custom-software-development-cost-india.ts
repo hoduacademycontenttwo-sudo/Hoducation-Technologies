@@ -101,6 +101,22 @@ export const postCustomSoftwareCostIndia: BlogPost = {
   <li><strong>UI/UX Design Quality:</strong> A system with confusing layouts leads to staff pushback and errors. Clean, high-conversion interfaces require dedicated UX prototyping before code is written.</li>
 </ol>
 
+<h2 id="pricing-models">Fixed-Price vs. Dedicated Team vs. Time &amp; Materials</h2>
+<p>Understanding agency pricing structures prevents friction during delivery:</p>
+<ul>
+  <li><strong>Fixed Milestone Contracts:</strong> Clear scope, transparent budget, and milestone-based releases. Ideal for defined MVPs, ERP modernization, and institutional platforms.</li>
+  <li><strong>Dedicated Engineering Squad:</strong> Monthly retainer for full-time senior developers. Best for ongoing product evolution and rapid feature experimentation.</li>
+  <li><strong>Time &amp; Materials:</strong> Hourly billing suitable for exploratory R&amp;D or audit discovery phases.</li>
+</ul>
+
+<h2 id="hidden-expenses">Hidden Costs Beyond the Initial Developer Quote</h2>
+<p>When modeling your multi-year technology budget, account for these auxiliary operational line-items:</p>
+<ul>
+  <li><strong>Cloud Hosting &amp; Database Backups:</strong> AWS or Hetzner server infrastructure (typically ₹3,000–₹12,000/month for mid-market scale).</li>
+  <li><strong>Third-Party API Consumption:</strong> Official WhatsApp Business Cloud API message fees, SMS OTP delivery, and payment gateway transaction margins.</li>
+  <li><strong>Ongoing Security Patches &amp; OS Updates:</strong> Routine framework maintenance and automated test runner execution.</li>
+</ul>
+
 <h2 id="why-cheap-quotes-fail">The True Danger of ₹50,000 Freelancer Quotes</h2>
 <p>Every month, we consult with founders who previously paid an inexperienced freelancer or low-cost agency ₹40,000 to ₹70,000, only for the project to be abandoned after 4 months. Why does this happen?</p>
 <ul>

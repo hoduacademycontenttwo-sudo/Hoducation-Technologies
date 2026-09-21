@@ -106,6 +106,13 @@ export const postAiAgentsVsTraditionalAutomation: BlogPost = {
   </tbody>
 </table>
 
+<h2 id="decision-framework">When to Use Which: The Pragmatic Decision Matrix</h2>
+<p>Engineering teams should apply this rule of thumb when architecting workflows:</p>
+<ul>
+  <li><strong>Choose Traditional Automation when:</strong> The workflow has clear, static logic with deterministic outcomes (e.g., fee receipt generation, SMS balance alerts, attendance CSV syncing).</li>
+  <li><strong>Choose AI Agents when:</strong> The inputs are unstructured, variable, or conversational (e.g., inbound customer support triage, parsing vendor PDF invoices, semantic lead categorization).</li>
+</ul>
+
 <h2 id="the-hybrid-pattern">The Optimal Architecture: Deterministic Spine + AI Edges</h2>
 <p>At <a href="/#services">Hoducation Technologies</a>, we architect business systems using what we call the <strong>"Deterministic Spine & AI Edges"</strong> design pattern:</p>
 <ul>
