@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (burgerBtn) {
     burgerBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      if (window.innerWidth <= 860) {
+      if (window.innerWidth <= 940) {
         const isExpanded = burgerBtn.getAttribute("aria-expanded") === "true";
         if (isExpanded) {
           closeMobileMenu();
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (freehandNavbar) {
     freehandNavbar.addEventListener("click", (e) => {
       if (freehandNavbar.classList.contains("compressed") && !freehandNavbar.classList.contains("expanded")) {
-        if (window.innerWidth <= 860) {
+        if (window.innerWidth <= 940) {
           openMobileMenu();
         } else {
           expandDesktopNavbar();
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 860) {
+    if (window.innerWidth > 940) {
       closeMobileMenu();
     } else {
       collapseDesktopNavbar();
