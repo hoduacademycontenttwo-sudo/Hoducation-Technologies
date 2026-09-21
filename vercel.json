@@ -19,11 +19,11 @@
     },
     {
       "source": "/blog",
-      "destination": "/blog.html"
+      "destination": "/blog"
     },
     {
-      "source": "/blog/:slug",
-      "destination": "/blog-post.html"
+      "source": "/blog/:slug+",
+      "destination": "/blog-post"
     }
   ],
   "headers": [
