@@ -16,6 +16,8 @@ export default defineConfig({
       input: {
         main: path.resolve(import.meta.dirname, 'index.html'),
         contact: path.resolve(import.meta.dirname, 'contact.html'),
+        privacy: path.resolve(import.meta.dirname, 'privacy.html'),
+        terms: path.resolve(import.meta.dirname, 'terms.html'),
       },
     },
   },
