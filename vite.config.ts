@@ -18,6 +18,7 @@ export default defineConfig({
         contact: path.resolve(import.meta.dirname, 'contact.html'),
         privacy: path.resolve(import.meta.dirname, 'privacy.html'),
         terms: path.resolve(import.meta.dirname, 'terms.html'),
+        faqs: path.resolve(import.meta.dirname, 'faqs.html'),
       },
     },
   },

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions (FAQs) | Hoducation Technologies</title>
+    <meta
+      name="description"
+      content="Find detailed answers about AcadOS deployment, smartphone OMR evaluation, NTA-style CBT platforms, data security, APIs, and institutional pricing."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hoducation.tech/faqs" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hoducation.tech/faqs" />
+    <meta property="og:title" content="Frequently Asked Questions (FAQs) | Hoducation Technologies" />
+    <meta property="og:description" content="Answers about AcadOS, OMR grading, ERP integrations, and institutional security." />
+    <meta property="og:image" content="https://hoducation.tech/ht-logo.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/ht-logo.jpg" />
+
+    <!-- Google Fonts Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.5.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text-primary: #09090b;
+        --text-secondary: #475569;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --accent: #2563eb;
+        --accent-light: #eff6ff;
+        --font-heading: "Plus Jakarta Sans", -apple-system, sans-serif;
+        --font-body: "Inter", -apple-system, sans-serif;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-body);
+        background-color: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.65;
+        padding-bottom: 60px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Navbar */
+      .faq-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(248, 250, 252, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+      .brand-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text-primary);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .brand-logo { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+      .nav-links { display: flex; gap: 14px; align-items: center; }
+      .btn-nav {
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        padding: 8px 16px;
+        border-radius: 100px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+      }
+      .btn-nav:hover { color: var(--text-primary); border-color: #cbd5e1; }
+      .btn-nav-primary {
+        background: var(--text-primary);
+        color: #ffffff !important;
+        border-color: var(--text-primary);
+      }
+
+      /* Hero */
+      .faq-hero {
+        text-align: center;
+        max-width: 820px;
+        margin: 48px auto 36px;
+        padding: 0 20px;
+      }
+      .kicker-badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--accent-light);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        margin-bottom: 16px;
+      }
+      .faq-hero h1 {
+        font-family: var(--font-heading);
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .faq-hero p {
+        font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Search & Category Filter Controls */
+      .faq-controls-wrap {
+        max-width: 840px;
+        margin: 0 auto 36px;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .search-box-wrap {
+        position: relative;
+        width: 100%;
+      }
+      .search-input {
+        width: 100%;
+        padding: 14px 20px 14px 46px;
+        font-size: 0.95rem;
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        outline: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        transition: all 0.2s ease;
+      }
+      .search-input:focus {
+        border-color: var(--text-primary);
+        box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.08);
+      }
+      .search-icon {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+      .category-pills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .category-pill {
+        border: 1px solid var(--border);
+        background: #ffffff;
+        color: var(--text-secondary);
+        padding: 6px 14px;
+        border-radius: 100px;
+        font-size: 0.825rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .category-pill:hover {
+        border-color: #cbd5e1;
+        color: var(--text-primary);
+      }
+      .category-pill.active {
+        background: var(--text-primary);
+        color: #ffffff;
+        border-color: var(--text-primary);
+      }
+
+      /* FAQ Accordion List */
+      .faq-list-container {
+        max-width: 840px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .faq-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .faq-card:hover {
+        border-color: #cbd5e1;
+      }
+      .faq-card.open {
+        border-color: var(--text-primary);
+        box-shadow: 0 8px 24px -6px rgba(0,0,0,0.06);
+      }
+      .faq-question-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: var(--font-body);
+      }
+      .faq-q-title {
+        font-family: var(--font-heading);
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+      }
+      .faq-category-tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--accent);
+        background: var(--accent-light);
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+      .faq-icon-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+      }
+      .faq-card.open .faq-icon-btn {
+        background: var(--text-primary);
+        color: #ffffff;
+        transform: rotate(180deg);
+      }
+      .faq-answer-content {
+        display: none;
+        padding: 0 24px 22px;
+        color: #334155;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        animation: fadeIn 0.2s ease-out;
+      }
+      .faq-card.open .faq-answer-content {
+        display: block;
+      }
+      .faq-answer-content p {
+        margin-bottom: 10px;
+      }
+      .faq-answer-content ul {
+        padding-left: 20px;
+        margin-bottom: 10px;
+      }
+      .faq-answer-content li {
+        margin-bottom: 6px;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Support Callout Banner */
+      .support-banner-box {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 32px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        box-shadow: 0 8px 30px -10px rgba(0,0,0,0.05);
+      }
+      .support-banner-box h3 {
+        font-family: var(--font-heading);
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .support-banner-box p {
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+      }
+      .support-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #25d366;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: transform 0.2s ease;
+      }
+      .btn-whatsapp:hover { transform: translateY(-1px); }
+      .btn-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: var(--text-primary);
+        border: 1px solid #cbd5e1;
+        padding: 10px 18px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+      .btn-call:hover { background: #f1f5f9; }
+
+      /* Footer */
+      .faq-footer {
+        max-width: 840px;
+        margin: 50px auto 0;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .faq-footer a { color: var(--text-secondary); text-decoration: none; }
+      .faq-footer a:hover { color: var(--text-primary); text-decoration: underline; }
+
+      @media (max-width: 640px) {
+        .support-banner-box { flex-direction: column; align-items: flex-start; padding: 24px; }
+        .support-actions { width: 100%; flex-direction: column; }
+        .btn-whatsapp, .btn-call { width: 100%; justify-content: center; }
+        .faq-footer { flex-direction: column; align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <header class="faq-nav">
+      <a href="/" class="brand-link">
+        <img src="/ht-logo.jpg" alt="Hoducation Logo" class="brand-logo" />
+        <span>Hoducation Technologies</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="btn-nav">Home</a>
+        <a href="/terms" class="btn-nav">Terms</a>
+        <a href="/privacy" class="btn-nav">Privacy</a>
+        <a href="/contact" class="btn-nav btn-nav-primary">Request Demo</a>
+      </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="faq-hero">
+      <span class="kicker-badge">KNOWLEDGE BASE &amp; ENTERPRISE FAQ</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>
+        Everything you need to know about AcadOS, smartphone OMR evaluation, NTA-style CBT engine, custom ERP deployment, data privacy, and SLA guarantees.
+      </p>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <div class="faq-controls-wrap">
+      <div class="search-box-wrap">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="faqSearchInput"
+          placeholder="Search questions by keyword (e.g. OMR, CBT, deployment, DPDP, pricing)..."
+          class="search-input"
+          aria-label="Search FAQs"
+        />
+      </div>
+
+      <div class="category-pills" id="categoryPills">
+        <button type="button" class="category-pill active" data-cat="all">All Questions</button>
+        <button type="button" class="category-pill" data-cat="acados">AcadOS &amp; Modules</button>
+        <button type="button" class="category-pill" data-cat="deployment">Deployment &amp; Onboarding</button>
+        <button type="button" class="category-pill" data-cat="security">Security &amp; Privacy</button>
+        <button type="button" class="category-pill" data-cat="integrations">Integrations &amp; Hardware</button>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <main class="faq-list-container" id="faqList">
+      <!-- 1 -->
+      <article class="faq-card open" data-category="deployment">
+        <button type="button" class="faq-question-toggle" aria-expanded="true">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">DEPLOYMENT</span>
+            What happens after I submit an enterprise demo request?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Within 24 hours of submission, our solution engineering team reviews your institutional structure (number of students, branches, and specific modules needed). 
+            We configure a dedicated staging sandbox seeded with your test taxonomy or sample question banks, then schedule a live 30-minute interactive walkthrough via Google Meet or Zoom.
+          </p>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="faq-card" data-category="deployment">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">DEPLOYMENT</span>
+            How fast can AcadOS, ERP, or Custom Software be deployed for our institution?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Turnkey AcadOS SaaS modules (TestMaker, Practice CBT, and OMR SmartPhone Evaluation) can be provisioned in <strong>under 48 hours</strong> with automated database seeding and teacher credential issuance.
+          </p>
+          <p>
+            Custom institutional ERP systems (fees, staff rosters, biometric attendance, student lifecycle) and bespoke portal migrations typically roll out in <strong>2 to 4 weeks</strong> with zero downtime.
+          </p>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="faq-card" data-category="acados">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">ACADOS</span>
+            How does the Smartphone OMR Evaluation work without expensive scanning machines?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Our proprietary computer vision pipeline eliminates the need for expensive multi-lakh hardware OMR scanners. Teachers and proctors simply capture a picture of standard printed response sheets using any modern Android or iOS smartphone camera.
+          </p>
+          <ul>
+            <li><strong>Automated Skew &amp; Rotation Correction:</strong> Compensates for imperfect angles and natural camera shake.</li>
+            <li><strong>Lighting &amp; Shadow Invariance:</strong> Evaluates dark and faint pencil/pen markings with <strong>99.8% precision</strong>.</li>
+            <li><strong>Sub-second Processing:</strong> Scores up to 60 sheets per minute directly on the edge device with instant student scorecard generation.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="faq-card" data-category="acados">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">ACADOS</span>
+            Can the Practice CBT Platform replicate official NTA JEE / NEET exam interfaces?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Yes. The CBT exam module replicates the exact UI palette, question color matrix (Answered, Not Answered, Marked for Review), countdown timer, section navigation, and bilingual question displays used by the National Testing Agency (NTA), TCS iON, and major competitive testing bodies across India.
+          </p>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="faq-card" data-category="security">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">SECURITY</span>
+            Who owns the question banks, student marks, and institutional records?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            <strong>Your institution retains 100% exclusive intellectual property and legal ownership</strong> of all curriculum questions, syllabi, student records, and assessment outcomes.
+          </p>
+          <p>
+            Under India's <strong>Digital Personal Data Protection (DPDP) Act, 2023</strong> and GDPR, Hoducation acts strictly as a secure Data Processor. We do not sell, rent, or train public AI models on your proprietary test materials.
+          </p>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="faq-card" data-category="security">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">SECURITY</span>
+            What cryptographic security and backup standards do you implement?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Our cloud systems are hardened with enterprise safeguards:
+          </p>
+          <ul>
+            <li><strong>AES-256 Encryption:</strong> Applied to all database volumes, document stores, and student records at rest.</li>
+            <li><strong>TLS 1.3 in Transit:</strong> Strict end-to-end cryptographic transit with automated HSTS preloading.</li>
+            <li><strong>Multi-Tenant Row-Level Security:</strong> Hardware-level isolation ensuring zero data bleed between institutional tenants.</li>
+            <li><strong>Daily Disaster Recovery:</strong> Automated geo-redundant snapshots retained across isolated availability zones.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="faq-card" data-category="integrations">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">INTEGRATIONS</span>
+            Can AcadOS integrate with our existing fee gateways and biometric systems?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Yes. We offer turnkey adapters and open REST APIs for:
+          </p>
+          <ul>
+            <li><strong>Payment Gateways:</strong> Razorpay, Cashfree, PayU, and CCAvenue for automatic fee reconciliations.</li>
+            <li><strong>Attendance Machines:</strong> Direct API sync with ZKTeco, Essl, and Realtime biometric/RFID scanners.</li>
+            <li><strong>Communication:</strong> Meta WhatsApp Business Cloud API for automated fee reminders and exam report cards.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="faq-card" data-category="deployment">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">DEPLOYMENT</span>
+            Do you support on-premise air-gapped server installations?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            Yes. While most schools and test chains prefer our zero-maintenance managed cloud (with a guaranteed <strong>99.9% uptime SLA</strong>), we offer containerized Docker/Kubernetes on-premise deployments for universities, military schools, or test centers requiring air-gapped intranet hosting.
+          </p>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="faq-card" data-category="acados">
+        <button type="button" class="faq-question-toggle" aria-expanded="false">
+          <span class="faq-q-title">
+            <span class="faq-category-tag">ACADOS</span>
+            What mathematical and scientific equations does TestMaker support?
+          </span>
+          <span class="faq-icon-btn"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-answer-content">
+          <p>
+            TestMaker includes full native LaTeX rendering for complex calculus, matrices, organic chemistry reaction diagrams, and multi-lingual Indian script fonts (Hindi, Sanskrit, Gujarati, etc.) with automated PDF paper generation in single-column or twin-column newspaper formats.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Need More Help Banner -->
+    <div class="support-banner-box">
+      <div>
+        <h3>Still have questions?</h3>
+        <p>Talk directly with our solutions architects in Jaipur, Rajasthan.</p>
+      </div>
+      <div class="support-actions">
+        <a
+          href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20have%20questions%20regarding%20AcadOS%20and%20your%20software%20solutions."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+        >
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <a href="tel:+919660034117" class="btn-call">
+          <i class="fa-solid fa-phone"></i> +91 96600 34117
+        </a>
+        <a href="/contact" class="btn-nav btn-nav-primary" style="padding: 10px 22px;">
+          Book Live Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="faq-footer">
+      <span>&copy; 2026 Hoducation Technologies Pvt. Ltd. All rights reserved.</span>
+      <div style="display:flex; gap:16px;">
+        <a href="/">Home</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+    </footer>
+
+    <!-- Interactive Search and Accordion Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.faq-card');
+        const searchInput = document.getElementById('faqSearchInput');
+        const categoryPills = document.querySelectorAll('.category-pill');
+
+        // Accordion Toggle
+        cards.forEach((card) => {
+          const btn = card.querySelector('.faq-question-toggle');
+          btn.addEventListener('click', () => {
+            const isOpen = card.classList.contains('open');
+            // Close all or toggle
+            cards.forEach((c) => {
+              if (c !== card) {
+                c.classList.remove('open');
+                c.querySelector('.faq-question-toggle').setAttribute('aria-expanded', 'false');
+              }
+            });
+            card.classList.toggle('open', !isOpen);
+            btn.setAttribute('aria-expanded', !isOpen);
+          });
+        });
+
+        // Filter by Category
+        categoryPills.forEach((pill) => {
+          pill.addEventListener('click', () => {
+            categoryPills.forEach((p) => p.classList.remove('active'));
+            pill.classList.add('active');
+            const cat = pill.getAttribute('data-cat');
+            filterFaqs(searchInput.value.toLowerCase(), cat);
+          });
+        });
+
+        // Search Input Filter
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          const activePill = document.querySelector('.category-pill.active');
+          const cat = activePill ? activePill.getAttribute('data-cat') : 'all';
+          filterFaqs(query, cat);
+        });
+
+        function filterFaqs(query, cat) {
+          cards.forEach((card) => {
+            const text = card.textContent.toLowerCase();
+            const cardCat = card.getAttribute('data-category');
+            const matchesQuery = query === '' || text.includes(query);
+            const matchesCat = cat === 'all' || cardCat === cat;
+
+            if (matchesQuery && matchesCat) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

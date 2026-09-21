@@ -12,6 +12,10 @@
     {
       "source": "/terms",
       "destination": "/terms.html"
+    },
+    {
+      "source": "/faqs",
+      "destination": "/faqs.html"
     }
   ],
   "headers": [

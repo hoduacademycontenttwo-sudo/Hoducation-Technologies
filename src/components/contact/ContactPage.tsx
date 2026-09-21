@@ -38,33 +38,6 @@ const INDUSTRIES = [
   'Other Institutional Solutions',
 ];
 
-const FAQS = [
-  {
-    q: 'What happens after I submit this demo request?',
-    a: 'Our technical solutions engineers review your institutional setup, provision a customized staging environment with sample student and exam data, and reach out within 24 hours to conduct a live interactive demonstration.',
-  },
-  {
-    q: 'How fast can AcadOS, ERP, or Custom Software be deployed?',
-    a: 'Turnkey AcadOS modules (TestMaker, CBT, OMR SmartPhone Evaluation) can be deployed in under 48 hours with automated database seeding. Large-scale multi-campus ERP and bespoke software migrations typically roll out within 2 to 4 weeks.',
-  },
-  {
-    q: 'How does the Smartphone OMR Evaluation work without expensive hardware?',
-    a: 'Using our proprietary sub-second computer vision model, educators can scan physical OMR response sheets using any standard Android or iOS smartphone camera. The system automatically corrects for skew, rotation, shadows, and pen/pencil marks with 99.8% precision.',
-  },
-  {
-    q: 'Who owns the institutional, student, and assessment data?',
-    a: 'Your institution retains 100% proprietary ownership of all question banks, student details, exam marks, and financial data. Hoducation operates purely as a secure data processor with strict cryptographic tenant isolation and daily off-site backups.',
-  },
-  {
-    q: 'Can AcadOS integrate with our existing fee payment gateways and biometric hardware?',
-    a: 'Yes. We provide pre-built REST APIs and webhook connectors for all major payment gateways (Razorpay, Cashfree, PayU), biometric attendance machines (ZKTeco, Realtime, Essl), and Meta WhatsApp Business Cloud API for automated notifications.',
-  },
-  {
-    q: 'Do you provide on-premise deployments or dedicated private cloud servers?',
-    a: 'Yes. In addition to our multi-region managed cloud infrastructure (99.9% uptime SLA), we support isolated VPC deployments on AWS/Azure as well as fully air-gapped on-premise server installations for large universities and sensitive test centers.',
-  },
-];
-
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -80,8 +53,6 @@ export const ContactPage: React.FC = () => {
 
   const [captchaVerified, setCaptchaVerified] = useState<boolean>(false);
   const [captchaLoading, setCaptchaLoading] = useState<boolean>(false);
-  const [activeLegalModal, setActiveLegalModal] = useState<'privacy' | 'terms' | null>(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -126,7 +97,9 @@ export const ContactPage: React.FC = () => {
     }
   };
 
-  const handleCaptchaToggle = () => {
+  // Click specifically on the checkbox square or its label
+  const handleCheckboxClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (captchaLoading) return;
     if (captchaVerified) {
       setCaptchaVerified(false);
@@ -164,7 +137,7 @@ export const ContactPage: React.FC = () => {
     }
 
     if (!captchaVerified) {
-      errors.captcha = 'Please check the verification box to confirm you are human';
+      errors.captcha = 'Please click the checkbox to verify you are human';
     }
 
     setFieldErrors(errors);
@@ -176,7 +149,7 @@ export const ContactPage: React.FC = () => {
 
     if (!validate()) {
       const firstErrorKey = Object.keys(fieldErrors)[0];
-      const el = document.querySelector(`[name="${firstErrorKey}"]`) || document.querySelector('.captcha-widget-box');
+      const el = document.querySelector(`[name="${firstErrorKey}"]`) || document.getElementById('recaptcha-check-button');
       if (el) (el as HTMLElement).focus();
       return;
     }
@@ -211,10 +184,6 @@ export const ContactPage: React.FC = () => {
     }
   };
 
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
   return (
     <div className="contact-page-container">
       {/* Top Navbar */}
@@ -226,7 +195,10 @@ export const ContactPage: React.FC = () => {
 
         <div className="contact-nav-actions">
           <a href="/" className="contact-back-link">
-            <span>&larr; Back to Home</span>
+            <span>&larr; Home</span>
+          </a>
+          <a href="/faqs" className="contact-back-link">
+            <span>FAQs</span>
           </a>
           <a
             href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20request%20a%20demo."
@@ -540,37 +512,43 @@ export const ContactPage: React.FC = () => {
                     />
                   </div>
 
-                  {/* Row 8: Interactive reCAPTCHA Clickable Widget */}
+                  {/* Row 8: Interactive Clickable reCAPTCHA Checkbox Box */}
                   <div className="captcha-and-disclaimer-wrap">
                     <div className="captcha-widget-container">
+                      {/* Box itself is non-clickable; clicking ONLY on the checkbox button triggers it */}
                       <div
                         className={`captcha-widget-box ${captchaVerified ? 'is-verified' : ''} ${
                           fieldErrors.captcha ? 'has-error' : ''
                         }`}
-                        onClick={handleCaptchaToggle}
-                        role="checkbox"
-                        aria-checked={captchaVerified}
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === ' ' || e.key === 'Enter') {
-                            e.preventDefault();
-                            handleCaptchaToggle();
-                          }
-                        }}
                       >
                         <div className="captcha-checkbox-left">
-                          <div className={`captcha-check-square ${captchaVerified ? 'checked' : ''}`}>
+                          {/* ONLY clicking this checkbox square or its label triggers the action */}
+                          <button
+                            type="button"
+                            id="recaptcha-check-button"
+                            className={`captcha-check-square ${captchaVerified ? 'checked' : ''}`}
+                            onClick={handleCheckboxClick}
+                            role="checkbox"
+                            aria-checked={captchaVerified}
+                            aria-label="reCAPTCHA I'm not a robot checkbox"
+                            title="Click here to verify"
+                          >
                             {captchaLoading ? (
                               <span className="captcha-inline-spinner" />
                             ) : captchaVerified ? (
                               <i className="fa-solid fa-check check-glyph"></i>
                             ) : null}
-                          </div>
-                          <span className="captcha-prompt-text">
+                          </button>
+
+                          <span
+                            className="captcha-prompt-text clickable-label"
+                            onClick={handleCheckboxClick}
+                            title="Click here to verify"
+                          >
                             {captchaLoading
                               ? 'Verifying...'
                               : captchaVerified
-                              ? 'Verification complete'
+                              ? "I'm not a robot"
                               : "I'm not a robot"}
                           </span>
                         </div>
@@ -582,31 +560,28 @@ export const ContactPage: React.FC = () => {
                           <div className="captcha-brand-meta">
                             <span className="brand-title">reCAPTCHA</span>
                             <div className="captcha-links-row">
-                              <button
-                                type="button"
+                              <a
+                                href="/privacy"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="sub-legal-btn"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveLegalModal('privacy');
-                                }}
                               >
                                 Privacy
-                              </button>
+                              </a>
                               <span className="dot-sep">&bull;</span>
-                              <button
-                                type="button"
+                              <a
+                                href="/terms"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="sub-legal-btn"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveLegalModal('terms');
-                                }}
                               >
                                 Terms
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>
                       </div>
+
                       {fieldErrors.captcha && (
                         <span className="field-err-msg captcha-err-msg">
                           <i className="fa-solid fa-circle-exclamation"></i> {fieldErrors.captcha}
@@ -614,24 +589,26 @@ export const ContactPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Legal Terms & Privacy Agreement Text */}
+                    {/* Legal Terms & Privacy Agreement Text linking directly to separate pages */}
                     <p className="privacy-policy-text">
                       By clicking submit, you agree to Hoducation Technologies'{' '}
-                      <button
-                        type="button"
-                        className="legal-modal-trigger-btn"
-                        onClick={() => setActiveLegalModal('terms')}
+                      <a
+                        href="/terms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="legal-direct-link"
                       >
                         Terms &amp; Conditions
-                      </button>{' '}
+                      </a>{' '}
                       and{' '}
-                      <button
-                        type="button"
-                        className="legal-modal-trigger-btn"
-                        onClick={() => setActiveLegalModal('privacy')}
+                      <a
+                        href="/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="legal-direct-link"
                       >
                         Privacy Policy
-                      </button>
+                      </a>
                       .
                     </p>
                   </div>
@@ -660,289 +637,31 @@ export const ContactPage: React.FC = () => {
         </section>
       </main>
 
-      {/* ==========================================================================
-         FAQ SECTION (Frequently Asked Questions)
-         ========================================================================== */}
-      <section className="contact-faq-section" id="faqs">
-        <div className="faq-container-inner">
-          <div className="faq-header-center">
-            <span className="faq-pill-badge">FREQUENTLY ASKED QUESTIONS</span>
-            <h2 className="faq-section-title">Everything you need to know</h2>
-            <p className="faq-section-subtitle">
-              Have questions about our enterprise evaluation, AcadOS integration, or security? We’ve got answers.
+      {/* FAQs Quick Access Banner */}
+      <section className="contact-faqs-callout-section">
+        <div className="faqs-callout-inner">
+          <div className="faqs-callout-text">
+            <span className="kicker-mini">HAVE QUESTIONS?</span>
+            <h3>Explore our Knowledge Base &amp; Frequently Asked Questions</h3>
+            <p>
+              Get instant answers regarding AcadOS deployment speeds, smartphone OMR accuracy, CBT exam features, and institutional data privacy.
             </p>
           </div>
-
-          <div className="faq-accordion-list">
-            {FAQS.map((faq, index) => {
-              const isOpen = openFaqIndex === index;
-              return (
-                <div key={index} className={`faq-item-card ${isOpen ? 'is-open' : ''}`}>
-                  <button
-                    type="button"
-                    className="faq-question-btn"
-                    onClick={() => toggleFaq(index)}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="faq-q-text">{faq.q}</span>
-                    <span className="faq-toggle-icon">
-                      <i className={`fa-solid ${isOpen ? 'fa-minus' : 'fa-plus'}`}></i>
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className="faq-answer-pane">
-                      <p>{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Quick Support Banner */}
-          <div className="faq-support-banner">
-            <div className="banner-left">
-              <h4>Still have questions?</h4>
-              <p>Speak directly with our technical solutions architects in Jaipur.</p>
-            </div>
-            <div className="banner-right">
-              <a
-                href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20have%20questions%20regarding%20AcadOS%20and%20your%20software%20solutions."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-faq-whatsapp"
-              >
-                <i className="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-              </a>
-              <a href="tel:+919660034117" className="btn-faq-call">
-                <i className="fa-solid fa-phone"></i> +91 96600 34117
-              </a>
-            </div>
-          </div>
+          <a href="/faqs" className="btn-visit-faqs">
+            View All FAQs &rarr;
+          </a>
         </div>
       </section>
 
-      {/* ==========================================================================
-         LEGAL MODAL: Privacy Policy & Terms of Service
-         ========================================================================== */}
-      {activeLegalModal && (
-        <div className="legal-modal-overlay" onClick={() => setActiveLegalModal(null)} role="dialog" aria-modal="true">
-          <div className="legal-modal-dialog" onClick={(e) => e.stopPropagation()}>
-            <div className="legal-modal-header">
-              <div className="legal-modal-title-wrap">
-                <span className="legal-type-tag">OFFICIAL CORPORATE POLICY</span>
-                <h3>
-                  {activeLegalModal === 'privacy'
-                    ? 'Hoducation Technologies — Privacy Policy'
-                    : 'Hoducation Technologies — Terms & Conditions'}
-                </h3>
-                <span className="legal-update-date">Effective: September 2026 &bull; Jaipur, Rajasthan, India</span>
-              </div>
-              <button
-                type="button"
-                className="legal-modal-close-btn"
-                onClick={() => setActiveLegalModal(null)}
-                aria-label="Close modal"
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-
-            <div className="legal-modal-body">
-              {activeLegalModal === 'privacy' ? (
-                <div className="legal-document-content">
-                  <section className="legal-section">
-                    <h4>1. Overview &amp; Commitment</h4>
-                    <p>
-                      Hoducation Technologies Pvt. Ltd. ("Hoducation", "we", "our", or "us") provides enterprise-grade
-                      educational software, custom portals, ERPs, and our flagship platform <strong>AcadOS</strong> (including
-                      TestMaker, Computer-Based Testing [CBT], OMR SmartPhone Evaluation, and Admissions CRM).
-                    </p>
-                    <p>
-                      We are committed to maintaining the highest security, confidentiality, and integrity standards in
-                      accordance with India's <strong>Digital Personal Data Protection (DPDP) Act, 2023</strong>, the
-                      Information Technology Act, 2000, and global data privacy frameworks (GDPR).
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>2. Data We Process &amp; Collect</h4>
-                    <ul>
-                      <li>
-                        <strong>Institutional &amp; Administrator Data:</strong> Name, professional email address,
-                        designation, institutional name, phone number, and billing credentials provided when requesting a
-                        demo or executing a service agreement.
-                      </li>
-                      <li>
-                        <strong>Assessment &amp; Student Information:</strong> Student identifiers, question banks,
-                        examination schedules, and scanned OMR answer sheet imagery uploaded by authorized client faculty.
-                      </li>
-                      <li>
-                        <strong>Telemetry &amp; Audit Logs:</strong> Timestamped IP addresses, session telemetry, browser
-                        environment, and platform performance logs used strictly to ensure examination integrity and system
-                        stability.
-                      </li>
-                    </ul>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>3. Data Ownership &amp; Fiduciary Model</h4>
-                    <p>
-                      <strong>Your institution retains 100% legal and beneficial ownership</strong> of all curriculum
-                      questions, student records, grades, and fee records. Hoducation acts strictly as a secure Data
-                      Processor. We do not sell, rent, monetize, or train unauthorized public machine learning models on
-                      your proprietary question banks or student records.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>4. Enterprise Security &amp; Encryption</h4>
-                    <ul>
-                      <li>
-                        <strong>Data in Transit:</strong> Encrypted using TLS 1.3 cryptographic protocols.
-                      </li>
-                      <li>
-                        <strong>Data at Rest:</strong> Encrypted with industry-standard AES-256 encryption.
-                      </li>
-                      <li>
-                        <strong>Tenant Isolation:</strong> Multi-tenant logical isolation with strict row-level security
-                        (RLS) ensuring one institution can never access another institution's records.
-                      </li>
-                      <li>
-                        <strong>Backups:</strong> Redundant daily snapshots retained in geographically isolated, secure
-                        cloud vaults.
-                      </li>
-                    </ul>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>5. Data Retention &amp; Deletion Rights</h4>
-                    <p>
-                      Clients may export their full database (in standard JSON, CSV, or SQL formats) at any time. Upon
-                      contract conclusion or formal termination request, all institutional records are completely purged
-                      from production servers within 30 calendar days.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>6. Grievance Officer &amp; Contact</h4>
-                    <p>
-                      For privacy inquiries, audit certificates, or data subject requests, please contact our Data
-                      Protection Cell:
-                    </p>
-                    <p className="contact-box-callout">
-                      <strong>Hoducation Technologies Pvt. Ltd.</strong>
-                      <br />
-                      Grievance &amp; Privacy Officer
-                      <br />
-                      Email: <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
-                      <br />
-                      Phone: <a href="tel:+919660034117">+91 96600 34117</a>
-                      <br />
-                      Location: Jaipur, Rajasthan, India
-                    </p>
-                  </section>
-                </div>
-              ) : (
-                <div className="legal-document-content">
-                  <section className="legal-section">
-                    <h4>1. Representation &amp; Scope</h4>
-                    <p>
-                      These Terms &amp; Conditions govern the provision, deployment, and use of software platforms, custom
-                      development services, and cloud subscriptions offered by <strong>Hoducation Technologies Pvt. Ltd.</strong>
-                    </p>
-                    <p>
-                      By requesting a demonstration, signing a proposal, or logging into AcadOS or related client portals, you
-                      warrant that you have the legal authority to bind your educational institution, university, coaching
-                      academy, or corporate entity.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>2. AcadOS Software License &amp; Usage Rights</h4>
-                    <ul>
-                      <li>
-                        Hoducation grants the subscribing institution a non-exclusive, non-transferable license to access
-                        and utilize the selected software modules (TestMaker, CBT, OMR, ERP, CRM) for the duration of the
-                        contract.
-                      </li>
-                      <li>
-                        The institution shall not reverse-engineer, decompile, redistribute, or create derivative works of
-                        Hoducation's computer vision OMR engines, rendering algorithms, or proprietary source code.
-                      </li>
-                    </ul>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>3. Service Level Agreement (SLA) &amp; Uptime</h4>
-                    <p>
-                      Hoducation commits to a <strong>99.9% uptime SLA</strong> for all enterprise cloud-hosted instances.
-                      Scheduled maintenance windows are announced at least 48 hours in advance and executed during off-peak
-                      hours. For live mock examinations or state-level exam testing, dedicated on-call technical engineers
-                      are assigned to monitor real-time server concurrency.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>4. Intellectual Property &amp; Non-Disclosure</h4>
-                    <p>
-                      All intellectual property rights in the software architecture, user interfaces, codebases, and
-                      trademarks remain the exclusive property of Hoducation Technologies. Conversely, all academic question
-                      banks, syllabus taxonomies, proprietary exam content, and student identities remain the exclusive
-                      intellectual property of the Client.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>5. Fees, Subscriptions, &amp; Renewals</h4>
-                    <p>
-                      Invoices are issued according to the agreed Master Services Agreement (MSA) or software quotation.
-                      Terms of payment are strictly Net 15 days from the invoice issuance date unless specified otherwise.
-                      Custom development milestones are billed upon deliverable acceptance.
-                    </p>
-                  </section>
-
-                  <section className="legal-section">
-                    <h4>6. Governing Law &amp; Jurisdiction</h4>
-                    <p>
-                      These terms shall be governed by and construed in accordance with the laws of India. Any legal disputes
-                      arising from or in connection with our services shall be subject to the exclusive jurisdiction of the
-                      competent courts located in <strong>Jaipur, Rajasthan, India</strong>.
-                    </p>
-                  </section>
-                </div>
-              )}
-            </div>
-
-            <div className="legal-modal-footer">
-              <span className="footer-note">
-                Need a signed Data Processing Agreement (DPA)? Contact our enterprise desk.
-              </span>
-              <button
-                type="button"
-                className="btn-legal-accept"
-                onClick={() => setActiveLegalModal(null)}
-              >
-                I Understand &amp; Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Footer */}
+      {/* Footer with separate page links */}
       <footer className="contact-site-footer">
         <div className="contact-footer-inner">
           <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
           <div className="contact-footer-links">
             <a href="/">Home</a>
-            <a href="/contact#faqs">FAQs</a>
-            <button type="button" onClick={() => setActiveLegalModal('privacy')} className="footer-text-btn">
-              Privacy Policy
-            </button>
-            <button type="button" onClick={() => setActiveLegalModal('terms')} className="footer-text-btn">
-              Terms &amp; Conditions
-            </button>
+            <a href="/faqs">FAQs</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms &amp; Conditions</a>
             <a href="tel:+919660034117">+91 9660034117</a>
             <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
           </div>
