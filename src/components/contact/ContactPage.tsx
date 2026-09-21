@@ -209,6 +209,9 @@ export const ContactPage: React.FC = () => {
           <a href="/" className="contact-back-link">
             <span>&larr; Home</span>
           </a>
+          <a href="/blog" className="contact-back-link">
+            <span>Blog</span>
+          </a>
           <a href="/faqs" className="contact-back-link">
             <span>FAQs</span>
           </a>
@@ -673,6 +676,7 @@ export const ContactPage: React.FC = () => {
           <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
           <div className="contact-footer-links">
             <a href="/">Home</a>
+            <a href="/blog">Blog &amp; Insights</a>
             <a href="/faqs">FAQs</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms &amp; Conditions</a>

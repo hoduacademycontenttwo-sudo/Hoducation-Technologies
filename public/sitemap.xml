@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Main Pages -->
   <url>
     <loc>https://hoducation.tech/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/contact</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/faqs</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/privacy</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/terms</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Blog Hub -->
+  <url>
+    <loc>https://hoducation.tech/blog</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 10 Comprehensive Engineering & Business Articles -->
+  <url>
+    <loc>https://hoducation.tech/blog/custom-software-vs-ready-made-software</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/custom-software-development-cost-india</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/crm-vs-erp-difference</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/ai-agents-vs-traditional-automation</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/what-should-a-modern-school-erp-include</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/website-crm-integration-lead-machine</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

@@ -19,6 +19,8 @@ export default defineConfig({
         privacy: path.resolve(import.meta.dirname, 'privacy.html'),
         terms: path.resolve(import.meta.dirname, 'terms.html'),
         faqs: path.resolve(import.meta.dirname, 'faqs.html'),
+        blog: path.resolve(import.meta.dirname, 'blog.html'),
+        blogPost: path.resolve(import.meta.dirname, 'blog-post.html'),
       },
     },
   },

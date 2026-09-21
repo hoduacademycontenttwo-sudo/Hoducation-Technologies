@@ -1,0 +1,632 @@
+/* ============================================================= */
+/* HODUCATION INSIGHTS / BLOG INDEX PAGE                         */
+/* Dark Brutalist Card Aesthetic Matching User Reference         */
+/* ============================================================= */
+
+.blog-page-root {
+  background-color: #07090e;
+  color: #f8fafc;
+  min-height: 100vh;
+  font-family: var(--font-sans, 'Inter', -apple-system, sans-serif);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Ambient Glows */
+.blog-ambient-glow-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 480px;
+  background: radial-gradient(ellipse at top, rgba(128, 0, 32, 0.18) 0%, rgba(10, 60, 255, 0.08) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blog-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(100px, 12vh, 140px) 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------- */
+/* Hero Section                                                  */
+/* ------------------------------------------------------------- */
+.blog-hero {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 52px;
+}
+
+.blog-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fb7185;
+  background: rgba(225, 29, 72, 0.12);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.blog-hero-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.blog-title-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blog-hero-desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 auto 36px;
+  max-width: 680px;
+}
+
+/* ------------------------------------------------------------- */
+/* Search & Filter Controls                                      */
+/* ------------------------------------------------------------- */
+.blog-controls-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.blog-search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 14px 20px 14px 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.blog-search-input:focus {
+  border-color: #e11d48;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.15);
+}
+
+.blog-search-input::placeholder {
+  color: #64748b;
+}
+
+.blog-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+/* Category Filter Pills */
+.blog-category-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.category-pill-btn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
+  font-size: 0.825rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.category-pill-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.category-pill-btn.active {
+  background: #ffffff;
+  color: #09090b;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+/* ------------------------------------------------------------- */
+/* Featured Article Card                                         */
+/* ------------------------------------------------------------- */
+.blog-featured-wrap {
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.featured-article-card {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  background: #0d1017;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 36px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.featured-article-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 77, 109, 0.4);
+  box-shadow: 0 24px 50px -10px rgba(225, 29, 72, 0.2);
+}
+
+.featured-media-box {
+  background: linear-gradient(135deg, #161922 0%, #0d0f15 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.featured-media-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.featured-center-badge {
+  position: relative;
+  z-index: 2;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  padding: 16px 28px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.featured-content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featured-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.featured-badge-pill {
+  background: rgba(225, 29, 72, 0.2);
+  color: #ff4d6d;
+  border: 1px solid rgba(255, 77, 109, 0.35);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'Space Grotesk', monospace;
+}
+
+.featured-date {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.featured-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.featured-article-card:hover .featured-title {
+  color: #fda4af;
+}
+
+.featured-excerpt {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.featured-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.featured-author-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.featured-author-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.featured-read-time {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* ------------------------------------------------------------- */
+/* Blog Card Grid (Exact Match to User Reference Screenshot)     */
+/* ------------------------------------------------------------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 28px;
+  margin-bottom: 72px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: #0d1017;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(225, 29, 72, 0.12);
+}
+
+/* Graphical Card Header Box */
+.card-thumbnail-box {
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  background: linear-gradient(135deg, #131722 0%, #0c0e14 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.card-grid-texture {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.card-center-badge-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 85%;
+}
+
+.card-badge-title {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.card-badge-sub {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  margin-top: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* Card Content Details */
+.card-info-box {
+  padding: 22px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #71717a;
+  font-weight: 500;
+}
+
+.meta-dot {
+  color: #3f3f46;
+}
+
+.meta-author {
+  color: #a1a1aa;
+}
+
+.card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.blog-card:hover .card-title {
+  color: #34d399; /* Green accent as seen in reference image */
+}
+
+.card-excerpt {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------- */
+/* No Results Empty State                                        */
+/* ------------------------------------------------------------- */
+.blog-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0d1017;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  margin-bottom: 72px;
+}
+
+.empty-title {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.empty-reset-btn {
+  background: #ffffff;
+  color: #09090b;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------- */
+/* Conversion CTA Banner                                         */
+/* ------------------------------------------------------------- */
+.blog-cta-banner {
+  background: linear-gradient(135deg, #111420 0%, #0d0e14 100%);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  border-radius: 28px;
+  padding: 56px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.7);
+}
+
+.blog-cta-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 250px;
+  background: radial-gradient(ellipse at center, rgba(225, 29, 72, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-banner-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+}
+
+.cta-banner-desc {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+.cta-banner-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e11d48;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.4);
+}
+
+.btn-cta-primary:hover {
+  background: #f43f5e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.5);
+}
+
+.btn-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.btn-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ------------------------------------------------------------- */
+/* Responsive Breakpoints                                        */
+/* ------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .featured-article-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .featured-media-box {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-container {
+    padding-top: 90px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .blog-category-pills {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .blog-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .featured-article-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .blog-cta-banner {
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+}

@@ -16,6 +16,14 @@
     {
       "source": "/faqs",
       "destination": "/faqs.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog-post.html"
     }
   ],
   "headers": [
