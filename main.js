@@ -416,4 +416,81 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // -----------------------------------------------------------
+  // 6. Universal Scroll-Triggered Reveal Animations
+  // -----------------------------------------------------------
+  function initScrollRevealSystem() {
+    if (!("IntersectionObserver" in window)) return;
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    function scanAndObserve() {
+      const selectors = [
+        ".section-header",
+        ".interactive-process-header",
+        ".testimonials-header",
+        ".leadership-header",
+        ".acados-outer-header",
+        ".process-summary-pill",
+        ".interactive-step-card",
+        ".testimonial-card-wrapper",
+        ".testimonials-bottom-banner",
+        ".leader-card",
+        ".footer-brand-col",
+        ".footer-nav-col",
+        ".footer-bottom-bar",
+        ".scroll-reveal"
+      ];
+
+      selectors.forEach((sel) => {
+        document.querySelectorAll(sel).forEach((el, index) => {
+          if (!el.classList.contains("scroll-reveal") && !el.classList.contains("is-revealed")) {
+            el.classList.add("scroll-reveal");
+            if (el.matches(".interactive-step-card, .testimonial-card-wrapper, .footer-nav-col, .leader-card")) {
+              const delayIndex = (index % 4) + 1;
+              el.classList.add(`reveal-delay-${delayIndex}`);
+            }
+            revealObserver.observe(el);
+          } else if (el.classList.contains("scroll-reveal") && !el.classList.contains("is-revealed")) {
+            revealObserver.observe(el);
+          }
+        });
+      });
+    }
+
+    scanAndObserve();
+
+    // Periodic check to capture dynamically mounted React elements
+    const observerTimer = setInterval(scanAndObserve, 350);
+    setTimeout(() => clearInterval(observerTimer), 4000);
+
+    // MutationObserver to capture elements mounted asynchronously
+    const mutationObserver = new MutationObserver(() => {
+      scanAndObserve();
+    });
+
+    const watchRoots = ["testimonials-root", "process-root", "acados-root"];
+    watchRoots.forEach((id) => {
+      const rootEl = document.getElementById(id);
+      if (rootEl) {
+        mutationObserver.observe(rootEl, { childList: true, subtree: true });
+      }
+    });
+  }
+
+  initScrollRevealSystem();
 });
