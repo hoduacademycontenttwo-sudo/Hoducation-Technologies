@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { getPostBySlug, getRelatedPosts, getAllPosts } from '../../content/blog/blogPosts';
 import { BlogPost } from '../../content/blog/types';
+import { FreehandCardMedia } from './FreehandCardMedia';
 import './BlogPostPage.css';
 
 interface BlogPostPageProps {
@@ -98,6 +99,9 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         '@type': 'Article',
         headline: post.title,
         description: post.seoDescription,
+        image: ['https://hoducation.tech/ht-logo.jpg'],
+        datePublished: '2026-03-21T08:00:00+05:30',
+        dateModified: '2026-03-21T08:00:00+05:30',
         author: {
           '@type': 'Person',
           name: post.author.name,
@@ -106,17 +110,10 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         publisher: {
           '@type': 'Organization',
           name: 'Hoducation Technologies Pvt Ltd',
-          url: 'https://hoducation.tech',
           logo: {
             '@type': 'ImageObject',
             url: 'https://hoducation.tech/ht-logo.jpg',
           },
-        },
-        datePublished: post.publishedAt,
-        dateModified: post.updatedAt,
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': `https://hoducation.tech/blog/${post.slug}`,
         },
       },
       {
@@ -163,7 +160,6 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     scriptTag.textContent = JSON.stringify(schemas);
 
     return () => {
-      // Cleanup script on unmount
       const existing = document.getElementById(scriptId);
       if (existing) existing.remove();
     };
@@ -206,27 +202,39 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     }));
   };
 
+  const getDisplayCategoryTag = (category: string) => {
+    if (category.includes('Custom')) return 'CUSTOM SOFTWARE';
+    if (category.includes('AI')) return 'AI SYSTEMS';
+    if (category.includes('CRM') || category.includes('ERP')) return 'ENTERPRISE';
+    if (category.includes('EdTech')) return 'EDTECH';
+    if (category.includes('Web')) return 'ENGINEERING';
+    return 'PRODUCT';
+  };
+
   if (!post) {
     return (
       <div className="post-page-root">
-        <header className="contact-nav-header">
-          <a href="/" className="contact-brand">
-            <img src="/ht-logo.jpg" alt="Hoducation" width="34" height="34" />
-            <span className="contact-brand-name">Hoducation Technologies</span>
-          </a>
-          <div className="contact-nav-actions">
-            <a href="/blog" className="contact-back-link">
-              <span>&larr; Back to Blog</span>
+        <header className="freehand-nav-wrapper">
+          <nav className="freehand-pill-navbar" aria-label="Main Navigation">
+            <a href="/" className="freehand-nav-brand">
+              <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+              <span className="freehand-nav-brand-text">Hoducation Technologies</span>
             </a>
-          </div>
+            <div className="freehand-nav-links">
+              <a href="/blog" className="freehand-nav-link active">All Blogs</a>
+            </div>
+            <a href="/contact" className="freehand-nav-demo-btn">
+              <span>REQUEST A DEMO</span>
+            </a>
+          </nav>
         </header>
 
-        <main className="post-container" style={{ textAlign: 'center', padding: '120px 24px' }}>
+        <main className="post-container" style={{ textAlign: 'center', padding: '160px 24px 100px' }}>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Article Not Found</h1>
-          <p style={{ color: '#94a3b8', marginBottom: '32px' }}>
+          <p style={{ color: '#575653', marginBottom: '32px' }}>
             The requested article could not be located. It may have been relocated or updated.
           </p>
-          <a href="/blog" className="btn-cta-primary" style={{ display: 'inline-flex' }}>
+          <a href="/blog" className="freehand-nav-demo-btn" style={{ display: 'inline-flex' }}>
             Explore All Insights &rarr;
           </a>
         </main>
@@ -239,33 +247,27 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
       {/* Top Reading Progress Bar */}
       <div className="reading-progress-bar" style={{ width: `${readingProgress}%` }} />
 
-      {/* Top Ambient Glow */}
-      <div className="post-ambient-glow" aria-hidden="true" />
+      {/* Floating Pill Navbar */}
+      <header className="freehand-nav-wrapper">
+        <nav className="freehand-pill-navbar" aria-label="Main Navigation">
+          <a href="/" className="freehand-nav-brand">
+            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+            <span className="freehand-nav-brand-text">Hoducation Technologies</span>
+          </a>
 
-      {/* Top Navigation */}
-      <header className="contact-nav-header">
-        <a href="/" className="contact-brand" aria-label="Return to Hoducation Home">
-          <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="contact-brand-logo" width="34" height="34" />
-          <span className="contact-brand-name">Hoducation Technologies</span>
-        </a>
+          <div className="freehand-nav-links">
+            <a href="/#services" className="freehand-nav-link">Services</a>
+            <a href="/#process" className="freehand-nav-link">Process</a>
+            <a href="/#products" className="freehand-nav-link">Products</a>
+            <a href="/#about" className="freehand-nav-link">About Us</a>
+            <a href="/blog" className="freehand-nav-link active">Blog</a>
+            <a href="/contact" className="freehand-nav-link">Contact</a>
+          </div>
 
-        <div className="contact-nav-actions">
-          <a href="/blog" className="contact-back-link">
-            <span>&larr; All Articles</span>
+          <a href="/contact" className="freehand-nav-demo-btn">
+            <span>REQUEST A DEMO</span>
           </a>
-          <a href="/contact" className="contact-back-link">
-            <span>Contact Us</span>
-          </a>
-          <a
-            href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20have%20an%20inquiry%20regarding%20an%20article."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-whatsapp-btn"
-          >
-            <i className="fa-brands fa-whatsapp"></i>
-            <span>WhatsApp</span>
-          </a>
-        </div>
+        </nav>
       </header>
 
       <main className="post-container">
@@ -273,14 +275,16 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         <nav className="post-breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a>
           <span className="separator">/</span>
-          <a href="/blog">Blog</a>
+          <a href="/blog">All Blogs</a>
           <span className="separator">/</span>
-          <span className="current">{post.title}</span>
+          <span className="current">{post.category}</span>
         </nav>
 
         {/* Article Header */}
         <header className="post-header">
-          <span className="post-category-tag">{post.category}</span>
+          <div className="post-header-tag-wrap">
+            <span className="freehand-category-badge">{getDisplayCategoryTag(post.category)}</span>
+          </div>
           <h1 className="post-title">{post.title}</h1>
 
           <div className="post-meta-strip">
@@ -290,20 +294,25 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
                 alt={post.author.name}
                 className="post-author-avatar"
               />
-              <span>{post.author.name}</span>
+              <span>{post.author.name.toUpperCase()}</span>
             </div>
             <span className="post-meta-dot">•</span>
-            <span>{post.publishedAt}</span>
+            <span>{post.publishedAt.toUpperCase()}</span>
             <span className="post-meta-dot">•</span>
-            <span>{post.readingTime}</span>
+            <span>{post.readingTime.toUpperCase()}</span>
           </div>
         </header>
+
+        {/* Hero Visual Card Banner */}
+        <div className="post-hero-media-wrapper">
+          <FreehandCardMedia post={post} variant="hero" />
+        </div>
 
         {/* Executive Summary / Key Takeaways Box */}
         {post.keyTakeaways && post.keyTakeaways.length > 0 && (
           <aside className="post-takeaways-card" aria-label="Key Takeaways">
             <h3 className="takeaways-heading">
-              <i className="fa-solid fa-bolt" style={{ color: '#38bdf8' }}></i>
+              <span className="takeaways-icon">✱</span>
               Key Architectural &amp; Strategic Takeaways
             </h3>
             <ul className="takeaways-list">
@@ -320,9 +329,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
           <aside className="post-sidebar">
             {post.tableOfContents && post.tableOfContents.length > 0 && (
               <div className="toc-panel">
-                <h4 className="toc-title">
-                  <i className="fa-solid fa-list-ul"></i> Table of Contents
-                </h4>
+                <h4 className="toc-title">TABLE OF CONTENTS</h4>
                 <nav className="toc-nav">
                   {post.tableOfContents.map((item) => (
                     <a
@@ -341,7 +348,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
             <div className="sidebar-cta-card">
               <h4 className="sidebar-cta-title">Need Custom Software?</h4>
               <p className="sidebar-cta-desc">
-                Hoducation engineers enterprise ERPs, smart AI automations, and scalable web solutions.
+                Hoducation engineers enterprise ERPs, smart AI automations, and scalable software solutions.
               </p>
               <a href="/contact" className="sidebar-cta-btn">
                 Talk to an Architect &rarr;
@@ -402,35 +409,41 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
           </article>
         </div>
 
-        {/* Related Articles Section */}
+        {/* Related Articles Section (Matching Freehand Card Grid) */}
         {relatedPosts.length > 0 && (
           <section className="post-related-section">
             <h3 className="related-heading">Related Engineering Guides</h3>
-            <div className="related-grid">
+            <div className="freehand-cards-grid">
               {relatedPosts.map((related) => (
                 <a
                   key={related.slug}
                   href={`/blog/${related.slug}`}
-                  className="blog-card"
+                  className="freehand-card"
                 >
-                  <div className="card-thumbnail-box">
-                    <div className="card-grid-texture" />
-                    <div className="card-center-badge-wrap">
-                      <div className="card-badge-title">
-                        {related.imageBadgeText || related.title.split(' ')[0]}
-                      </div>
-                      <span className="card-badge-sub">{related.category}</span>
-                    </div>
+                  <div className="freehand-card-media-wrap">
+                    <FreehandCardMedia post={related} variant="grid" />
                   </div>
 
-                  <div className="card-info-box">
-                    <div className="card-meta-row">
-                      <span>{related.publishedAt}</span>
-                      <span className="meta-dot">•</span>
-                      <span>{related.readingTime}</span>
+                  <div className="freehand-card-content">
+                    <div className="freehand-card-meta-row">
+                      <span className="freehand-meta-date">{related.publishedAt.toUpperCase()}</span>
+                      <span className="freehand-meta-sep">•</span>
+                      <span className="freehand-meta-author">{related.author.name.toUpperCase()}</span>
                     </div>
-                    <h4 className="card-title">{related.title}</h4>
-                    <p className="card-excerpt">{related.excerpt}</p>
+
+                    <h4 className="freehand-card-title">{related.title}</h4>
+
+                    <div className="freehand-card-footer">
+                      <span className="freehand-category-badge">
+                        {getDisplayCategoryTag(related.category)}
+                      </span>
+                      <span className="freehand-arrow-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </a>
               ))}
@@ -439,42 +452,72 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         )}
 
         {/* Bottom CTA Banner */}
-        <section className="blog-cta-banner">
-          <h2 className="cta-banner-title">Turn This Knowledge Into Competitive Advantage</h2>
-          <p className="cta-banner-desc">
-            Let our engineering team architect and build the custom software, ERP, or AI automation engine your business needs to scale effortlessly.
-          </p>
-          <div className="cta-banner-actions">
-            <a href="/contact" className="btn-cta-primary">
-              <span>Request Free Consultation</span>
-              <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
-            <a
-              href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20am%20ready%20to%20discuss%20our%20software%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-secondary"
-            >
-              <i className="fa-brands fa-whatsapp"></i>
-              <span>WhatsApp Direct</span>
-            </a>
+        <section className="freehand-cta-section" style={{ marginTop: '60px' }}>
+          <div className="freehand-cta-box">
+            <div className="freehand-cta-info">
+              <h2 className="freehand-cta-title">
+                Ready to architect <span className="freehand-orange-text">your solution?</span>
+              </h2>
+              <p className="freehand-cta-desc">
+                Hoducation engineers enterprise ERPs, intelligent automations, and custom web applications that scale effortlessly.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <a href="/contact" className="freehand-cta-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                Schedule Consultation
+              </a>
+              <a
+                href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20am%20interested%20in%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="freehand-nav-demo-btn"
+                style={{ background: '#25d366', color: '#ffffff', textDecoration: 'none' }}
+              >
+                WhatsApp Chat
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
       {/* Global Site Footer */}
-      <footer className="contact-site-footer">
-        <div className="contact-footer-inner">
-          <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
-          <div className="contact-footer-links">
-            <a href="/">Home</a>
-            <a href="/blog">Blog &amp; Insights</a>
-            <a href="/faqs">FAQs</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms &amp; Conditions</a>
-            <a href="/contact">Contact</a>
-            <a href="tel:+919660034117">+91 9660034117</a>
-            <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
+      <footer className="freehand-site-footer">
+        <div className="freehand-container">
+          <div className="freehand-footer-top">
+            <div className="freehand-footer-brand">
+              <a href="/" className="footer-brand-title">HODUCATION</a>
+              <p className="footer-brand-desc">
+                Engineering bespoke software, institutional ERPs, and automated workflows for mission-critical operations.
+              </p>
+            </div>
+
+            <div className="freehand-footer-links-grid">
+              <div className="footer-links-col">
+                <span className="footer-col-title">COMPANY</span>
+                <a href="/#about">About Us</a>
+                <a href="/#services">Services</a>
+                <a href="/#products">Products</a>
+                <a href="/contact">Careers</a>
+              </div>
+              <div className="footer-links-col">
+                <span className="footer-col-title">RESOURCES</span>
+                <a href="/blog">All Blogs</a>
+                <a href="/faqs">FAQs</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms &amp; Conditions</a>
+              </div>
+              <div className="footer-links-col">
+                <span className="footer-col-title">CONNECT</span>
+                <a href="tel:+919660034117">+91 9660034117</a>
+                <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
+                <a href="https://wa.me/919660034117" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="freehand-footer-bottom">
+            <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
+            <div className="footer-meta-pill">Made with precision in Jaipur, India</div>
           </div>
         </div>
       </footer>

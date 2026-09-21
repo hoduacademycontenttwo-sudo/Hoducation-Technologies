@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { BLOG_POSTS, BLOG_CATEGORIES, getFeaturedPost } from '../../content/blog/blogPosts';
 import { BlogCategory, BlogPost } from '../../content/blog/types';
+import { FreehandCardMedia } from './FreehandCardMedia';
 import { Loader } from '../common/Loader';
 import './BlogIndexPage.css';
 
@@ -8,8 +9,16 @@ export const BlogIndexPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [newsletterEmail, setNewsletterEmail] = useState<string>('');
+  const [subscribed, setSubscribed] = useState<boolean>(false);
 
+  // Primary featured post for hero left side
   const featuredPost = useMemo(() => getFeaturedPost(), []);
+
+  // 3 secondary featured posts for hero right stack
+  const secondaryFeaturedPosts = useMemo(() => {
+    return BLOG_POSTS.filter((post) => post.slug !== featuredPost.slug).slice(0, 3);
+  }, [featuredPost]);
 
   // Filter posts based on category and search query
   const filteredPosts = useMemo(() => {
@@ -23,7 +32,8 @@ export const BlogIndexPage: React.FC = () => {
         post.title.toLowerCase().includes(q) ||
         post.excerpt.toLowerCase().includes(q) ||
         post.category.toLowerCase().includes(q) ||
-        post.primaryKeyword.toLowerCase().includes(q);
+        post.primaryKeyword.toLowerCase().includes(q) ||
+        post.author.name.toLowerCase().includes(q);
 
       return matchesCategory && matchesSearch;
     });
@@ -32,228 +42,371 @@ export const BlogIndexPage: React.FC = () => {
   const handleCategoryChange = (category: BlogCategory) => {
     setIsLoading(true);
     setSelectedCategory(category);
-    setTimeout(() => setIsLoading(false), 200);
+    setTimeout(() => setIsLoading(false), 150);
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      setSubscribed(true);
+      setNewsletterEmail('');
+    }
+  };
+
+  // Convert category string to clean uppercase pill tag matching reference
+  const getDisplayCategoryTag = (category: string) => {
+    if (category.includes('Custom')) return 'CUSTOM SOFTWARE';
+    if (category.includes('AI')) return 'AI SYSTEMS';
+    if (category.includes('CRM') || category.includes('ERP')) return 'ENTERPRISE';
+    if (category.includes('EdTech')) return 'EDTECH';
+    if (category.includes('Web')) return 'ENGINEERING';
+    return 'PRODUCT';
   };
 
   return (
-    <div className="blog-page-root">
-      {/* Top Ambient Glow */}
-      <div className="blog-ambient-glow-top" aria-hidden="true" />
+    <div className="freehand-blog-root">
+      {/* Top Floating Pill Navbar (Matching User Reference media_1789983701283.png) */}
+      <header className="freehand-nav-wrapper">
+        <nav className="freehand-pill-navbar" aria-label="Main Navigation">
+          <a href="/" className="freehand-nav-brand">
+            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+            <span className="freehand-nav-brand-text">Hoducation Technologies</span>
+          </a>
 
-      {/* Global Header / Nav */}
-      <header className="contact-nav-header">
-        <a href="/" className="contact-brand" aria-label="Hoducation Home">
-          <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="contact-brand-logo" width="34" height="34" />
-          <span className="contact-brand-name">Hoducation Technologies</span>
-        </a>
+          <div className="freehand-nav-links">
+            <a href="/#services" className="freehand-nav-link">Services</a>
+            <a href="/#process" className="freehand-nav-link">Process</a>
+            <a href="/#products" className="freehand-nav-link">Products</a>
+            <a href="/#testimonials" className="freehand-nav-link">Clients</a>
+            <a href="/#about" className="freehand-nav-link">About Us</a>
+            <a href="/blog" className="freehand-nav-link active">Blog</a>
+            <a href="/contact" className="freehand-nav-link">Contact</a>
+          </div>
 
-        <div className="contact-nav-actions">
-          <a href="/" className="contact-back-link">
-            <span>Home</span>
+          <a href="/contact" className="freehand-nav-demo-btn">
+            <span>REQUEST A DEMO</span>
           </a>
-          <a href="/faqs" className="contact-back-link">
-            <span>FAQs</span>
-          </a>
-          <a href="/contact" className="contact-back-link">
-            <span>Contact</span>
-          </a>
-          <a
-            href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20am%20interested%20in%20your%20software%20solutions."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-whatsapp-btn"
-          >
-            <i className="fa-brands fa-whatsapp"></i>
-            <span>WhatsApp Chat</span>
-          </a>
-        </div>
+        </nav>
       </header>
 
-      {/* Main Blog Container */}
-      <main className="blog-container">
-        {/* Hero Section */}
-        <section className="blog-hero">
-          <div className="blog-eyebrow">
-            <span>Engineering Insights &amp; Strategy</span>
-          </div>
-          <h1 className="blog-hero-title">
-            <span className="blog-title-gradient">Insights, Systems &amp; Technology</span>
-          </h1>
-          <p className="blog-hero-desc">
-            Deep technical guides, architectural breakdowns, and strategic playbooks on custom software development, AI automation, ERP systems, and modern digital infrastructure.
-          </p>
-        </section>
+      {/* Main Content Area */}
+      <main className="freehand-main-wrapper">
+        {/* ========================================================= */}
+        {/* HERO SECTION: "Featured Blogs" (Exact Freehand Layout)    */}
+        {/* ========================================================= */}
+        <section className="freehand-hero-section">
+          <div className="freehand-container">
+            <div className="freehand-section-title-wrap">
+              <h1 className="freehand-hero-heading">Featured Blogs</h1>
+            </div>
 
-        {/* Search & Category Filter Controls */}
-        <section className="blog-controls-wrap" aria-label="Search and category filters">
-          <div className="blog-search-bar">
-            <i className="fa-solid fa-magnifying-glass blog-search-icon" aria-hidden="true"></i>
-            <input
-              type="text"
-              className="blog-search-input"
-              placeholder="Search articles by topic, keyword, or technology..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search articles"
-            />
-          </div>
-
-          <div className="blog-category-pills" role="tablist" aria-label="Filter by category">
-            {BLOG_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                role="tab"
-                aria-selected={selectedCategory === cat}
-                className={`category-pill-btn ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => handleCategoryChange(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* Loader Display during fast filter change */}
-        {isLoading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '60px 0' }}>
-            <Loader size={70} />
-          </div>
-        ) : (
-          <>
-            {/* Featured Article Card (Shown when on 'All' and no search query) */}
-            {selectedCategory === 'All' && !searchQuery && featuredPost && (
-              <section className="blog-featured-wrap">
-                <a href={`/blog/${featuredPost.slug}`} className="featured-article-card">
-                  <div className="featured-media-box">
-                    <div className="featured-center-badge">
-                      <span>{featuredPost.imageBadgeText || 'Enterprise Tech 2026'}</span>
-                    </div>
-                  </div>
-
-                  <div className="featured-content-box">
-                    <div className="featured-tag-row">
-                      <span className="featured-badge-pill">Featured Guide</span>
-                      <span className="featured-date">{featuredPost.publishedAt}</span>
-                      <span className="featured-date">•</span>
-                      <span className="featured-date">{featuredPost.readingTime}</span>
+            <div className="freehand-hero-split-grid">
+              {/* Left Column: Primary Big Featured Card */}
+              {featuredPost && (
+                <div className="freehand-hero-primary-col">
+                  <a
+                    href={`/blog/${featuredPost.slug}`}
+                    className="freehand-hero-primary-card"
+                    id={`hero-featured-${featuredPost.slug}`}
+                  >
+                    <div className="freehand-hero-media-wrapper">
+                      <FreehandCardMedia post={featuredPost} variant="hero" />
                     </div>
 
-                    <h2 className="featured-title">{featuredPost.title}</h2>
-                    <p className="featured-excerpt">{featuredPost.excerpt}</p>
+                    <div className="freehand-hero-primary-content">
+                      <h2 className="freehand-hero-primary-title">
+                        {featuredPost.title}
+                      </h2>
 
-                    <div className="featured-author-row">
-                      <img
-                        src={featuredPost.author.avatar}
-                        alt={featuredPost.author.name}
-                        className="featured-author-avatar"
-                      />
-                      <div>
-                        <div className="featured-author-name">{featuredPost.author.name}</div>
-                        <div className="featured-read-time">{featuredPost.author.role}</div>
+                      <div className="freehand-hero-meta-row">
+                        <span className="freehand-meta-date">
+                          {featuredPost.publishedAt.toUpperCase()}
+                        </span>
+                        <span className="freehand-meta-sep">•</span>
+                        <span className="freehand-meta-time">
+                          {featuredPost.readingTime.toUpperCase()}
+                        </span>
+                      </div>
+
+                      <div className="freehand-hero-card-footer">
+                        <span className="freehand-category-badge">
+                          {getDisplayCategoryTag(featuredPost.category)}
+                        </span>
+                        <span className="freehand-arrow-icon" aria-hidden="true">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </span>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </section>
-            )}
+                  </a>
+                </div>
+              )}
 
-            {/* Articles Grid (Exact Match to User Reference Screenshot) */}
-            {filteredPosts.length > 0 ? (
-              <section className="blog-grid" aria-label="Blog posts list">
-                {filteredPosts.map((post: BlogPost) => (
+              {/* Right Column: Stacked Secondary Cards */}
+              <div className="freehand-hero-secondary-col">
+                {secondaryFeaturedPosts.map((post) => (
                   <a
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="blog-card"
-                    id={`post-card-${post.slug}`}
+                    className="freehand-hero-secondary-card"
+                    id={`hero-secondary-${post.slug}`}
                   >
-                    {/* Visual Card Thumbnail Box */}
-                    <div className="card-thumbnail-box">
-                      <div className="card-grid-texture" />
-                      <div className="card-center-badge-wrap">
-                        <div className="card-badge-title">
-                          {post.imageBadgeText || post.title.split(' ')[0]}
-                        </div>
-                        <span className="card-badge-sub">{post.category}</span>
-                      </div>
+                    <div className="freehand-secondary-media-wrapper">
+                      <FreehandCardMedia post={post} variant="hero-secondary" />
                     </div>
 
-                    {/* Meta & Summary Information */}
-                    <div className="card-info-box">
-                      <div className="card-meta-row">
-                        <span>{post.publishedAt}</span>
-                        <span className="meta-dot">•</span>
-                        <span className="meta-author">{post.author.name}</span>
-                        <span className="meta-dot">•</span>
-                        <span>{post.readingTime}</span>
+                    <div className="freehand-secondary-content">
+                      <h3 className="freehand-secondary-title">{post.title}</h3>
+
+                      <div className="freehand-secondary-meta-row">
+                        <span className="freehand-meta-date">
+                          {post.publishedAt.toUpperCase()}
+                        </span>
+                        <span className="freehand-meta-sep">•</span>
+                        <span className="freehand-meta-author">
+                          {post.author.name.toUpperCase()}
+                        </span>
                       </div>
 
-                      <h3 className="card-title">{post.title}</h3>
-
-                      <p className="card-excerpt">{post.excerpt}</p>
+                      <div className="freehand-secondary-card-footer">
+                        <span className="freehand-category-badge">
+                          {getDisplayCategoryTag(post.category)}
+                        </span>
+                        <span className="freehand-arrow-icon" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </a>
                 ))}
-              </section>
-            ) : (
-              <div className="blog-empty-state">
-                <h3 className="empty-title">No articles found</h3>
-                <p className="empty-desc">
-                  No articles matched your criteria "{searchQuery || selectedCategory}". Try adjusting your filters or search keywords.
-                </p>
-                <button
-                  type="button"
-                  className="empty-reset-btn"
-                  onClick={() => {
-                    setSelectedCategory('All');
-                    setSearchQuery('');
-                  }}
-                >
-                  Reset All Filters
-                </button>
               </div>
-            )}
-          </>
-        )}
+            </div>
+          </div>
+        </section>
 
-        {/* Conversion CTA Banner */}
-        <section className="blog-cta-banner">
-          <h2 className="cta-banner-title">Build High-Performance Software for Your Organization</h2>
-          <p className="cta-banner-desc">
-            Whether you need bespoke ERP architecture, autonomous AI agents, or automated exam portals—Hoducation delivers end-to-end digital solutions tailored to your operational workflows.
-          </p>
-          <div className="cta-banner-actions">
-            <a href="/contact" className="btn-cta-primary">
-              <span>Schedule Architecture Review</span>
-              <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
-            <a
-              href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-secondary"
-            >
-              <i className="fa-brands fa-whatsapp"></i>
-              <span>Direct WhatsApp</span>
-            </a>
+        {/* ========================================================= */}
+        {/* NEWSLETTER BANNER: "Stay close to our work."             */}
+        {/* ========================================================= */}
+        <section className="freehand-cta-section">
+          <div className="freehand-container">
+            <div className="freehand-cta-box">
+              <div className="freehand-cta-info">
+                <h2 className="freehand-cta-title">
+                  Stay close to <span className="freehand-orange-text">our work.</span>
+                </h2>
+                <p className="freehand-cta-desc">
+                  Company insights, technical blueprints, and enterprise case studies — delivered straight to your inbox.
+                </p>
+              </div>
+
+              <div className="freehand-cta-form-area">
+                {subscribed ? (
+                  <div className="freehand-cta-success">
+                    <span className="success-icon">✓</span>
+                    <span>Thank you for subscribing! You're on the list.</span>
+                  </div>
+                ) : (
+                  <form className="freehand-cta-form" onSubmit={handleNewsletterSubmit}>
+                    <input
+                      type="email"
+                      className="freehand-cta-input"
+                      placeholder="Enter your email address"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      required
+                    />
+                    <button type="submit" className="freehand-cta-btn">
+                      Submit
+                    </button>
+                  </form>
+                )}
+                <div className="freehand-cta-microcopy">
+                  By subscribing you agree to our <a href="/privacy">Privacy Policy</a>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* "ALL BLOGS" SECTION: Reference media_1789983787713.png     */}
+        {/* ========================================================= */}
+        <section className="freehand-listing-section">
+          <div className="freehand-container">
+            {/* Header & Search Bar Row */}
+            <div className="freehand-listing-header">
+              <h2 className="freehand-all-blogs-title">ALL BLOGS</h2>
+
+              <div className="freehand-search-box">
+                <svg
+                  className="freehand-search-icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                  type="text"
+                  className="freehand-search-input"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search all blogs"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    className="freehand-search-clear-btn"
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="freehand-categories-bar" role="tablist" aria-label="Blog categories">
+              {BLOG_CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  role="tab"
+                  aria-selected={selectedCategory === cat}
+                  className={`freehand-cat-pill ${selectedCategory === cat ? 'active' : ''}`}
+                  onClick={() => handleCategoryChange(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Loading Indicator */}
+            {isLoading ? (
+              <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}>
+                <Loader size={60} />
+              </div>
+            ) : (
+              <>
+                {/* 3-Column Card Grid (Matching media_1789983787713.png) */}
+                {filteredPosts.length > 0 ? (
+                  <div className="freehand-cards-grid">
+                    {filteredPosts.map((post) => (
+                      <a
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="freehand-card"
+                        id={`post-card-${post.slug}`}
+                      >
+                        {/* Branded Graphical Card Media Box */}
+                        <div className="freehand-card-media-wrap">
+                          <FreehandCardMedia post={post} variant="grid" />
+                        </div>
+
+                        {/* Card Content Information */}
+                        <div className="freehand-card-content">
+                          <div className="freehand-card-meta-row">
+                            <span className="freehand-meta-date">
+                              {post.publishedAt.toUpperCase()}
+                            </span>
+                            <span className="freehand-meta-sep">•</span>
+                            <span className="freehand-meta-author">
+                              {post.author.name.toUpperCase()}
+                            </span>
+                          </div>
+
+                          <h3 className="freehand-card-title">{post.title}</h3>
+
+                          <div className="freehand-card-footer">
+                            <span className="freehand-category-badge">
+                              {getDisplayCategoryTag(post.category)}
+                            </span>
+                            <span className="freehand-arrow-icon" aria-hidden="true">
+                              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="freehand-empty-state">
+                    <h3 className="empty-title">No articles found</h3>
+                    <p className="empty-desc">
+                      No results matched "{searchQuery}". Try searching for terms like "ERP", "AI", "Custom Software", or "Costs".
+                    </p>
+                    <button
+                      type="button"
+                      className="empty-reset-btn"
+                      onClick={() => {
+                        setSelectedCategory('All');
+                        setSearchQuery('');
+                      }}
+                    >
+                      Reset All Filters
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </section>
       </main>
 
-      {/* Global Footer */}
-      <footer className="contact-site-footer">
-        <div className="contact-footer-inner">
-          <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
-          <div className="contact-footer-links">
-            <a href="/">Home</a>
-            <a href="/blog">Blog &amp; Insights</a>
-            <a href="/faqs">FAQs</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms &amp; Conditions</a>
-            <a href="/contact">Contact</a>
-            <a href="tel:+919660034117">+91 9660034117</a>
-            <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
+      {/* Global Minimalist Footer */}
+      <footer className="freehand-site-footer">
+        <div className="freehand-container">
+          <div className="freehand-footer-top">
+            <div className="freehand-footer-brand">
+              <a href="/" className="footer-brand-title">HODUCATION</a>
+              <p className="footer-brand-desc">
+                Engineering bespoke software, institutional ERPs, and automated workflows for mission-critical operations.
+              </p>
+            </div>
+
+            <div className="freehand-footer-links-grid">
+              <div className="footer-links-col">
+                <span className="footer-col-title">COMPANY</span>
+                <a href="/#about">About Us</a>
+                <a href="/#services">Services</a>
+                <a href="/#products">Products</a>
+                <a href="/contact">Careers</a>
+              </div>
+              <div className="footer-links-col">
+                <span className="footer-col-title">RESOURCES</span>
+                <a href="/blog">All Blogs</a>
+                <a href="/faqs">FAQs</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms &amp; Conditions</a>
+              </div>
+              <div className="footer-links-col">
+                <span className="footer-col-title">CONNECT</span>
+                <a href="tel:+919660034117">+91 9660034117</a>
+                <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
+                <a href="https://wa.me/919660034117" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="freehand-footer-bottom">
+            <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
+            <div className="footer-meta-pill">Made with precision in Jaipur, India</div>
           </div>
         </div>
       </footer>
