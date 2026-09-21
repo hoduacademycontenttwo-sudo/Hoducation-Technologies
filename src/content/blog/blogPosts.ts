@@ -41,9 +41,19 @@ export function getFeaturedPost(): BlogPost {
   return BLOG_POSTS.find((post) => post.isFeatured) || BLOG_POSTS[0];
 }
 
+const SLUG_ALIASES: Record<string, string> = {
+  'modern-school-erp-features': 'what-should-a-modern-school-erp-include',
+  'business-processes-automate-with-ai': '10-business-processes-you-can-automate-with-ai',
+  'signs-outgrown-excel-spreadsheets': '7-signs-your-business-has-outgrown-excel-spreadsheets',
+  'crm-automation-sales-follow-ups': 'how-crm-automation-can-improve-sales-follow-ups',
+  'website-crm-lead-machine': 'website-crm-integration-lead-machine',
+  'ai-automation-transforming-business-2026': 'how-ai-automation-is-transforming-modern-businesses-in-2026',
+};
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
   const normalized = slug.trim().toLowerCase().replace(/^\/blog\//, '').replace(/\/$/, '');
-  return BLOG_POSTS.find((post) => post.slug === normalized);
+  const targetSlug = SLUG_ALIASES[normalized] || normalized;
+  return BLOG_POSTS.find((post) => post.slug === targetSlug || post.slug === normalized);
 }
 
 export function getRelatedPosts(currentPost: BlogPost, limit = 3): BlogPost[] {

@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Main Pages -->
   <url>
     <loc>https://hoducation.tech/</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/ht-logo.jpg</image:loc>
+      <image:title>Hoducation Technologies - Enterprise Custom Software &amp; AI Systems</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://hoducation.tech/contact</loc>
@@ -37,7 +42,7 @@
     <loc>https://hoducation.tech/blog</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
   </url>
 
   <!-- 10 Comprehensive Engineering & Business Articles -->
@@ -45,60 +50,119 @@
     <loc>https://hoducation.tech/blog/custom-software-vs-ready-made-software</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/custom-software-vs-ready-made.jpg</image:loc>
+      <image:title>Custom Software vs Ready-Made Software Comparison 2026</image:title>
+      <image:caption>Comprehensive decision maker guide breaking down TCO, scalability, and bespoke engineering.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/custom-software-development-cost-india</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/custom-software-development-cost-india.jpg</image:loc>
+      <image:title>Custom Software Development Cost in India (2026 Pricing Guide)</image:title>
+      <image:caption>Transparent pricing breakdown detailing custom software engineering costs across ERPs and web portals.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/crm-vs-erp-difference</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/crm-vs-erp-difference.jpg</image:loc>
+      <image:title>CRM vs ERP Core Differences and System Architecture</image:title>
+      <image:caption>Synchronizing sales pipelines with operational resource planning and enterprise databases.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/business-processes-automate-with-ai.jpg</image:loc>
+      <image:title>10 Business Processes You Can Automate with AI in 2026</image:title>
+      <image:caption>Enterprise guide to deploying generative AI workflows and human-in-the-loop automations.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/ai-agents-vs-traditional-automation</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/ai-agents-vs-traditional-automation.jpg</image:loc>
+      <image:title>AI Agents vs Traditional Automation: Why Agentic Workflows Are Replacing Scripts</image:title>
+      <image:caption>Architectural analysis comparing rigid RPA scripts with reasoning multi-agent systems.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/what-should-a-modern-school-erp-include</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/modern-school-erp-features.jpg</image:loc>
+      <image:title>8 Features Every Modern School ERP System Must Have in 2026</image:title>
+      <image:caption>Eliminating fee leakages, automating attendance, and integrating parent communication.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/signs-outgrown-excel-spreadsheets.jpg</image:loc>
+      <image:title>5 Clear Signs Your Business Has Outgrown Excel Spreadsheets</image:title>
+      <image:caption>Migrating manual spreadsheets to secure, concurrent cloud databases and automated software.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/crm-automation-sales-follow-ups.jpg</image:loc>
+      <image:title>How CRM Automation Supercharges Sales Follow-Ups and Stops Deal Leakage</image:title>
+      <image:caption>Zero lead leakage sales pipelines with sub-60s multi-channel follow-up sequences.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/website-crm-integration-lead-machine</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/website-crm-lead-machine.jpg</image:loc>
+      <image:title>How to Turn Your Company Website into a 24/7 CRM Lead Machine</image:title>
+      <image:caption>Automated intent scoring, instantaneous lead notifications, and direct CRM ingestion.</image:caption>
+    </image:image>
   </url>
+
   <url>
     <loc>https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/ai-automation-transforming-business-2026.jpg</image:loc>
+      <image:title>How AI and Automation Are Transforming Businesses in 2026</image:title>
+      <image:caption>Strategic playbook for enterprise AI adoption, intelligent document processing, and agent swarms.</image:caption>
+    </image:image>
   </url>
 </urlset>

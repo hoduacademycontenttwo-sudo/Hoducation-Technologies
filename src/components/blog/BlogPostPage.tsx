@@ -70,24 +70,41 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     }
     canonical.setAttribute('content', `https://hoducation.tech/blog/${post.slug}`);
 
-    // OpenGraph Tags
-    const updateOgTag = (property: string, content: string) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
+    // Dynamic Meta Helper
+    const setMetaTag = (selector: string, attrName: string, attrValue: string, content: string) => {
+      let tag = document.querySelector(selector);
       if (!tag) {
         tag = document.createElement('meta');
-        tag.setAttribute('property', property);
+        tag.setAttribute(attrName, attrValue);
         document.head.appendChild(tag);
       }
       tag.setAttribute('content', content);
     };
 
-    updateOgTag('og:title', post.title);
-    updateOgTag('og:description', post.seoDescription);
-    updateOgTag('og:type', 'article');
-    updateOgTag('og:url', `https://hoducation.tech/blog/${post.slug}`);
-    updateOgTag('og:image', 'https://hoducation.tech/ht-logo.jpg');
+    // Meta Keywords
+    const allKeywords = [post.primaryKeyword, ...(post.secondaryKeywords || [])].join(', ');
+    setMetaTag('meta[name="keywords"]', 'name', 'keywords', allKeywords);
 
-    // JSON-LD Structured Data Schema (Article, BreadcrumbList, FAQPage)
+    // OpenGraph Tags
+    const fullImageUrl = `https://hoducation.tech${post.featuredImage}`;
+    setMetaTag('meta[property="og:title"]', 'property', 'og:title', post.seoTitle || post.title);
+    setMetaTag('meta[property="og:description"]', 'property', 'og:description', post.seoDescription);
+    setMetaTag('meta[property="og:type"]', 'property', 'og:type', 'article');
+    setMetaTag('meta[property="og:url"]', 'property', 'og:url', `https://hoducation.tech/blog/${post.slug}`);
+    setMetaTag('meta[property="og:image"]', 'property', 'og:image', fullImageUrl);
+    setMetaTag('meta[property="og:site_name"]', 'property', 'og:site_name', 'Hoducation Technologies');
+    setMetaTag('meta[property="article:published_time"]', 'property', 'article:published_time', '2026-03-21T08:00:00+05:30');
+    setMetaTag('meta[property="article:modified_time"]', 'property', 'article:modified_time', '2026-03-21T08:00:00+05:30');
+    setMetaTag('meta[property="article:author"]', 'property', 'article:author', post.author.name);
+    setMetaTag('meta[property="article:section"]', 'property', 'article:section', post.category);
+
+    // Twitter Card Tags
+    setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', post.seoTitle || post.title);
+    setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', post.seoDescription);
+    setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', fullImageUrl);
+
+    // JSON-LD Structured Data Schema (TechArticle, BreadcrumbList, FAQPage, Speakable)
     const scriptId = 'blog-post-schema-jsonld';
     let scriptTag = document.getElementById(scriptId) as HTMLScriptElement | null;
     if (!scriptTag) {
@@ -100,25 +117,37 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
     const schemas: any[] = [
       {
         '@context': 'https://schema.org',
-        '@type': 'Article',
+        '@type': 'TechArticle',
+        '@id': `https://hoducation.tech/blog/${post.slug}#article`,
+        isPartOf: {
+          '@type': 'WebPage',
+          '@id': `https://hoducation.tech/blog/${post.slug}`,
+          url: `https://hoducation.tech/blog/${post.slug}`,
+          name: post.seoTitle || post.title,
+        },
         headline: post.title,
         description: post.seoDescription,
-        image: ['https://hoducation.tech/ht-logo.jpg'],
+        image: [fullImageUrl],
         datePublished: '2026-03-21T08:00:00+05:30',
         dateModified: '2026-03-21T08:00:00+05:30',
+        inLanguage: 'en-US',
+        mainEntityOfPage: `https://hoducation.tech/blog/${post.slug}`,
         author: {
           '@type': 'Person',
           name: post.author.name,
           jobTitle: post.author.role,
+          url: 'https://hoducation.tech/#about',
         },
         publisher: {
           '@type': 'Organization',
           name: 'Hoducation Technologies Pvt Ltd',
+          url: 'https://hoducation.tech/',
           logo: {
             '@type': 'ImageObject',
             url: 'https://hoducation.tech/ht-logo.jpg',
           },
         },
+        keywords: allKeywords,
       },
       {
         '@context': 'https://schema.org',
@@ -143,6 +172,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
             item: `https://hoducation.tech/blog/${post.slug}`,
           },
         ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['.post-editorial-title', '.post-editorial-lead-desc', '.post-takeaways-callout'],
       },
     ];
 
