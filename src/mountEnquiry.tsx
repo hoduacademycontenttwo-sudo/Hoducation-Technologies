@@ -5,6 +5,7 @@ import ProcessSection from './components/process/ProcessSection';
 import Galaxy from './components/Galaxy';
 
 import { AcadOSShowcase } from './components/acados/AcadOSShowcase';
+import TestimonialsSection from './components/testimonials/TestimonialsSection';
 
 // 1. Interactive WebGL Galaxy Hero Background
 const galaxyContainer = document.getElementById('galaxy-root');
@@ -61,3 +62,15 @@ if (processContainer) {
     </React.StrictMode>
   );
 }
+
+// 5. Testimonials Section (Trusted By Organizations)
+const testimonialsContainer = document.getElementById('testimonials-root');
+
+if (testimonialsContainer) {
+  createRoot(testimonialsContainer).render(
+    <React.StrictMode>
+      <TestimonialsSection />
+    </React.StrictMode>
+  );
+}
+

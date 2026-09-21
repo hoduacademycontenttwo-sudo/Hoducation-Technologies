@@ -1,0 +1,626 @@
+/* ==========================================================================
+   Trusted By Organizations / Testimonials Section
+   Signature Brutalist Card Interaction with Dynamic Accents
+   ========================================================================== */
+
+.testimonials-section {
+  position: relative;
+  width: 100%;
+  padding: 100px 24px 110px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: visible;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Background matrix accents */
+.testimonials-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.testimonials-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Section Header
+   -------------------------------------------------------------------------- */
+
+.testimonials-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 52px;
+}
+
+.section-badge-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.testimonials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0a3cff;
+  background: #e0e7ff;
+  border: 1px solid #c7d2fe;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  font-family: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
+}
+
+.testimonials-main-title {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #09090b;
+  margin: 0 0 18px 0;
+}
+
+.title-accent {
+  background: linear-gradient(135deg, #0a3cff 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.testimonials-subtitle {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 32px 0;
+}
+
+/* --------------------------------------------------------------------------
+   Filter Tabs
+   -------------------------------------------------------------------------- */
+
+.testimonials-filter-tabs {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 5px;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  gap: 4px;
+}
+
+.testimonials-filter-tabs .tab-btn {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  padding: 9px 20px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.testimonials-filter-tabs .tab-btn:hover {
+  color: #09090b;
+}
+
+.testimonials-filter-tabs .tab-btn.active {
+  background: #09090b;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Cards Grid
+   -------------------------------------------------------------------------- */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 50px;
+  padding: 14px 14px 18px 18px;
+  overflow: visible;
+}
+
+@media (max-width: 1200px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 620px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Card Implementation (Exact Match to User Snippet + Dynamic Accents)
+   -------------------------------------------------------------------------- */
+
+.testimonial-card-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.testimonial-card-wrapper .card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 440px;
+  padding: 28px 24px;
+  border-radius: 24px;
+  overflow: hidden;
+  line-height: 1.6;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-card-wrapper .card:hover {
+  box-shadow: 8px 8px var(--card-accent, #0a3cff);
+  border-color: var(--card-accent, #0a3cff);
+  transform: translate(-8px, -8px);
+}
+
+.testimonial-card-wrapper .content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  gap: 16px;
+  color: #000000;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Card Top Metadata */
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.category-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-family: "Space Grotesk", monospace;
+}
+
+.category-badge.badge-school {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.category-badge.badge-coaching {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.card-city-tag {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Logo container */
+.card-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  padding: 0;
+  margin-bottom: 12px;
+  background: #fafbfc;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card-wrapper .card:hover .card-logo-box {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.client-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card-wrapper .card:hover .client-logo-img {
+  transform: scale(1.06);
+}
+
+/* Header */
+.testimonial-card-wrapper .header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 14px;
+}
+
+.testimonial-card-wrapper .header strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #09090b;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.3;
+}
+
+.testimonial-card-wrapper .header .para-role {
+  font-size: 0.815rem;
+  color: #64748b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Footer & Quote */
+.testimonial-card-wrapper .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+.testimonial-card-wrapper .quotes {
+  width: 38px;
+  height: 38px;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  flex-shrink: 0;
+}
+
+.testimonial-card-wrapper .card:hover .quotes {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.testimonial-card-wrapper .para-feedback {
+  z-index: 1;
+  opacity: 0.85;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #334155;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: italic;
+}
+
+/* Interactive View Button with Signature Sliding Underline */
+.testimonial-card-wrapper .button {
+  position: relative;
+  font-family: inherit;
+  border: none;
+  background-color: transparent;
+  font-size: 0.875rem;
+  padding: 4px 0px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #09090b;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.testimonial-card-wrapper .button span {
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.testimonial-card-wrapper .button::before {
+  position: absolute;
+  content: "";
+  width: 112%;
+  height: 2px;
+  left: 0%;
+  bottom: 0%;
+  background: var(--card-accent, #0a3cff);
+  pointer-events: none;
+  margin: auto;
+  transition: transform 0.64s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.testimonial-card-wrapper .button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.testimonial-card-wrapper .button:hover {
+  color: var(--card-accent, #0a3cff);
+}
+
+.testimonial-card-wrapper .button:active {
+  transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   Section Bottom Summary Banner
+   -------------------------------------------------------------------------- */
+
+.testimonials-bottom-banner {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.banner-stats-wrap {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #09090b;
+  letter-spacing: -0.02em;
+}
+
+.stat-desc {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.banner-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-testimonial-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #09090b;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-testimonial-demo:hover {
+  background: #0a3cff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 60, 255, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Modal for "Read Feedback"
+   -------------------------------------------------------------------------- */
+
+.testimonial-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(9, 9, 11, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalFadeIn 0.25s ease forwards;
+}
+
+.testimonial-modal-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 28px;
+  max-width: 620px;
+  width: 100%;
+  padding: 40px 36px;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e2e8f0;
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f4f4f5;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #71717a;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: #e4e4e7;
+  color: #09090b;
+}
+
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.modal-logo-box {
+  width: 76px;
+  height: 76px;
+  border-radius: 16px;
+  background: #fafbfc;
+  border: 1px solid #e2e8f0;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modal-org-details h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #09090b;
+  margin: 0 0 6px 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.modal-person-role {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.modal-quote-wrap {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.modal-quote-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+}
+
+.modal-feedback-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #1e293b;
+  font-style: italic;
+  margin: 0;
+}
+
+.modal-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.modal-metric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid #bbf7d0;
+}
+
+.modal-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #09090b;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.modal-demo-btn:hover {
+  background: #0a3cff;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
