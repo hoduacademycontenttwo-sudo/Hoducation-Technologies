@@ -98,7 +98,7 @@ export const TestimonialsSection: React.FC = () => {
                       />
                     </div>
 
-                    <div className="header">
+                    <div className="card-org-header">
                       <strong>{item.name}</strong>
                       <p className="para-role">
                         {item.person} · {item.role}
