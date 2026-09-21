@@ -15,7 +15,7 @@ export const postBusinessProcessesAutomateWithAi: BlogPost = {
   publishedAt: '08 Mar 2026',
   updatedAt: '14 Mar 2026',
   readingTime: '11 min read',
-  featuredImage: '/clients/samriya.png',
+  featuredImage: '/blog/business-processes-automate-with-ai.jpg',
   imageBadgeText: '10 AI Automations',
   imageBadgeStyle: 'code',
   seoTitle: '10 Business Processes You Can Automate With AI in 2026 | Hoducation',

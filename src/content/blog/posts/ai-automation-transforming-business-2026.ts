@@ -15,7 +15,7 @@ export const postAiAutomationTransformingBusiness2026: BlogPost = {
   publishedAt: '10 Feb 2026',
   updatedAt: '18 Feb 2026',
   readingTime: '11 min read',
-  featuredImage: '/clients/b2e.png',
+  featuredImage: '/blog/ai-automation-transforming-business-2026.jpg',
   imageBadgeText: '2026 Outlook',
   imageBadgeStyle: 'gradient',
   seoTitle: 'How AI Automation Is Transforming Businesses in 2026 | Hoducation',

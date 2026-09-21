@@ -15,7 +15,7 @@ export const postCrmVsErpDifference: BlogPost = {
   publishedAt: '12 Mar 2026',
   updatedAt: '17 Mar 2026',
   readingTime: '8 min read',
-  featuredImage: '/clients/lecturewala.png',
+  featuredImage: '/blog/crm-vs-erp-difference.jpg',
   imageBadgeText: 'CRM vs ERP Architecture',
   imageBadgeStyle: 'roundup',
   seoTitle: 'CRM vs ERP: Core Differences & Which You Need First (2026)',

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { getPostBySlug, getRelatedPosts, getAllPosts } from '../../content/blog/blogPosts';
 import { BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
+import './BlogIndexPage.css';
 import './BlogPostPage.css';
 
 interface BlogPostPageProps {
@@ -264,7 +265,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         <header className="freehand-nav-wrapper">
           <nav className="freehand-pill-navbar" aria-label="Main Navigation">
             <a href="/" className="freehand-nav-brand">
-              <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+              <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
               <span className="freehand-nav-brand-text">Hoducation Technologies</span>
             </a>
             <div className="freehand-nav-links">
@@ -309,7 +310,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
       <header className="freehand-nav-wrapper">
         <nav className="freehand-pill-navbar" aria-label="Main Navigation">
           <a href="/" className="freehand-nav-brand">
-            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
             <span className="freehand-nav-brand-text">Hoducation Technologies</span>
           </a>
 

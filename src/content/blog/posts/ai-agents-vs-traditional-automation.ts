@@ -15,7 +15,7 @@ export const postAiAgentsVsTraditionalAutomation: BlogPost = {
   publishedAt: '05 Mar 2026',
   updatedAt: '11 Mar 2026',
   readingTime: '9 min read',
-  featuredImage: '/clients/stxaviers.png',
+  featuredImage: '/blog/ai-agents-vs-traditional-automation.jpg',
   imageBadgeText: 'Agents vs Scripts',
   imageBadgeStyle: 'minimal',
   seoTitle: 'AI Agents vs Traditional Automation (2026 Architectural Guide)',

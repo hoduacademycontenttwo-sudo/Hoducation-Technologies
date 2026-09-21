@@ -15,7 +15,7 @@ export const postWebsiteCrmLeadMachine: BlogPost = {
   publishedAt: '16 Feb 2026',
   updatedAt: '22 Feb 2026',
   readingTime: '9 min read',
-  featuredImage: '/clients/gc.png',
+  featuredImage: '/blog/website-crm-lead-machine.jpg',
   imageBadgeText: 'Website + CRM Engine',
   imageBadgeStyle: 'code',
   seoTitle: 'Website + CRM Integration: Blueprint for a 24/7 Lead Machine',

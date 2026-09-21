@@ -15,7 +15,7 @@ export const postCustomSoftwareCostIndia: BlogPost = {
   publishedAt: '15 Mar 2026',
   updatedAt: '19 Mar 2026',
   readingTime: '10 min read',
-  featuredImage: '/clients/sis.png',
+  featuredImage: '/blog/custom-software-development-cost-india.jpg',
   imageBadgeText: 'Pricing Breakdown',
   imageBadgeStyle: 'stats',
   seoTitle: 'Custom Software Development Cost in India (2026 Pricing Guide)',

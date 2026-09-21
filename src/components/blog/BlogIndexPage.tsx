@@ -69,7 +69,7 @@ export const BlogIndexPage: React.FC = () => {
       <header className="freehand-nav-wrapper">
         <nav className="freehand-pill-navbar" aria-label="Main Navigation">
           <a href="/" className="freehand-nav-brand">
-            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" />
+            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
             <span className="freehand-nav-brand-text">Hoducation Technologies</span>
           </a>
 

@@ -15,7 +15,7 @@ export const postCustomSoftwareVsReadyMade: BlogPost = {
   publishedAt: '18 Mar 2026',
   updatedAt: '20 Mar 2026',
   readingTime: '9 min read',
-  featuredImage: '/clients/b2e.png',
+  featuredImage: '/blog/custom-software-vs-ready-made.jpg',
   imageBadgeText: 'Custom vs COTS',
   imageBadgeStyle: 'code',
   seoTitle: 'Custom Software vs Ready-Made Software (2026 Comparison) | Hoducation',

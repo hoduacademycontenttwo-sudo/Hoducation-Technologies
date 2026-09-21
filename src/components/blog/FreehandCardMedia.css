@@ -1,0 +1,238 @@
+﻿/* ============================================================= */
+/* FREEHAND CARD MEDIA COMPONENT STYLES                          */
+/* High-Resolution Editorial Topic Images, Vignettes & Badges    */
+/* ============================================================= */
+
+.freehand-media-box {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #1a1a1e;
+  box-sizing: border-box;
+}
+
+/* Base Image with Smooth Ken-Burns / Hover Zoom */
+.freehand-media-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  display: block;
+}
+
+/* Hover Zoom Effect when card is hovered */
+.freehand-card:hover .freehand-media-image,
+.freehand-hero-primary-card:hover .freehand-media-image,
+.freehand-hero-secondary-card:hover .freehand-media-image,
+.post-hero-banner-frame:hover .freehand-media-image {
+  transform: scale(1.05);
+}
+
+/* Dark Vignette Gradient Overlay for Text Legibility */
+.freehand-media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 17, 0.45) 0%,
+    rgba(15, 15, 17, 0.1) 40%,
+    rgba(15, 15, 17, 0.75) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top Badge Row (Brand Mark + Category Tag) */
+.freehand-media-header {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.freehand-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.freehand-brand-asterisk {
+  color: #fe6200;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.freehand-brand-name {
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.freehand-topic-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(17, 17, 19, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================= */
+/* VARIANTS                                                      */
+/* ============================================================= */
+
+/* 1) HERO BANNER (Single Blog Header & Featured Hero) */
+.freehand-media-hero {
+  aspect-ratio: 21 / 9;
+  min-height: 340px;
+  max-height: 520px;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.12);
+}
+
+.freehand-media-hero .freehand-media-bottom-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.freehand-media-hero-title-box {
+  max-width: 680px;
+}
+
+.freehand-media-hero-lead {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.35;
+}
+
+.freehand-media-hero-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.freehand-media-pill-tag {
+  background: #fe6200;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(254, 98, 0, 0.35);
+}
+
+/* 2) HERO SECONDARY CARD */
+.freehand-media-hero-secondary {
+  aspect-ratio: 16 / 10;
+  min-height: 190px;
+  height: 100%;
+  border-radius: 14px;
+}
+
+/* 3) GRID CARD (Listing & Related Articles) */
+.freehand-media-grid {
+  aspect-ratio: 16 / 10;
+  min-height: 190px;
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+/* 4) COMPACT */
+.freehand-media-compact {
+  aspect-ratio: 16 / 10;
+  min-height: 130px;
+  border-radius: 10px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 860px) {
+  .freehand-media-hero {
+    aspect-ratio: 16 / 9;
+    min-height: 250px;
+    border-radius: 14px;
+  }
+
+  .freehand-media-hero .freehand-media-bottom-info {
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+  }
+
+  .freehand-media-hero-lead {
+    font-size: 0.95rem;
+  }
+
+  .freehand-media-pill-tag {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .freehand-media-hero {
+    aspect-ratio: 16 / 10;
+    min-height: 210px;
+  }
+
+  .freehand-media-header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .freehand-brand-mark {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+
+  .freehand-topic-badge {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+}

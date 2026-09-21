@@ -15,7 +15,7 @@ export const postModernSchoolErpFeatures: BlogPost = {
   publishedAt: '01 Mar 2026',
   updatedAt: '08 Mar 2026',
   readingTime: '12 min read',
-  featuredImage: '/clients/sis.png',
+  featuredImage: '/blog/modern-school-erp-features.jpg',
   imageBadgeText: 'School ERP Checklist',
   imageBadgeStyle: 'roundup',
   seoTitle: 'What Should a Modern School ERP Include? (2026 Evaluation Checklist)',

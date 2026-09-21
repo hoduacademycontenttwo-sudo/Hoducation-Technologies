@@ -15,7 +15,7 @@ export const postCrmAutomationSalesFollowUps: BlogPost = {
   publishedAt: '20 Feb 2026',
   updatedAt: '27 Feb 2026',
   readingTime: '9 min read',
-  featuredImage: '/clients/wi.png',
+  featuredImage: '/blog/crm-automation-sales-follow-ups.jpg',
   imageBadgeText: 'Sales Automation',
   imageBadgeStyle: 'minimal',
   seoTitle: 'How CRM Automation Improves Sales Follow-Ups (2026 Strategy Guide)',

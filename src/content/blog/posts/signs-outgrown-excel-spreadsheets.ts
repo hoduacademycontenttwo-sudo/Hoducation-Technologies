@@ -15,7 +15,7 @@ export const postSignsOutgrownExcelSpreadsheets: BlogPost = {
   publishedAt: '24 Feb 2026',
   updatedAt: '03 Mar 2026',
   readingTime: '8 min read',
-  featuredImage: '/clients/scholars.png',
+  featuredImage: '/blog/signs-outgrown-excel-spreadsheets.jpg',
   imageBadgeText: 'Excel vs Custom DB',
   imageBadgeStyle: 'code',
   seoTitle: '7 Signs Your Business Has Outgrown Excel & Spreadsheets | Hoducation',
