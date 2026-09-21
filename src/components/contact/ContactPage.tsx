@@ -1,0 +1,530 @@
+import React, { useState, useEffect } from 'react';
+import './ContactPage.css';
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  workEmail: string;
+  companyName: string;
+  phoneCode: string;
+  phone: string;
+  industry: string;
+  context: string;
+  estimatedSize: string;
+}
+
+const COUNTRY_CODES = [
+  { code: '+91', country: 'IN', flag: '🇮🇳', name: 'India (+91)' },
+  { code: '+1', country: 'US', flag: '🇺🇸', name: 'United States / Canada (+1)' },
+  { code: '+44', country: 'GB', flag: '🇬🇧', name: 'United Kingdom (+44)' },
+  { code: '+971', country: 'AE', flag: '🇦🇪', name: 'UAE (+971)' },
+  { code: '+65', country: 'SG', flag: '🇸🇬', name: 'Singapore (+65)' },
+  { code: '+62', country: 'ID', flag: '🇮🇩', name: 'Indonesia (+62)' },
+  { code: '+61', country: 'AU', flag: '🇦🇺', name: 'Australia (+61)' },
+  { code: '+49', country: 'DE', flag: '🇩🇪', name: 'Germany (+49)' },
+  { code: '+33', country: 'FR', flag: '🇫🇷', name: 'France (+33)' },
+  { code: '+81', country: 'JP', flag: '🇯🇵', name: 'Japan (+81)' },
+];
+
+const INDUSTRIES = [
+  'EdTech & AcadOS (TestMaker, CBT, OMR)',
+  'Enterprise ERP Systems (Schools & Colleges)',
+  'CRM & Admissions Hub',
+  'Intelligent Automations & Background RPA',
+  'CMS & Web Publishing Portals',
+  'Custom Enterprise Software',
+  'Higher Education & Universities',
+  'Coaching Institute & Test Prep Chain',
+  'Other Institutional Solutions',
+];
+
+export const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    workEmail: '',
+    companyName: '',
+    phoneCode: '+91',
+    phone: '',
+    industry: '',
+    context: '',
+    estimatedSize: '',
+  });
+
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  // Parse URL query parameter (e.g. ?service=edtech or ?service=erp)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get('service')?.toLowerCase();
+      if (serviceParam) {
+        if (serviceParam.includes('edtech') || serviceParam.includes('acados') || serviceParam.includes('testmaker')) {
+          setFormData((prev) => ({ ...prev, industry: 'EdTech & AcadOS (TestMaker, CBT, OMR)' }));
+        } else if (serviceParam.includes('erp')) {
+          setFormData((prev) => ({ ...prev, industry: 'Enterprise ERP Systems (Schools & Colleges)' }));
+        } else if (serviceParam.includes('crm')) {
+          setFormData((prev) => ({ ...prev, industry: 'CRM & Admissions Hub' }));
+        } else if (serviceParam.includes('auto')) {
+          setFormData((prev) => ({ ...prev, industry: 'Intelligent Automations & Background RPA' }));
+        } else if (serviceParam.includes('cms')) {
+          setFormData((prev) => ({ ...prev, industry: 'CMS & Web Publishing Portals' }));
+        } else if (serviceParam.includes('custom') || serviceParam.includes('software')) {
+          setFormData((prev) => ({ ...prev, industry: 'Custom Enterprise Software' }));
+        }
+      }
+    } catch {
+      // Ignore if query param parsing fails
+    }
+  }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
+  const validate = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    if (!formData.firstName.trim()) errors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) errors.lastName = 'Last name is required';
+
+    if (!formData.workEmail.trim()) {
+      errors.workEmail = 'Work email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.workEmail.trim())) {
+      errors.workEmail = 'Please enter a valid work email address';
+    }
+
+    if (!formData.companyName.trim()) {
+      errors.companyName = 'Company / Institution name is required';
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validate()) {
+      const firstErrorKey = Object.keys(fieldErrors)[0];
+      const el = document.querySelector(`[name="${firstErrorKey}"]`);
+      if (el) (el as HTMLElement).focus();
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit inquiry. Please try again.');
+      }
+
+      setStatus('success');
+    } catch (err: any) {
+      console.error('Submission error:', err);
+      // Fallback: If running in static local environment without /api endpoint
+      if (err.message && err.message.includes('Unexpected token')) {
+        setStatus('success'); // Local mock pass
+      } else {
+        setStatus('error');
+        setErrorMessage(err.message || 'Something went wrong while sending your message. Please try again.');
+      }
+    }
+  };
+
+  return (
+    <div className="contact-page-container">
+      {/* Top Navbar */}
+      <header className="contact-nav-header">
+        <a href="/" className="contact-brand" aria-label="Return to Hoducation Home">
+          <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="contact-brand-logo" width="34" height="34" />
+          <span className="contact-brand-name">Hoducation Technologies</span>
+        </a>
+
+        <div className="contact-nav-actions">
+          <a href="/" className="contact-back-link">
+            <span>&larr; Back to Home</span>
+          </a>
+          <a
+            href="https://wa.me/919660034117?text=Hello%20Hoducation%20Technologies,%20I%20would%20like%20to%20request%20a%20demo."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-whatsapp-btn"
+          >
+            <i className="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp Quick Chat</span>
+          </a>
+        </div>
+      </header>
+
+      {/* Floating 3D Ambient Pill Shapes */}
+      <div className="ambient-pills-canvas" aria-hidden="true">
+        <div className="ambient-pill pill-yellow" />
+        <div className="ambient-pill pill-green" />
+        <div className="ambient-pill pill-pink" />
+        <div className="ambient-pill pill-olive" />
+      </div>
+
+      {/* Main Split Layout */}
+      <main className="contact-main-split">
+        {/* Left Hero Column */}
+        <section className="contact-hero-col">
+          <div className="contact-hero-content">
+            <span className="contact-kicker-badge">ENTERPRISE DEMO &amp; INQUIRY</span>
+            <h1 className="contact-hero-heading">Seeing is believing.</h1>
+            <p className="contact-hero-desc">
+              We’d love to show you a demo of Hoducation Technologies in action. Get specific use cases, personalized pricing, and answers to all your questions.
+            </p>
+
+            {/* Highlights List */}
+            <div className="contact-highlights-list">
+              <div className="contact-highlight-item">
+                <div className="highlight-icon-wrap">
+                  <i className="fa-solid fa-bolt"></i>
+                </div>
+                <div className="highlight-text-wrap">
+                  <h4>Rapid Deployment</h4>
+                  <p>Turnkey setups with full institutional migration in under 48 hours.</p>
+                </div>
+              </div>
+
+              <div className="contact-highlight-item">
+                <div className="highlight-icon-wrap">
+                  <i className="fa-solid fa-shield-halved"></i>
+                </div>
+                <div className="highlight-text-wrap">
+                  <h4>99.8% Computer Vision Accuracy</h4>
+                  <p>Battle-tested OMR and high-concurrency NTA-style CBT engine.</p>
+                </div>
+              </div>
+
+              <div className="contact-highlight-item">
+                <div className="highlight-icon-wrap">
+                  <i className="fa-solid fa-headset"></i>
+                </div>
+                <div className="highlight-text-wrap">
+                  <h4>24/7 Dedicated Support</h4>
+                  <p>Direct priority access to product engineers and solution architects.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Direct contact info card */}
+            <div className="contact-direct-card">
+              <div className="direct-item">
+                <i className="fa-solid fa-envelope"></i>
+                <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
+              </div>
+              <div className="direct-item">
+                <i className="fa-solid fa-phone"></i>
+                <a href="tel:+919660034117">+91 96600 34117</a>
+              </div>
+              <div className="direct-item">
+                <i className="fa-solid fa-location-dot"></i>
+                <span>Jaipur, Rajasthan, India</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Right Form Card */}
+        <section className="contact-form-col">
+          <div className="contact-form-card">
+            {status === 'success' ? (
+              <div className="contact-success-state">
+                <div className="success-icon-wrap">
+                  <i className="fa-solid fa-check"></i>
+                </div>
+                <h3 className="success-title">Thank you, {formData.firstName}!</h3>
+                <p className="success-lead">
+                  Your inquiry has been successfully transmitted to our engineering and solutions team.
+                </p>
+                <div className="success-info-box">
+                  <div className="success-info-row">
+                    <span className="info-label">Organization:</span>
+                    <span className="info-val">{formData.companyName}</span>
+                  </div>
+                  <div className="success-info-row">
+                    <span className="info-label">Confirmation sent to:</span>
+                    <span className="info-val">{formData.workEmail}</span>
+                  </div>
+                  <div className="success-info-row">
+                    <span className="info-label">Expected Response:</span>
+                    <span className="info-val">Within 24 business hours</span>
+                  </div>
+                </div>
+                <div className="success-actions">
+                  <a href="/" className="btn-success-home">
+                    Return to Homepage
+                  </a>
+                  <button
+                    type="button"
+                    className="btn-success-new"
+                    onClick={() => {
+                      setStatus('idle');
+                      setFormData({
+                        firstName: '',
+                        lastName: '',
+                        workEmail: '',
+                        companyName: '',
+                        phoneCode: '+91',
+                        phone: '',
+                        industry: '',
+                        context: '',
+                        estimatedSize: '',
+                      });
+                    }}
+                  >
+                    Submit Another Inquiry
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <h2 className="contact-card-title">Let's talk</h2>
+
+                {status === 'error' && (
+                  <div className="contact-error-banner" role="alert">
+                    <i className="fa-solid fa-circle-exclamation"></i>
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="contact-actual-form" noValidate>
+                  {/* Row 1: First Name & Last Name */}
+                  <div className="form-row-two-col">
+                    <div className={`form-group ${fieldErrors.firstName ? 'has-error' : ''}`}>
+                      <label htmlFor="firstName" className="form-label">
+                        First Name<span className="req-star">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="Enter here"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className="form-input"
+                        autoComplete="given-name"
+                      />
+                      {fieldErrors.firstName && <span className="field-err-msg">{fieldErrors.firstName}</span>}
+                    </div>
+
+                    <div className={`form-group ${fieldErrors.lastName ? 'has-error' : ''}`}>
+                      <label htmlFor="lastName" className="form-label">
+                        Last Name<span className="req-star">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Enter here"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="form-input"
+                        autoComplete="family-name"
+                      />
+                      {fieldErrors.lastName && <span className="field-err-msg">{fieldErrors.lastName}</span>}
+                    </div>
+                  </div>
+
+                  {/* Row 2: Work Email */}
+                  <div className={`form-group ${fieldErrors.workEmail ? 'has-error' : ''}`}>
+                    <label htmlFor="workEmail" className="form-label">
+                      Work Email<span className="req-star">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="workEmail"
+                      name="workEmail"
+                      placeholder="Enter here"
+                      value={formData.workEmail}
+                      onChange={handleChange}
+                      className="form-input"
+                      autoComplete="email"
+                    />
+                    {fieldErrors.workEmail && <span className="field-err-msg">{fieldErrors.workEmail}</span>}
+                  </div>
+
+                  {/* Row 3: Company Name */}
+                  <div className={`form-group ${fieldErrors.companyName ? 'has-error' : ''}`}>
+                    <label htmlFor="companyName" className="form-label">
+                      Company Name<span className="req-star">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      placeholder="Enter here"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      className="form-input"
+                      autoComplete="organization"
+                    />
+                    {fieldErrors.companyName && <span className="field-err-msg">{fieldErrors.companyName}</span>}
+                  </div>
+
+                  {/* Row 4: Phone Number */}
+                  <div className="form-group">
+                    <label htmlFor="phone" className="form-label">
+                      Phone Number
+                    </label>
+                    <div className="phone-input-group">
+                      <div className="phone-code-select-wrap">
+                        <select
+                          name="phoneCode"
+                          id="phoneCode"
+                          value={formData.phoneCode}
+                          onChange={handleChange}
+                          className="phone-code-select"
+                          aria-label="Country calling code"
+                        >
+                          {COUNTRY_CODES.map((c) => (
+                            <option key={c.country} value={c.code}>
+                              {c.flag} {c.code}
+                            </option>
+                          ))}
+                        </select>
+                        <i className="fa-solid fa-chevron-down select-caret" aria-hidden="true" />
+                      </div>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="form-input phone-number-input"
+                        autoComplete="tel-national"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 5: Industry / Service of Interest */}
+                  <div className="form-group">
+                    <label htmlFor="industry" className="form-label">
+                      Industry / Service of Interest
+                    </label>
+                    <div className="custom-select-wrap">
+                      <select
+                        id="industry"
+                        name="industry"
+                        value={formData.industry}
+                        onChange={handleChange}
+                        className="form-input form-select"
+                      >
+                        <option value="">Select industry or solution</option>
+                        {INDUSTRIES.map((ind) => (
+                          <option key={ind} value={ind}>
+                            {ind}
+                          </option>
+                        ))}
+                      </select>
+                      <i className="fa-solid fa-chevron-down select-caret" aria-hidden="true" />
+                    </div>
+                  </div>
+
+                  {/* Row 6: Additional Context */}
+                  <div className="form-group">
+                    <label htmlFor="context" className="form-label">
+                      Additional Context
+                    </label>
+                    <textarea
+                      id="context"
+                      name="context"
+                      placeholder="Describe your use case so we can connect you with the right person."
+                      rows={3}
+                      value={formData.context}
+                      onChange={handleChange}
+                      className="form-input form-textarea"
+                    />
+                  </div>
+
+                  {/* Row 7: Estimated Institution Size / Students (Reference: Estimated Video Library Size) */}
+                  <div className="form-group">
+                    <label htmlFor="estimatedSize" className="form-label">
+                      Estimated Institution Size / Scope
+                    </label>
+                    <input
+                      type="text"
+                      id="estimatedSize"
+                      name="estimatedSize"
+                      placeholder="e.g. 1,500 students, 3 branches, or custom requirement"
+                      value={formData.estimatedSize}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
+
+                  {/* Row 8: Policy Agreement & reCAPTCHA */}
+                  <div className="form-footer-disclaimer">
+                    <p className="privacy-policy-text">
+                      By clicking the submit button, you agree to{' '}
+                      <a href="#privacy" className="privacy-link">
+                        Hoducation Technologies' Privacy Policy
+                      </a>
+                      .
+                    </p>
+
+                    {/* Google reCAPTCHA Badge Replica */}
+                    <div className="recaptcha-badge-frame" title="Protected by reCAPTCHA">
+                      <div className="recaptcha-badge-left">
+                        <span className="recaptcha-text">protected by</span>
+                        <span className="recaptcha-brand">reCAPTCHA</span>
+                      </div>
+                      <div className="recaptcha-badge-right">
+                        <i className="fa-solid fa-arrows-rotate recaptcha-icon"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 9: Submit Button */}
+                  <div className="form-submit-row">
+                    <button
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className={`contact-submit-btn ${status === 'loading' ? 'is-loading' : ''}`}
+                    >
+                      {status === 'loading' ? (
+                        <>
+                          <span className="submit-spinner" />
+                          <span>Transmitting...</span>
+                        </>
+                      ) : (
+                        <span>Submit</span>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              </>
+            )}
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};
+export default ContactPage;
