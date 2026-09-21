@@ -83,6 +83,18 @@ export const ContactPage: React.FC = () => {
     }
   }, []);
 
+  // Ambient studio spotlight following cursor
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = Math.round((e.clientX / window.innerWidth) * 100);
+      const y = Math.round((e.clientY / window.innerHeight) * 100);
+      document.documentElement.style.setProperty('--cursor-x', `${x}%`);
+      document.documentElement.style.setProperty('--cursor-y', `${y}%`);
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -212,12 +224,14 @@ export const ContactPage: React.FC = () => {
         </div>
       </header>
 
-      {/* Floating 3D Ambient Pill Shapes */}
-      <div className="ambient-pills-canvas" aria-hidden="true">
-        <div className="ambient-pill pill-yellow" />
-        <div className="ambient-pill pill-green" />
-        <div className="ambient-pill pill-pink" />
-        <div className="ambient-pill pill-olive" />
+      {/* 3D Studio Ambient Canvas */}
+      <div className="contact-studio-bg" aria-hidden="true">
+        <div className="contact-studio-art" />
+        <div className="contact-studio-spotlight" />
+        {/* Floating 3D glass lozenges for organic depth */}
+        <div className="ambient-glass-float float-1" />
+        <div className="ambient-glass-float float-2" />
+        <div className="ambient-glass-float float-3" />
       </div>
 
       {/* Main Split Layout */}

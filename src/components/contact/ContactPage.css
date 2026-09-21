@@ -130,82 +130,108 @@
 }
 
 /* ==========================================================================
-   2) Floating 3D Ambient Pill Shapes (Reference Replica)
+   2) 3D Studio Ambient Canvas & Interactive Spotlight
    ========================================================================== */
 
-.ambient-pills-canvas {
-  position: absolute;
+.contact-studio-bg {
+  position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 1;
+  background-color: #fafbfc;
 }
 
-.ambient-pill {
+.contact-studio-art {
+  position: absolute;
+  inset: -10px;
+  background-image: url('/contact-3d-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  opacity: 0.98;
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-studio-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 850px at var(--cursor-x, 38%) var(--cursor-y, 35%),
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+/* Translucent floating 3D glass lozenges for organic depth & parallax */
+.ambient-glass-float {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(8px);
-  opacity: 0.85;
-  transition: transform 0.3s ease;
-  animation: floatAmbient 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    inset 0 2px 6px rgba(255, 255, 255, 0.9),
+    0 24px 50px -12px rgba(0, 0, 0, 0.04);
 }
 
-.pill-yellow {
-  width: 480px;
-  height: 180px;
-  top: 28%;
-  left: 14%;
-  background: linear-gradient(135deg, #fef08a 0%, #facc15 35%, #f59e0b 80%, #ea580c 100%);
-  transform: rotate(-32deg);
-  box-shadow: 0 40px 100px -20px rgba(245, 158, 11, 0.45);
-  animation-duration: 16s;
-}
-
-.pill-green {
-  width: 580px;
-  height: 200px;
-  top: 10%;
-  left: 26%;
-  background: linear-gradient(135deg, #bbf7d0 0%, #86efac 30%, #4ade80 75%, #22c55e 100%);
-  transform: rotate(-35deg);
-  box-shadow: 0 40px 120px -20px rgba(74, 222, 128, 0.4);
-  animation-duration: 22s;
-  animation-delay: -4s;
-}
-
-.pill-pink {
-  width: 320px;
-  height: 150px;
-  top: 65%;
-  left: -4%;
-  background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 60%, #ec4899 100%);
+.ambient-glass-float.float-1 {
+  width: 240px;
+  height: 68px;
+  top: 15%;
+  left: 28%;
   transform: rotate(-30deg);
-  box-shadow: 0 30px 80px -15px rgba(236, 72, 153, 0.35);
-  animation-duration: 19s;
-  animation-delay: -2s;
+  animation: floatSubtle1 14s ease-in-out infinite alternate;
 }
 
-.pill-olive {
-  width: 400px;
-  height: 170px;
-  top: -2%;
-  right: -5%;
-  background: linear-gradient(135deg, #bef264 0%, #a3e635 30%, #65a30d 80%, #4d7c0f 100%);
-  transform: rotate(-36deg);
-  box-shadow: 0 30px 90px -20px rgba(101, 163, 13, 0.3);
-  animation-duration: 25s;
-  animation-delay: -8s;
+.ambient-glass-float.float-2 {
+  width: 180px;
+  height: 52px;
+  bottom: 14%;
+  left: 14%;
+  transform: rotate(-26deg);
+  animation: floatSubtle2 18s ease-in-out infinite alternate;
 }
 
-@keyframes floatAmbient {
+.ambient-glass-float.float-3 {
+  width: 140px;
+  height: 46px;
+  top: 72%;
+  right: 6%;
+  transform: rotate(-32deg);
+  animation: floatSubtle3 16s ease-in-out infinite alternate;
+}
+
+@keyframes floatSubtle1 {
   0% {
-    transform: rotate(-32deg) translate(0, 0) scale(1);
-  }
-  50% {
-    transform: rotate(-30deg) translate(16px, -18px) scale(1.04);
+    transform: rotate(-30deg) translate(0, 0);
   }
   100% {
-    transform: rotate(-34deg) translate(-14px, 14px) scale(0.97);
+    transform: rotate(-28deg) translate(14px, -18px);
+  }
+}
+
+@keyframes floatSubtle2 {
+  0% {
+    transform: rotate(-26deg) translate(0, 0);
+  }
+  100% {
+    transform: rotate(-24deg) translate(-12px, 14px);
+  }
+}
+
+@keyframes floatSubtle3 {
+  0% {
+    transform: rotate(-32deg) translate(0, 0);
+  }
+  100% {
+    transform: rotate(-34deg) translate(10px, -12px);
   }
 }
 
@@ -1145,7 +1171,12 @@
     align-items: flex-start;
   }
 
-  .ambient-pill {
+  .ambient-glass-float {
     display: none;
+  }
+
+  .contact-studio-art {
+    background-position: 65% top;
+    transform: none;
   }
 }
