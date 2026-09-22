@@ -162,8 +162,104 @@ export default async function handler(req, res) {
       });
     }
 
-    // Optional confirmation email to customer
+const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || 'de430fe4-ed42-4d50-8a2c-4e6a3162ad0d';
+
+    // Auto-sync enquiry submitter to Resend Audience (Newsletter contacts)
     try {
+      await fetch(`https://api.resend.com/audiences/${AUDIENCE_ID}/contacts`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: workEmail.trim().toLowerCase(),
+          first_name: firstName.trim(),
+          last_name: lastName.trim(),
+          unsubscribed: false
+        })
+      });
+    } catch (audienceErr) {
+      console.warn('Audience auto-sync notice:', audienceErr);
+    }
+
+    // High-Converting Confirmation Email to Prospect with Featured Blogs Showcase
+    try {
+      const customerConfirmationHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>We Received Your Request — Hoducation Technologies</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f3f2ee; margin: 0; padding: 24px; color: #181716; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e4e3dd; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .header { background: #181716; padding: 34px 30px; text-align: left; }
+    .header h1 { margin: 0; color: #ffffff; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+    .header p { margin: 6px 0 0 0; color: #fe6200; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .content { padding: 32px 30px; }
+    .greeting { font-size: 20px; font-weight: 700; color: #111; margin: 0 0 12px; }
+    .paragraph { font-size: 14.5px; line-height: 1.65; color: #4b5563; margin: 0 0 18px; }
+    .status-card { background: #faf9f6; border-left: 4px solid #fe6200; border-radius: 6px; padding: 16px 20px; margin: 24px 0 32px; font-size: 14px; line-height: 1.6; color: #2e2d29; }
+    .blog-section-title { font-size: 12px; font-weight: 800; color: #78716c; text-transform: uppercase; letter-spacing: 0.08em; margin: 32px 0 16px; border-bottom: 1px solid #ecebe5; padding-bottom: 8px; }
+    .blog-item { display: block; text-decoration: none; padding: 14px 16px; background: #faf9f6; border: 1px solid #e8e7e1; border-radius: 10px; margin-bottom: 12px; transition: all 0.2s ease; }
+    .blog-badge { display: inline-block; background: #fff3eb; color: #fe6200; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+    .blog-item-title { font-size: 14px; font-weight: 700; color: #111111; margin: 0 0 4px; line-height: 1.4; }
+    .blog-item-desc { font-size: 12.5px; color: #6b7280; line-height: 1.5; margin: 0; }
+    .btn { display: inline-block; background: #181716; color: #ffffff !important; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 13.5px; margin-top: 14px; }
+    .footer { padding: 24px 30px; background: #f9f9f8; border-top: 1px solid #ecebe5; text-align: center; color: #78716c; font-size: 12px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>HODUCATION TECHNOLOGIES</h1>
+      <p>Institutional Systems &bull; Enterprise Engineering</p>
+    </div>
+    <div class="content">
+      <div class="greeting">Hello ${firstName}, we've received your request!</div>
+      <p class="paragraph">
+        Thank you for reaching out regarding solutions for <strong>${companyName}</strong>. Our engineering and architecture team is reviewing your requirements and will connect with you within <strong>24 business hours</strong>.
+      </p>
+
+      <div class="status-card">
+        <strong>Next Steps:</strong> We are preparing a personalized technical walkthrough tailored for your requirements in <strong>${industry}</strong>. In the meantime, if you have urgent queries or mockups to share, feel free to reply directly to this email or reach us on WhatsApp at <a href="https://wa.me/919660034117" style="color: #fe6200; font-weight: 600; text-decoration: none;">+91 96600 34117</a>.
+      </div>
+
+      <div class="blog-section-title">While you wait, explore our latest engineering insights &amp; guides:</div>
+
+      <a href="https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026" class="blog-item">
+        <span class="blog-badge">NEW GUIDE 2026</span>
+        <div class="blog-item-title">How AI-Driven OMR &amp; CBT TestMaker Software is Revolutionizing Coaching Institutes &rarr;</div>
+        <p class="blog-item-desc">Learn how mobile 99.8% computer-vision OMR grading and AI paper generation eliminate exam bottlenecks.</p>
+      </a>
+
+      <a href="https://hoducation.tech/blog/custom-software-vs-ready-made" class="blog-item">
+        <span class="blog-badge">ARCHITECTURE &amp; TCO</span>
+        <div class="blog-item-title">Custom Software vs Ready-Made SaaS: When to Build vs Buy in 2026 &rarr;</div>
+        <p class="blog-item-desc">A deep-dive financial and operational comparison on eliminating compounding SaaS licensing costs.</p>
+      </a>
+
+      <a href="https://hoducation.tech/blog/what-should-a-modern-school-erp-include" class="blog-item">
+        <span class="blog-badge">EDTECH CHECKLIST</span>
+        <div class="blog-item-title">What Should a Modern School ERP Include in 2026? (Complete Checklist) &rarr;</div>
+        <p class="blog-item-desc">Essential modules for digital admissions, fee reconciliation, biometric attendance, and WhatsApp parent alerts.</p>
+      </a>
+
+      <div style="text-align: center; margin-top: 24px;">
+        <a href="https://hoducation.tech/blog" class="btn">Browse All Engineering Articles &rarr;</a>
+      </div>
+    </div>
+    <div class="footer">
+      Hoducation Technologies Pvt Ltd &bull; 
+      <a href="https://hoducation.tech" style="color: #fe6200; text-decoration: none;">hoducation.tech</a><br/>
+      Need to speak immediately? Call/WhatsApp us at <strong>+91 96600 34117</strong>.
+    </div>
+  </div>
+</body>
+</html>
+`;
+
       await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -174,15 +270,7 @@ export default async function handler(req, res) {
           from: SENDER_EMAIL,
           to: [workEmail],
           subject: `We've received your request — Hoducation Technologies`,
-          html: `
-            <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 540px; margin: 0 auto; padding: 24px; color: #111;">
-              <h2 style="color: #0f172a; margin-top: 0;">Thank you for contacting Hoducation Technologies, ${firstName}!</h2>
-              <p style="color: #475569; line-height: 1.6;">We have received your demo and solution inquiry for <strong>${companyName}</strong>. Our enterprise solutions team is reviewing your requirements and will connect with you within 24 hours.</p>
-              <p style="color: #475569; line-height: 1.6;">If you have any urgent queries, feel free to reach us via WhatsApp at <a href="https://wa.me/919660034117">+91 96600 34117</a> or reply directly to this email.</p>
-              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
-              <p style="font-size: 12px; color: #94a3b8;">Hoducation Technologies &bull; Institutional Systems &bull; AcadOS</p>
-            </div>
-          `
+          html: customerConfirmationHtml
         })
       });
     } catch (confErr) {

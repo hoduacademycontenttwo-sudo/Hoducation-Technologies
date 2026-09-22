@@ -59,6 +59,15 @@ export const postAiOmrCbtSoftware2026: BlogPost = {
   <li><strong>Zero Repetition:</strong> Smart question selection algorithm prevents duplicate questions across sequential tests.</li>
 </ul>
 
+<figure class="blog-content-figure">
+  <img 
+    src="/blog/modern-school-erp-features.jpg" 
+    alt="AcadOS AI TestMaker and Automated Assessment Architecture" 
+    loading="lazy"
+  />
+  <figcaption>Figure 1: Automated Test Paper Blueprinting &amp; Assessment Pipeline in AcadOS</figcaption>
+</figure>
+
 <h2 id="smartphone-omr-grading">2. Smartphone OMR Scanning with 99.8% Precision</h2>
 <p>Forget ₹1.5 Lakh hardware OMR scanners that jam on folded papers or require expensive dedicated software licenses. Today's computer-vision AI allows faculty to scan OMR sheets directly using any standard smartphone camera.</p>
 <div class="blog-callout-box">
@@ -69,6 +78,15 @@ export const postAiOmrCbtSoftware2026: BlogPost = {
 <h2 id="cbt-exam-simulation">3. NTA-Style Computer Based Test (CBT) Simulators</h2>
 <p>With national competitive examinations shifting entirely online, students must be trained in real-world exam conditions. CBT simulators replicate the exact interface of NTA platforms—complete with countdown timers, question palettes, mark-for-review toggles, and section switching rules.</p>
 <p>Students can attempt exams on desktop computers, tablets, or smartphones while institute administrators monitor live attendance and prevent malpractice with full screen lock and tab-change tracking.</p>
+
+<figure class="blog-content-figure">
+  <img 
+    src="/blog/how-ai-automation-is-transforming-modern-businesses-in-2026.jpg" 
+    alt="Real-time CBT examination analytics and multi-tier student cohort ranking" 
+    loading="lazy"
+  />
+  <figcaption>Figure 2: Real-time student performance tracking and automated percentile scorecards</figcaption>
+</figure>
 
 <h2 id="instant-performance-analytics">4. Instant Student & Parent Analytics Dashboards</h2>
 <p>The moment an OMR sheet is scanned or a CBT exam concludes, detailed diagnostic reports are generated automatically. Parents receive automated WhatsApp/SMS notifications containing their ward's score, batch rank, and accuracy percentage.</p>

@@ -538,6 +538,72 @@
   color: inherit;
 }
 
+/* Inline Images, Figures & Graphic Banners */
+.post-html-body figure,
+.blog-content-figure {
+  margin: 36px 0;
+  display: block;
+}
+
+.post-html-body img,
+.blog-content-figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--fh-card-border);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  display: block;
+  object-fit: cover;
+}
+
+.post-html-body figcaption,
+.blog-content-figure figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--fh-text-muted);
+  text-align: center;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.post-html-body figcaption::before {
+  content: "▲";
+  font-size: 9px;
+  color: var(--fh-orange);
+}
+
+/* Callout Box styling */
+.blog-callout-box {
+  background: #fdfbf7;
+  border-left: 4px solid var(--fh-orange);
+  border-radius: 0 10px 10px 0;
+  padding: 22px 26px;
+  margin: 32px 0;
+  border-top: 1px solid #f0eee8;
+  border-right: 1px solid #f0eee8;
+  border-bottom: 1px solid #f0eee8;
+}
+
+.blog-callout-box h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.08rem;
+  color: var(--fh-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-callout-box p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #4b5563;
+}
+
 /* ------------------------------------------------------------- */
 /* FAQ Accordion Section                                         */
 /* ------------------------------------------------------------- */
