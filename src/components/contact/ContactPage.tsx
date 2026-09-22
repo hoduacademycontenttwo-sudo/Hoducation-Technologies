@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Loader } from '../common/Loader';
 import './ContactPage.css';
 
 interface FormData {
@@ -39,6 +40,7 @@ const INDUSTRIES = [
 ];
 
 export const ContactPage: React.FC = () => {
+  const [pageLoading, setPageLoading] = useState<boolean>(true);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -57,6 +59,14 @@ export const ContactPage: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  // 3-Second Green Visual Loader Timer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Parse URL query parameter (e.g. ?service=edtech or ?service=erp)
   useEffect(() => {
@@ -195,6 +205,29 @@ export const ContactPage: React.FC = () => {
       }
     }
   };
+
+  if (pageLoading) {
+    return (
+      <div
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f8fafc',
+          width: '100%',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 99999,
+        }}
+      >
+        <Loader variant="green" fullscreen maskBg="#f8fafc" />
+      </div>
+    );
+  }
 
   return (
     <div className="contact-page-container">

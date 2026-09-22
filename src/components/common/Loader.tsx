@@ -1,23 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export type LoaderVariant = 'orange' | 'black' | 'green';
+
 interface LoaderProps {
   size?: number | string;
   fullscreen?: boolean;
   className?: string;
   maskBg?: string;
+  variant?: LoaderVariant;
+  primaryColor?: string;
+  primaryLightColor?: string;
+  primaryRgba?: string;
 }
 
 export const Loader: React.FC<LoaderProps> = ({
   size,
   fullscreen = false,
   className = '',
-  maskBg = '#f3f2ee',
+  maskBg,
+  variant = 'orange',
+  primaryColor,
+  primaryLightColor,
+  primaryRgba,
 }) => {
+  // Preset palettes based on requested pages
+  const resolvedColors = React.useMemo(() => {
+    if (variant === 'black') {
+      return {
+        primary: primaryColor || 'rgb(0, 0, 0)',
+        primaryLight: primaryLightColor || '#18181b',
+        primaryRgba: primaryRgba || 'rgba(0, 0, 0, 0)',
+        mask: maskBg || '#ffffff',
+      };
+    }
+    if (variant === 'green') {
+      return {
+        primary: primaryColor || '#059669',
+        primaryLight: primaryLightColor || '#10b981',
+        primaryRgba: primaryRgba || 'rgba(5, 150, 105, 0)',
+        mask: maskBg || '#f8fafc',
+      };
+    }
+    // Default / Blog: Orange
+    return {
+      primary: primaryColor || '#fe6200',
+      primaryLight: primaryLightColor || '#ff8533',
+      primaryRgba: primaryRgba || 'rgba(254, 98, 0, 0)',
+      mask: maskBg || '#f3f2ee',
+    };
+  }, [variant, primaryColor, primaryLightColor, primaryRgba, maskBg]);
+
   return (
     <StyledWrapper
       className={`${fullscreen ? 'fullscreen' : ''} ${className}`}
-      $maskBg={maskBg}
+      $maskBg={resolvedColors.mask}
+      $primary={resolvedColors.primary}
+      $primaryLight={resolvedColors.primaryLight}
+      $primaryRgba={resolvedColors.primaryRgba}
       $scale={typeof size === 'number' ? size / 200 : undefined}
     >
       <div className="loader">
@@ -53,7 +93,13 @@ export const Loader: React.FC<LoaderProps> = ({
   );
 };
 
-const StyledWrapper = styled.div<{ $maskBg?: string; $scale?: number }>`
+const StyledWrapper = styled.div<{
+  $maskBg: string;
+  $primary: string;
+  $primaryLight: string;
+  $primaryRgba: string;
+  $scale?: number;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,9 +111,9 @@ const StyledWrapper = styled.div<{ $maskBg?: string; $scale?: number }>`
 
   .loader {
     --duration: 3s;
-    --primary: rgb(0, 0, 0);
-    --primary-light: #001b18;
-    --primary-rgba: rgba(96, 125, 211, 0);
+    --primary: ${({ $primary }) => $primary};
+    --primary-light: ${({ $primaryLight }) => $primaryLight};
+    --primary-rgba: ${({ $primaryRgba }) => $primaryRgba};
     width: 200px;
     height: 320px;
     position: relative;
@@ -90,7 +136,7 @@ const StyledWrapper = styled.div<{ $maskBg?: string; $scale?: number }>`
     position: absolute;
     right: 32%;
     bottom: -11px;
-    background: ${({ $maskBg }) => $maskBg || '#f3f2ee'};
+    background: ${({ $maskBg }) => $maskBg};
     transform: translateZ(200px) rotate(var(--r));
     -webkit-animation: mask var(--duration) linear forwards infinite;
     animation: mask var(--duration) linear forwards infinite;

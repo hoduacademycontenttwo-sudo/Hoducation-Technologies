@@ -34,7 +34,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999999;
-  background-color: #07090e;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,15 +55,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 32px;
+  position: relative;
+  z-index: 10;
 }
 
 .site-preloader .loader,
 .loader {
   --duration: 3s;
-  --primary: #fe6200;
-  --primary-light: #ff8533;
-  --primary-rgba: rgba(254, 98, 0, 0);
+  --primary: rgb(0, 0, 0);
+  --primary-light: #18181b;
+  --primary-rgba: rgba(0, 0, 0, 0);
   width: 200px;
   height: 280px;
   position: relative;
@@ -86,7 +88,7 @@
   position: absolute;
   right: 32%;
   bottom: -11px;
-  background: #07090e;
+  background: #ffffff;
   transform: translateZ(200px) rotate(var(--r));
   -webkit-animation: mask var(--duration) linear forwards infinite;
   animation: mask var(--duration) linear forwards infinite;
@@ -576,20 +578,23 @@
   align-items: center;
   gap: 6px;
   text-align: center;
+  position: relative;
+  z-index: 100;
+  margin-top: 16px;
 }
 
 .preloader-brand {
   font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #09090b;
   text-transform: uppercase;
 }
 
 .preloader-sub {
   font-family: var(--font-tech);
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #fe6200;
