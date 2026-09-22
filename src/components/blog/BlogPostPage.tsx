@@ -3,6 +3,7 @@ import { getPostBySlug, getRelatedPosts, getAllPosts } from '../../content/blog/
 import { BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
 import { Loader } from '../common/Loader';
+import { HeaderNavbar } from '../common/HeaderNavbar';
 import './BlogIndexPage.css';
 import './BlogPostPage.css';
 
@@ -345,27 +346,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
   if (!post) {
     return (
       <div className="post-page-root">
-        <header className="freehand-nav-wrapper">
-          <nav className="freehand-pill-navbar" aria-label="Main Navigation">
-            <a href="/" className="freehand-nav-brand">
-              <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
-              <span className="freehand-nav-brand-text">
-                Hoducation <span className="freehand-brand-suffix">Technologies</span>
-              </span>
-            </a>
-            <div className="freehand-nav-links">
-              <a href="/#services" className="freehand-nav-link">Services</a>
-              <a href="/#process" className="freehand-nav-link">Process</a>
-              <a href="/#products" className="freehand-nav-link">Products</a>
-              <a href="/blog" className="freehand-nav-link active">Blog</a>
-              <a href="/contact" className="freehand-nav-link">Contact</a>
-            </div>
-            <a href="/contact" className="freehand-nav-demo-btn">
-              <span className="demo-btn-full">REQUEST A DEMO</span>
-              <span className="demo-btn-short">DEMO</span>
-            </a>
-          </nav>
-        </header>
+        <HeaderNavbar activePage="blog" />
 
         <main className="post-container" style={{ textAlign: 'center', padding: '180px 24px 120px' }}>
           <div className="not-found-badge">404 ARTICLE</div>
@@ -393,30 +374,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
       />
 
       {/* Floating Pill Navbar (Matching Freehand.ai and Hoducation Home) */}
-      <header className="freehand-nav-wrapper">
-        <nav className="freehand-pill-navbar" aria-label="Main Navigation">
-          <a href="/" className="freehand-nav-brand">
-            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
-            <span className="freehand-nav-brand-text">
-              Hoducation <span className="freehand-brand-suffix">Technologies</span>
-            </span>
-          </a>
-
-          <div className="freehand-nav-links">
-            <a href="/#services" className="freehand-nav-link">Services</a>
-            <a href="/#process" className="freehand-nav-link">Process</a>
-            <a href="/#products" className="freehand-nav-link">Products</a>
-            <a href="/#about" className="freehand-nav-link">About Us</a>
-            <a href="/blog" className="freehand-nav-link active">Blog</a>
-            <a href="/contact" className="freehand-nav-link">Contact</a>
-          </div>
-
-          <a href="/contact" className="freehand-nav-demo-btn">
-            <span className="demo-btn-full">REQUEST A DEMO</span>
-            <span className="demo-btn-short">DEMO</span>
-          </a>
-        </nav>
-      </header>
+      <HeaderNavbar activePage="blog" />
 
       <main className="post-container">
         {/* Breadcrumb Navigation & Category Bar */}

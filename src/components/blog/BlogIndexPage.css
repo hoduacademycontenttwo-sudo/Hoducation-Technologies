@@ -40,117 +40,10 @@
 }
 
 /* ------------------------------------------------------------- */
-/* FLOATING PILL NAVBAR (Matching User media_1789983701283.png)   */
-/* ------------------------------------------------------------- */
-.freehand-nav-wrapper {
-  position: fixed;
-  top: 18px;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  padding: 0 20px;
-  pointer-events: none;
-}
-
-.freehand-pill-navbar {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  min-height: 60px;
-  padding: 6px 12px 6px 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 9999px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  box-sizing: border-box;
-}
-
-.freehand-nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.freehand-nav-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.freehand-nav-brand-text {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #111111;
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-}
-
-.freehand-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.freehand-nav-link {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: #4b5563;
-  text-decoration: none;
-  padding: 6px 4px;
-  transition: color 0.2s ease;
-}
-
-.freehand-nav-link:hover,
-.freehand-nav-link.active {
-  color: #111111;
-  font-weight: 600;
-}
-
-.freehand-nav-demo-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  height: 42px;
-  background: #111111;
-  color: #ffffff;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.freehand-nav-demo-btn:hover {
-  background: var(--fh-orange);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(254, 98, 0, 0.25);
-}
-
-.demo-btn-short {
-  display: none;
-}
-
-/* ------------------------------------------------------------- */
 /* MAIN WRAPPER                                                  */
 /* ------------------------------------------------------------- */
 .freehand-main-wrapper {
-  padding-top: 110px;
+  padding-top: clamp(20px, 3vh, 32px);
   padding-bottom: 90px;
 }
 
@@ -1169,85 +1062,36 @@
   }
 }
 
-@media screen and (max-width: 860px) {
-  .freehand-nav-links {
-    display: none;
-  }
-
-  .freehand-nav-wrapper {
-    padding: 0 12px;
-    top: 10px;
-  }
-
-  .freehand-pill-navbar {
-    padding: 6px 12px;
-    min-height: 52px;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .freehand-nav-wrapper {
-    padding: 0 8px;
-    top: 8px;
-  }
-
-  .freehand-pill-navbar {
-    padding: 4px 6px 4px 10px;
-    min-height: 48px;
-    gap: 8px;
-  }
-
-  .freehand-nav-brand {
-    gap: 8px;
-    min-width: 0;
-    flex-shrink: 1;
-  }
-
-  .freehand-nav-logo {
-    width: 28px !important;
-    height: 28px !important;
-  }
-
-  .freehand-nav-brand-text {
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-
-  .freehand-brand-suffix {
-    display: none;
-  }
-
-  .freehand-nav-demo-btn {
-    padding: 0 12px;
-    height: 36px;
-    font-size: 0.72rem;
-    letter-spacing: 0.02em;
-    flex-shrink: 0;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .freehand-nav-brand-text {
-    font-size: 0.78rem;
-  }
-
-  .freehand-nav-demo-btn {
-    padding: 0 9px;
-    font-size: 0.68rem;
-  }
-
-  .demo-btn-full {
-    display: none;
-  }
-
-  .demo-btn-short {
-    display: inline;
-  }
-}
-
 @media screen and (max-width: 680px) {
+  .freehand-container {
+    padding: 0 16px;
+  }
+
+  .freehand-hero-heading {
+    font-size: clamp(1.85rem, 6.5vw, 2.35rem);
+  }
+
+  .freehand-hero-primary-content {
+    padding: 20px 16px 18px;
+  }
+
+  .freehand-hero-primary-title {
+    font-size: clamp(1.35rem, 5vw, 1.65rem);
+    margin-bottom: 12px;
+  }
+
+  .freehand-hero-meta-row {
+    font-size: 10px;
+    margin-bottom: 16px;
+  }
+
   .freehand-cards-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .freehand-card-content {
+    padding: 18px 16px;
   }
 
   .freehand-hero-secondary-card {
@@ -1262,17 +1106,46 @@
   .freehand-listing-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 
   .freehand-search-box {
     width: 100%;
   }
 
+  .freehand-cta-box {
+    padding: 28px 20px;
+    gap: 20px;
+  }
+
+  .freehand-cta-title {
+    font-size: clamp(1.5rem, 5.5vw, 1.9rem);
+  }
+
   .freehand-cta-form {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .freehand-cta-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .freehand-footer-links-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .freehand-footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .freehand-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

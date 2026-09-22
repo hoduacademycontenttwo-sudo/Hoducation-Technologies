@@ -3,6 +3,7 @@ import { BLOG_POSTS, BLOG_CATEGORIES, getFeaturedPost } from '../../content/blog
 import { BlogCategory, BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
 import { Loader } from '../common/Loader';
+import { HeaderNavbar } from '../common/HeaderNavbar';
 import './BlogIndexPage.css';
 
 export const BlogIndexPage: React.FC = () => {
@@ -114,32 +115,8 @@ export const BlogIndexPage: React.FC = () => {
 
   return (
     <div className="freehand-blog-root">
-      {/* Top Floating Pill Navbar (Matching User Reference media_1789983701283.png) */}
-      <header className="freehand-nav-wrapper">
-        <nav className="freehand-pill-navbar" aria-label="Main Navigation">
-          <a href="/" className="freehand-nav-brand">
-            <img src="/ht-logo.jpg" alt="Hoducation Technologies" className="freehand-nav-logo" width="34" height="34" />
-            <span className="freehand-nav-brand-text">
-              Hoducation <span className="freehand-brand-suffix">Technologies</span>
-            </span>
-          </a>
-
-          <div className="freehand-nav-links">
-            <a href="/#services" className="freehand-nav-link">Services</a>
-            <a href="/#process" className="freehand-nav-link">Process</a>
-            <a href="/#products" className="freehand-nav-link">Products</a>
-            <a href="/#testimonials" className="freehand-nav-link">Clients</a>
-            <a href="/#about" className="freehand-nav-link">About Us</a>
-            <a href="/blog" className="freehand-nav-link active">Blog</a>
-            <a href="/contact" className="freehand-nav-link">Contact</a>
-          </div>
-
-          <a href="/contact" className="freehand-nav-demo-btn">
-            <span className="demo-btn-full">REQUEST A DEMO</span>
-            <span className="demo-btn-short">DEMO</span>
-          </a>
-        </nav>
-      </header>
+      {/* Top Floating Pill Navbar matching Homepage */}
+      <HeaderNavbar activePage="blog" />
 
       {/* Main Content Area */}
       <main className="freehand-main-wrapper">
