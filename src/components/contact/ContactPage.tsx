@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Loader } from '../common/Loader';
 import { HeaderNavbar } from '../common/HeaderNavbar';
+import { Footer } from '../common/Footer';
 import './ContactPage.css';
 
 interface FormData {
@@ -678,21 +679,8 @@ export const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer with separate page links */}
-      <footer className="contact-site-footer">
-        <div className="contact-footer-inner">
-          <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
-          <div className="contact-footer-links">
-            <a href="/">Home</a>
-            <a href="/blog">Blog &amp; Insights</a>
-            <a href="/faqs">FAQs</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms &amp; Conditions</a>
-            <a href="tel:+919660034117">+91 9660034117</a>
-            <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
-          </div>
-        </div>
-      </footer>
+      {/* Universal Homepage-Style Footer */}
+      <Footer />
     </div>
   );
 };

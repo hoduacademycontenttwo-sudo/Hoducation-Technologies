@@ -3,9 +3,49 @@ import { createRoot } from 'react-dom/client';
 import AcadChatbot from './components/AcadChatbot';
 import ProcessSection from './components/process/ProcessSection';
 import Galaxy from './components/Galaxy';
-
+import { Loader } from './components/common/Loader';
 import { AcadOSShowcase } from './components/acados/AcadOSShowcase';
 import TestimonialsSection from './components/testimonials/TestimonialsSection';
+
+// 0. Smooth 3D Cube Preloader (Exact React Component from Blog & Contact)
+const preloaderContainer = document.getElementById('site-preloader-root');
+if (preloaderContainer) {
+  const PreloaderApp: React.FC = () => {
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }, []);
+
+    if (!loading) return null;
+
+    return (
+      <div
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#ffffff',
+          width: '100%',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 9999999,
+        }}
+      >
+        <Loader variant="black" fullscreen maskBg="#ffffff" />
+      </div>
+    );
+  };
+
+  createRoot(preloaderContainer).render(<PreloaderApp />);
+}
 
 // 1. Interactive WebGL Galaxy Hero Background
 const galaxyContainer = document.getElementById('galaxy-root');

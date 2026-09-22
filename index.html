@@ -79,20 +79,8 @@
     <script type="module" src="/src/mountEnquiry.tsx"></script>
   </head>
   <body>
-    <!-- Global Animated Site Preloader (3D Isometric Cube Assembly) -->
-    <div id="site-preloader" class="site-preloader" aria-label="Loading Hoducation Technologies">
-      <div class="loader" style="--primary: rgb(0, 0, 0); --primary-light: #18181b; --primary-rgba: rgba(0, 0, 0, 0); --loader-mask-bg: #ffffff;">
-        <div class="box box0"><div></div></div>
-        <div class="box box1"><div></div></div>
-        <div class="box box2"><div></div></div>
-        <div class="box box3"><div></div></div>
-        <div class="box box4"><div></div></div>
-        <div class="box box5"><div></div></div>
-        <div class="box box6"><div></div></div>
-        <div class="box box7"><div></div></div>
-        <div class="ground"><div></div></div>
-      </div>
-    </div>
+    <!-- Global Animated Site Preloader (3D Isometric Cube Assembly via React) -->
+    <div id="site-preloader-root"></div>
 
     <!-- Galaxy Interactive Hero Background -->
     <div id="galaxy-root" class="bg" aria-hidden="true"></div>
@@ -744,7 +732,7 @@
               Engineering modern software, institutional ERPs, and automated workflows.
             </p>
 
-            <form class="footer-newsletter-pill" onsubmit="event.preventDefault(); const input = this.querySelector('input'); const btn = this.querySelector('button'); const email = input.value; if(!email) return; btn.textContent = '...'; fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'Homepage Footer' }) }).then(() => { btn.textContent = 'Subscribed!'; input.value = ''; setTimeout(() => { btn.textContent = 'Subscribe'; }, 4000); }).catch(() => { btn.textContent = 'Subscribe'; });">
+            <form class="footer-newsletter-pill" id="footer-newsletter-form">
               <input 
                 type="email" 
                 placeholder="you@email.com" 

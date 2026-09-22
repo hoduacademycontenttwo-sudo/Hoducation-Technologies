@@ -512,4 +512,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initScrollRevealSystem();
+
+  // -----------------------------------------------------------
+  // 7. Footer Newsletter Subscription Handler
+  // -----------------------------------------------------------
+  const footerNewsletterForms = document.querySelectorAll(".footer-newsletter-pill");
+  footerNewsletterForms.forEach((form) => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const input = form.querySelector("input[type='email']");
+      const btn = form.querySelector("button[type='submit']");
+      if (!input || !btn) return;
+      const email = input.value.trim();
+      if (!email || !email.includes("@")) return;
+
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "...";
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "Homepage Footer" })
+        });
+        btn.textContent = "Subscribed!";
+        input.value = "";
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 4000);
+      } catch (err) {
+        console.error("Subscription error:", err);
+        btn.textContent = "Subscribed!";
+        input.value = "";
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 4000);
+      }
+    });
+  });
 });

@@ -4,6 +4,7 @@ import { BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
 import { Loader } from '../common/Loader';
 import { HeaderNavbar } from '../common/HeaderNavbar';
+import { Footer } from '../common/Footer';
 import './BlogIndexPage.css';
 import './BlogPostPage.css';
 
@@ -801,47 +802,8 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
         )}
       </main>
 
-      {/* Global Site Footer */}
-      <footer className="freehand-site-footer">
-        <div className="freehand-container">
-          <div className="freehand-footer-top">
-            <div className="freehand-footer-brand">
-              <a href="/" className="footer-brand-title">HODUCATION</a>
-              <p className="footer-brand-desc">
-                Engineering bespoke software, institutional ERPs, and automated workflows for mission-critical operations.
-              </p>
-            </div>
-
-            <div className="freehand-footer-links-grid">
-              <div className="footer-links-col">
-                <span className="footer-col-title">COMPANY</span>
-                <a href="/#about">About Us</a>
-                <a href="/#services">Services</a>
-                <a href="/#products">Products</a>
-                <a href="/contact">Careers</a>
-              </div>
-              <div className="footer-links-col">
-                <span className="footer-col-title">RESOURCES</span>
-                <a href="/blog">All Blogs</a>
-                <a href="/faqs">FAQs</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms &amp; Conditions</a>
-              </div>
-              <div className="footer-links-col">
-                <span className="footer-col-title">CONNECT</span>
-                <a href="tel:+919660034117">+91 9660034117</a>
-                <a href="mailto:hoducationtechnologies@gmail.com">hoducationtechnologies@gmail.com</a>
-                <a href="https://wa.me/919660034117" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="freehand-footer-bottom">
-            <p>© 2026 Hoducation Technologies Pvt Ltd. All rights reserved.</p>
-            <div className="footer-meta-pill">Made with precision in Jaipur, India</div>
-          </div>
-        </div>
-      </footer>
+      {/* Universal Homepage-Style Footer */}
+      <Footer />
     </div>
   );
 };
