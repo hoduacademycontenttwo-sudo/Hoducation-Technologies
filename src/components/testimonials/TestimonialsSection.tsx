@@ -28,7 +28,7 @@ export const TestimonialsSection: React.FC = () => {
           </p>
         </header>
 
-        {/* 8 Cards Responsive Grid */}
+        {/* 8 Clients Sci-Fi Ray & Laser Grid */}
         <div className="testimonials-grid">
           {TESTIMONIALS_DATA.map((item) => (
             <div
@@ -36,18 +36,22 @@ export const TestimonialsSection: React.FC = () => {
               className="testimonial-card-wrapper"
               style={{ ['--card-accent' as string]: item.color || '#0a3cff' }}
             >
-              <div className="card">
-                <div className="content">
-                  {/* Top Metadata & Logo */}
-                  <div className="card-top-section">
-                    <div className="card-top-bar">
-                      <span className={`category-badge badge-${item.type}`}>
-                        {item.type === 'school' ? 'School' : 'Coaching'}
-                      </span>
-                      <span className="card-city-tag">{item.city}</span>
-                    </div>
+              <div className="outer">
+                <div className="dot" />
+                <div className="card">
+                  <div className="ray" />
+                  
+                  {/* Top Category Badge & City */}
+                  <div className="card-top-tag-row">
+                    <span className={`category-badge badge-${item.type}`}>
+                      {item.type === 'school' ? 'School' : 'Coaching'}
+                    </span>
+                    <span className="card-city-tag">{item.city}</span>
+                  </div>
 
-                    <div className="card-logo-box">
+                  {/* Center Client Logo Display */}
+                  <div className="card-center-brand">
+                    <div className="card-logo-frame">
                       <img
                         src={item.image}
                         alt={`${item.name} Logo`}
@@ -55,40 +59,33 @@ export const TestimonialsSection: React.FC = () => {
                         loading="lazy"
                       />
                     </div>
-
-                    <div className="card-org-header">
-                      <strong>{item.name}</strong>
-                      <p className="para-role">
-                        {item.person} · {item.role}
-                      </p>
-                    </div>
+                    <strong className="card-client-name">{item.name}</strong>
+                    <span className="card-client-role">
+                      {item.person} · {item.role}
+                    </span>
                   </div>
 
-                  {/* Quote & Action */}
-                  <div className="footer">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="quotes"
-                      style={{ color: item.color || '#0a3cff' }}
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z"
-                      />
-                    </svg>
-
-                    <p className="para para-feedback">"{item.feedback}"</p>
-
+                  {/* Bottom Action Button */}
+                  <div className="card-bottom-action">
                     <button
                       type="button"
-                      className="button"
+                      className="read-more-btn"
                       onClick={() => setSelectedTestimonial(item)}
-                      aria-label={`Read full feedback from ${item.name}`}
+                      aria-label={`Read more about ${item.name}`}
                     >
-                      <span>Read feedback &rarr;</span>
+                      <span>Read More</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
                     </button>
                   </div>
+
+                  {/* Corner Grid Crosshair Lines */}
+                  <div className="line topl" />
+                  <div className="line leftl" />
+                  <div className="line bottoml" />
+                  <div className="line rightl" />
                 </div>
               </div>
             </div>
