@@ -3554,9 +3554,9 @@ footer[id] {
 
 .interactive-step-card.active {
   flex: 3.5 1 0%;
-  background: radial-gradient(circle at 80% 20%, rgba(254, 98, 0, 0.09) 0%, rgba(9, 9, 11, 0.98) 65%), #09090b;
-  border-color: #27272a;
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.45), 0 0 28px rgba(254, 98, 0, 0.12);
+  background: #09090b;
+  border-color: #18181b;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.35);
   cursor: default;
 }
 
