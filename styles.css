@@ -3539,11 +3539,11 @@ footer[id] {
   height: 100%;
   box-sizing: border-box;
   will-change: flex, background-color, border-color, box-shadow;
-  transition: flex 0.55s cubic-bezier(0.2, 0.9, 0.25, 1),
-              background-color 0.35s cubic-bezier(0.2, 0.9, 0.25, 1),
-              border-color 0.35s cubic-bezier(0.2, 0.9, 0.25, 1),
-              box-shadow 0.45s cubic-bezier(0.2, 0.9, 0.25, 1),
-              transform 0.35s cubic-bezier(0.2, 0.9, 0.25, 1);
+  transition: flex 0.62s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s ease;
   user-select: none;
 }
 
@@ -3553,10 +3553,10 @@ footer[id] {
 }
 
 .interactive-step-card.active {
-  flex: 3.4 1 0%;
-  background: #09090b;
-  border-color: #18181b;
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.35), 0 0 24px rgba(254, 98, 0, 0.12);
+  flex: 3.5 1 0%;
+  background: radial-gradient(circle at 80% 20%, rgba(254, 98, 0, 0.09) 0%, rgba(9, 9, 11, 0.98) 65%), #09090b;
+  border-color: #27272a;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.45), 0 0 28px rgba(254, 98, 0, 0.12);
   cursor: default;
 }
 
@@ -3592,13 +3592,13 @@ footer[id] {
   color: #0f172a;
   margin: 0;
   line-height: 1.25;
-  transition: color 0.35s cubic-bezier(0.2, 0.9, 0.25, 1), font-size 0.35s ease;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), font-size 0.35s ease, transform 0.35s ease;
   word-break: normal;
 }
 
 .interactive-step-card.active .step-card-title {
   color: #ffffff;
-  font-size: 21px;
+  font-size: 21.5px;
 }
 
 /* Card Body / Description */
@@ -3609,8 +3609,8 @@ footer[id] {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  transform: translateY(14px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   width: 100%;
   max-width: 440px;
   min-width: 280px;
@@ -3621,9 +3621,9 @@ footer[id] {
   pointer-events: auto;
   visibility: visible;
   transform: translateY(0);
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
-              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s,
-              visibility 0.45s;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s,
+              visibility 0.4s;
 }
 
 .step-card-desc {
@@ -3635,12 +3635,20 @@ footer[id] {
   max-width: 440px;
 }
 
+.interactive-step-card.active .step-card-desc {
+  animation: stepRevealFadeUp 0.46s cubic-bezier(0.16, 1, 0.3, 1) 0.10s both;
+}
+
 /* Card Tags Row */
 .card-tags-row {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
   margin-top: 18px;
+}
+
+.interactive-step-card.active .card-tags-row {
+  animation: stepRevealFadeUp 0.46s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
 .card-tag {
@@ -3653,6 +3661,12 @@ footer[id] {
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #e4e4e7;
   letter-spacing: 0.02em;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.card-tag:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
 }
 
 /* Card Inquire CTA */
@@ -3674,6 +3688,10 @@ footer[id] {
               transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-step-card.active .card-inquire-btn {
+  animation: stepRevealScaleUp 0.46s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
 }
 
 .card-inquire-btn:hover {
@@ -3720,13 +3738,51 @@ footer[id] {
 .interactive-step-card.active .step-indicator-dot {
   border-color: #f43f5e;
   box-shadow: 0 0 14px rgba(244, 63, 94, 0.5);
-  transform: scale(1.08);
+  animation: stepDotGlow 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 .interactive-step-card.active .step-indicator-dot .dot-inner {
   background: #f43f5e;
   box-shadow: 0 0 10px #f43f5e;
   transform: scale(1.1);
+}
+
+/* Staged Reveal Keyframe Animations */
+@keyframes stepRevealFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stepRevealScaleUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stepDotGlow {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(1.22);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
 }
 
 /* Responsive adjustments for expanded navbar */
