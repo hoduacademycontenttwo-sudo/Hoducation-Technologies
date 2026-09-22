@@ -41,14 +41,6 @@ export const TestimonialsSection: React.FC = () => {
                 <div className="card">
                   <div className="ray" />
                   
-                  {/* Top Category Badge & City */}
-                  <div className="card-top-tag-row">
-                    <span className={`category-badge badge-${item.type}`}>
-                      {item.type === 'school' ? 'School' : 'Coaching'}
-                    </span>
-                    <span className="card-city-tag">{item.city}</span>
-                  </div>
-
                   {/* Center Client Logo Display */}
                   <div className="card-center-brand">
                     <div className="card-logo-frame">
@@ -60,9 +52,6 @@ export const TestimonialsSection: React.FC = () => {
                       />
                     </div>
                     <strong className="card-client-name">{item.name}</strong>
-                    <span className="card-client-role">
-                      {item.person} · {item.role}
-                    </span>
                   </div>
 
                   {/* Bottom Action Button */}
