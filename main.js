@@ -1,25 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------------------------------------
-  // 0. Site Preloader Dismissal (Signature Animated Loader)
+  // 0. Site Preloader Dismissal (3D Isometric Cube Assembly Loader)
   // -----------------------------------------------------------
   const sitePreloader = document.getElementById("site-preloader");
   if (sitePreloader) {
+    let dismissed = false;
     const dismissPreloader = () => {
+      if (dismissed) return;
+      dismissed = true;
       sitePreloader.classList.add("fade-out");
       setTimeout(() => {
         sitePreloader.remove();
       }, 600);
     };
 
-    if (document.readyState === "complete") {
-      setTimeout(dismissPreloader, 450);
-    } else {
-      window.addEventListener("load", () => {
-        setTimeout(dismissPreloader, 450);
-      });
-      // Fallback safeguard: maximum 2.5s
-      setTimeout(dismissPreloader, 2500);
-    }
+    // Guarantee full 3-second cycle completion of the 3D cube assembly
+    setTimeout(dismissPreloader, 3000);
   }
 
   // -----------------------------------------------------------

@@ -41,25 +41,18 @@
   </head>
   <body style="margin: 0; background-color: #f8fafc;">
     <div id="contact-root">
-      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #f8fafc;">
-        <style>
-          .contact-init-loader { width: 140px; max-height: 900px; transform-origin: 50% 50%; overflow: visible; }
-          .contact-init-ci1 { fill: #800020; animation: toBig 3s infinite -1.5s; transform-box: fill-box; transform-origin: 50% 50%; }
-          .contact-init-ciw { transform-box: fill-box; transform-origin: 50% 50%; animation: breath 3s infinite; }
-          .contact-init-ci2 { fill: #800020; animation: toBig2 3s infinite; transform-box: fill-box; transform-origin: 50% 50%; }
-          .contact-init-points { animation: rot 3s infinite; transform-box: fill-box; transform-origin: 50% 50%; }
-          @keyframes rot { 0% { transform: rotate(0deg); } 30% { transform: rotate(360deg); } 50% { transform: rotate(360deg); } 80% { transform: rotate(0deg); } 100% { transform: rotate(0deg); } }
-          @keyframes toBig { 0% { transform: scale(1) translateX(0px); } 30% { transform: scale(1) translateX(0px); } 50% { transform: scale(10) translateX(-4.5px); } 80% { transform: scale(10) translateX(-4.5px); } 100% { transform: scale(1) translateX(0px); } }
-          @keyframes toBig2 { 0% { transform: scale(1) translateX(0px); } 30% { transform: scale(1) translateX(0px); } 50% { transform: scale(10) translateX(4.5px); } 80% { transform: scale(10) translateX(4.5px); } 100% { transform: scale(1) translateX(0px); } }
-          @keyframes breath { 15% { transform: scale(1); } 40% { transform: scale(1.1); } 65% { transform: scale(1); } 90% { transform: scale(1.1); } }
-        </style>
-        <svg viewBox="0 0 100 100" class="contact-init-loader">
-          <g class="contact-init-points"> 
-            <circle fill="#fff" r="50" cy="50" cx="50" class="contact-init-ciw"></circle>
-            <circle r="4" cy="50" cx="5" class="contact-init-ci2"></circle>
-            <circle r="4" cy="50" cx="95" class="contact-init-ci1"></circle>
-          </g>
-        </svg>
+      <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+        <div class="loader" style="--primary: #fe6200; --primary-light: #ff8533; --loader-mask-bg: #f8fafc;">
+          <div class="box box0"><div></div></div>
+          <div class="box box1"><div></div></div>
+          <div class="box box2"><div></div></div>
+          <div class="box box3"><div></div></div>
+          <div class="box box4"><div></div></div>
+          <div class="box box5"><div></div></div>
+          <div class="box box6"><div></div></div>
+          <div class="box box7"><div></div></div>
+          <div class="ground"><div></div></div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/contact.tsx"></script>

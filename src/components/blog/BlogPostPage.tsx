@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { getPostBySlug, getRelatedPosts, getAllPosts } from '../../content/blog/blogPosts';
 import { BlogPost } from '../../content/blog/types';
 import { FreehandCardMedia } from './FreehandCardMedia';
+import { Loader } from '../common/Loader';
 import './BlogIndexPage.css';
 import './BlogPostPage.css';
 
@@ -19,11 +20,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const [isSubscribing, setIsSubscribing] = useState<boolean>(false);
 
-  // 2-Second Visual Loader Timer as requested
+  // 3-Second Visual Loader Timer (Full 3D Cube Construction Cycle)
   useEffect(() => {
     const timer = setTimeout(() => {
       setPageLoading(false);
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -320,85 +321,23 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
 
   if (pageLoading) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#f3f2ee',
-        width: '100%',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 99999
-      }}>
-        <style>{`
-          .custom-blog-loader {
-            width: 120px;
-            max-height: 900px;
-            transform-origin: 50% 50%;
-            overflow: visible;
-          }
-          .custom-loader-ci1 {
-            fill: #800020;
-            animation: toBig 3s infinite -1.5s;
-            transform-box: fill-box;
-            transform-origin: 50% 50%;
-          }
-          .custom-loader-ciw {
-            transform-box: fill-box;
-            transform-origin: 50% 50%;
-            animation: breath 3s infinite;
-          }
-          .custom-loader-ci2 {
-            fill: #800020;
-            animation: toBig2 3s infinite;
-            transform-box: fill-box;
-            transform-origin: 50% 50%;
-          }
-          .custom-loader-points {
-            animation: rot 3s infinite;
-            transform-box: fill-box;
-            transform-origin: 50% 50%;
-          }
-          @keyframes rot {
-            0% { transform: rotate(0deg); }
-            30% { transform: rotate(360deg); }
-            50% { transform: rotate(360deg); }
-            80% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-          }
-          @keyframes toBig {
-            0% { transform: scale(1) translateX(0px); }
-            30% { transform: scale(1) translateX(0px); }
-            50% { transform: scale(10) translateX(-4.5px); }
-            80% { transform: scale(10) translateX(-4.5px); }
-            100% { transform: scale(1) translateX(0px); }
-          }
-          @keyframes toBig2 {
-            0% { transform: scale(1) translateX(0px); }
-            30% { transform: scale(1) translateX(0px); }
-            50% { transform: scale(10) translateX(4.5px); }
-            80% { transform: scale(10) translateX(4.5px); }
-            100% { transform: scale(1) translateX(0px); }
-          }
-          @keyframes breath {
-            15% { transform: scale(1); }
-            40% { transform: scale(1.1); }
-            65% { transform: scale(1); }
-            90% { transform: scale(1.1); }
-          }
-        `}</style>
-        <svg viewBox="0 0 100 100" className="custom-blog-loader">
-          <g className="custom-loader-points">
-            <circle fill="#fff" r={50} cy={50} cx={50} className="custom-loader-ciw" />
-            <circle r={4} cy={50} cx={5} className="custom-loader-ci2" />
-            <circle r={4} cy={50} cx={95} className="custom-loader-ci1" />
-          </g>
-        </svg>
+      <div
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f3f2ee',
+          width: '100%',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 99999,
+        }}
+      >
+        <Loader fullscreen maskBg="#f3f2ee" />
       </div>
     );
   }
