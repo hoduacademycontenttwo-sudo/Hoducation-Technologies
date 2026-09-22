@@ -1,16 +1,16 @@
 {
   "url": "https://hoducation.tech",
   "scores": {
-    "overall": 59,
+    "overall": 71,
     "categories": {
-      "security": 85,
-      "social": 38,
-      "robots": 88,
-      "article": 50,
+      "security": 100,
+      "social": 77,
+      "robots": 100,
+      "article": 0,
       "broken_links": 67,
       "internal_links": 60,
       "redirects": 100,
-      "llms_txt": 0,
+      "llms_txt": 100,
       "pagespeed": 0,
       "onpage": 100,
       "readability": 1,
@@ -40,19 +40,25 @@
   "data": {
     "url": "https://hoducation.tech",
     "domain": "hoducation.tech",
-    "timestamp": "2026-09-22T13:11:54.907869",
+    "timestamp": "2026-09-22T13:17:36.414084",
     "sections": {
       "robots": {
         "url": "https://hoducation.tech/robots.txt",
         "status": 200,
         "user_agents": {
+          "*": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
           "Googlebot": {
             "allow": [
               "/"
             ],
             "disallow": []
           },
-          "Google-Extended": {
+          "Bingbot": {
             "allow": [
               "/"
             ],
@@ -64,7 +70,25 @@
             ],
             "disallow": []
           },
+          "ChatGPT-User": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "OAI-SearchBot": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
           "ClaudeBot": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "anthropic-ai": {
             "allow": [
               "/"
             ],
@@ -76,7 +100,43 @@
             ],
             "disallow": []
           },
-          "Bingbot": {
+          "Google-Extended": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "Applebot": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "Applebot-Extended": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "CCBot": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "Bytespider": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "FacebookBot": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          },
+          "cohere-ai": {
             "allow": [
               "/"
             ],
@@ -89,88 +149,90 @@
         "crawl_delays": {},
         "ai_crawler_status": {
           "GPTBot": "explicitly allowed",
-          "ChatGPT-User": "not managed (allowed by default)",
+          "ChatGPT-User": "explicitly allowed",
           "ClaudeBot": "explicitly allowed",
           "PerplexityBot": "explicitly allowed",
           "Google-Extended": "explicitly allowed",
-          "Applebot-Extended": "not managed (allowed by default)",
-          "Bytespider": "not managed (allowed by default)",
-          "CCBot": "not managed (allowed by default)",
-          "anthropic-ai": "not managed (allowed by default)",
-          "FacebookBot": "not managed (allowed by default)",
-          "Amazonbot": "not managed (allowed by default)"
+          "Applebot-Extended": "explicitly allowed",
+          "Bytespider": "explicitly allowed",
+          "CCBot": "explicitly allowed",
+          "anthropic-ai": "explicitly allowed",
+          "FacebookBot": "explicitly allowed",
+          "Amazonbot": "not managed (inherits * rules)"
         },
         "issues": [
-          "\u26a0\ufe0f 7 AI crawlers not explicitly managed: ChatGPT-User, Applebot-Extended, Bytespider, CCBot, anthropic-ai"
+          "\u26a0\ufe0f 1 AI crawlers not explicitly managed: Amazonbot"
         ],
         "error": null
       },
       "security": {
         "url": "https://hoducation.tech",
-        "score": 85,
+        "score": 100,
         "https": true,
         "headers_present": {
           "HSTS (Strict-Transport-Security)": "max-age=63072000; includeSubDomains; preload",
+          "Content-Security-Policy (CSP)": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'none';",
           "X-Frame-Options": "DENY",
           "X-Content-Type-Options": "nosniff",
           "Referrer-Policy": "strict-origin-when-cross-origin",
           "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
         },
-        "headers_missing": {
-          "Content-Security-Policy (CSP)": "Prevents XSS, clickjacking, and code injection."
-        },
+        "headers_missing": {},
         "header_values": {
           "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'none';",
           "x-frame-options": "DENY",
           "x-content-type-options": "nosniff",
           "referrer-policy": "strict-origin-when-cross-origin",
           "permissions-policy": "camera=(), microphone=(), geolocation=()"
         },
-        "issues": [
-          "\u26a0\ufe0f 1 security header(s) missing"
-        ],
-        "recommendations": [
-          "Content-Security-Policy (CSP): Add a Content-Security-Policy header restricting script/style sources."
-        ],
+        "issues": [],
+        "recommendations": [],
         "error": null
       },
       "social": {
         "url": "https://hoducation.tech",
-        "score": 38,
+        "score": 77,
         "og_tags": {
           "og:type": "website",
           "og:url": "https://hoducation.tech/",
-          "og:title": "Hoducation Technologies | Software Engineered To Power Education",
+          "og:title": "Hoducation Technologies | Custom Software & ERP Systems",
           "og:description": "Hoducation Technologies builds custom software, enterprise ERPs, CRMs, and intelligent automations.",
-          "og:site_name": "Hoducation Technologies"
+          "og:site_name": "Hoducation Technologies",
+          "og:image": "https://hoducation.tech/ht-logo.jpg",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Hoducation Technologies - Enterprise Software & AI"
         },
-        "twitter_tags": {},
+        "twitter_tags": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Hoducation Technologies | Custom Software & ERP Systems",
+          "twitter:description": "Engineering bespoke software, institutional ERPs, AcadOS EdTech platforms, and automated workflows.",
+          "twitter:image": "https://hoducation.tech/ht-logo.jpg",
+          "twitter:image:alt": "Hoducation Technologies"
+        },
         "og_present": [
           "og:title",
           "og:description",
+          "og:image",
           "og:url",
           "og:type",
           "og:site_name"
         ],
-        "og_missing": [
-          "og:image"
+        "og_missing": [],
+        "twitter_present": [
+          "twitter:card",
+          "twitter:title",
+          "twitter:description",
+          "twitter:image"
         ],
-        "twitter_present": [],
-        "twitter_missing": [
-          "twitter:card"
-        ],
-        "issues": [
-          "\u26a0\ufe0f og:title is too long (64 chars, max 60)",
-          "\ud83d\udd34 Missing required: og:image",
-          "\u26a0\ufe0f Missing: twitter:card"
-        ],
-        "recommendations": [
-          "Add Twitter Card tags for rich previews on X (Twitter)"
-        ],
+        "twitter_missing": [],
+        "issues": [],
+        "recommendations": [],
         "preview": {
-          "title": "Hoducation Technologies | Software Engineered To Power Education",
+          "title": "Hoducation Technologies | Custom Software & ERP Systems",
           "description": "Hoducation Technologies builds custom software, enterprise ERPs, CRMs, and intelligent automations.",
-          "image": null,
+          "image": "https://hoducation.tech/ht-logo.jpg",
           "site_name": "Hoducation Technologies"
         },
         "error": null
@@ -183,12 +245,12 @@
             "step": 1,
             "url": "https://hoducation.tech",
             "status": 200,
-            "time_ms": 419,
+            "time_ms": 407,
             "final": true
           }
         ],
         "total_hops": 0,
-        "total_time_ms": 419,
+        "total_time_ms": 407,
         "has_loop": false,
         "has_mixed_protocol": false,
         "issues": [],
@@ -197,24 +259,200 @@
       "llms_txt": {
         "url": "https://hoducation.tech/llms.txt",
         "full_url": "https://hoducation.tech/llms-full.txt",
-        "exists": false,
-        "full_exists": false,
-        "status": 404,
-        "full_status": 404,
+        "exists": true,
+        "full_exists": true,
+        "status": 200,
+        "full_status": 200,
         "parsed": {
-          "title": null,
-          "description": null,
-          "sections": [],
-          "links": []
+          "title": "Hoducation Technologies",
+          "description": "Enterprise Custom Software Engineering, Institutional ERPs, and AI Assessment Automation",
+          "sections": [
+            {
+              "name": "Core Capabilities & Services",
+              "links": []
+            },
+            {
+              "name": "Priority URLs",
+              "links": [
+                {
+                  "title": "Home",
+                  "url": "https://hoducation.tech/",
+                  "description": "Official website and enterprise solutions overview"
+                },
+                {
+                  "title": "AcadOS Platform",
+                  "url": "https://hoducation.tech/#products",
+                  "description": "Flagship 5-in-1 EdTech and testing engine"
+                },
+                {
+                  "title": "Contact & Demo Inquiries",
+                  "url": "https://hoducation.tech/contact",
+                  "description": "Direct consultation, quotes, and product demonstrations"
+                },
+                {
+                  "title": "Knowledge Base & FAQs",
+                  "url": "https://hoducation.tech/faqs",
+                  "description": "Detailed technical and architectural answers for institutions"
+                },
+                {
+                  "title": "Engineering Blog & Insights",
+                  "url": "https://hoducation.tech/blog",
+                  "description": "In-depth playbooks and technical articles"
+                }
+              ]
+            },
+            {
+              "name": "Key Technical Articles & Guides",
+              "links": [
+                {
+                  "title": "Custom Software vs Ready-Made Software",
+                  "url": "https://hoducation.tech/blog/custom-software-vs-ready-made-software",
+                  "description": "TCO analysis, scalability limits, and build vs buy criteria"
+                },
+                {
+                  "title": "Custom Software Development Cost in India (2026 Guide)",
+                  "url": "https://hoducation.tech/blog/custom-software-development-cost-india",
+                  "description": "Transparent price breakdown for ERPs, portals, and AI systems"
+                },
+                {
+                  "title": "AI OMR & CBT Software for Coaching Institutes",
+                  "url": "https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026",
+                  "description": "Modern assessment workflows and smartphone grading"
+                },
+                {
+                  "title": "CRM vs ERP Core Differences",
+                  "url": "https://hoducation.tech/blog/crm-vs-erp-difference",
+                  "description": "System architecture, pipeline synchronization, and operational boundaries"
+                },
+                {
+                  "title": "10 Business Processes You Can Automate With AI",
+                  "url": "https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai",
+                  "description": "Enterprise deployment patterns and agentic workflows"
+                },
+                {
+                  "title": "AI Agents vs Traditional Automation",
+                  "url": "https://hoducation.tech/blog/ai-agents-vs-traditional-automation",
+                  "description": "Deterministic RPA vs LLM autonomous decision systems"
+                },
+                {
+                  "title": "Modern School ERP Essential Features",
+                  "url": "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
+                  "description": "Cloud ERP architecture for K-12 and higher education"
+                },
+                {
+                  "title": "7 Signs You Have Outgrown Spreadsheets",
+                  "url": "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
+                  "description": "When manual spreadsheets jeopardize business growth"
+                },
+                {
+                  "title": "CRM Automation for Sales Follow-ups",
+                  "url": "https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups",
+                  "description": "Eliminating deal leakage with instantaneous messaging"
+                },
+                {
+                  "title": "Turn Your Website into a 24/7 Lead Machine",
+                  "url": "https://hoducation.tech/blog/website-crm-integration-lead-machine",
+                  "description": "Web-to-CRM architecture and visitor intent scoring"
+                },
+                {
+                  "title": "How AI is Transforming Business in 2026",
+                  "url": "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026",
+                  "description": "Enterprise strategic modernization roadmap"
+                }
+              ]
+            },
+            {
+              "name": "Corporate Details",
+              "links": []
+            }
+          ],
+          "links": [
+            {
+              "title": "Home",
+              "url": "https://hoducation.tech/",
+              "description": "Official website and enterprise solutions overview"
+            },
+            {
+              "title": "AcadOS Platform",
+              "url": "https://hoducation.tech/#products",
+              "description": "Flagship 5-in-1 EdTech and testing engine"
+            },
+            {
+              "title": "Contact & Demo Inquiries",
+              "url": "https://hoducation.tech/contact",
+              "description": "Direct consultation, quotes, and product demonstrations"
+            },
+            {
+              "title": "Knowledge Base & FAQs",
+              "url": "https://hoducation.tech/faqs",
+              "description": "Detailed technical and architectural answers for institutions"
+            },
+            {
+              "title": "Engineering Blog & Insights",
+              "url": "https://hoducation.tech/blog",
+              "description": "In-depth playbooks and technical articles"
+            },
+            {
+              "title": "Custom Software vs Ready-Made Software",
+              "url": "https://hoducation.tech/blog/custom-software-vs-ready-made-software",
+              "description": "TCO analysis, scalability limits, and build vs buy criteria"
+            },
+            {
+              "title": "Custom Software Development Cost in India (2026 Guide)",
+              "url": "https://hoducation.tech/blog/custom-software-development-cost-india",
+              "description": "Transparent price breakdown for ERPs, portals, and AI systems"
+            },
+            {
+              "title": "AI OMR & CBT Software for Coaching Institutes",
+              "url": "https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026",
+              "description": "Modern assessment workflows and smartphone grading"
+            },
+            {
+              "title": "CRM vs ERP Core Differences",
+              "url": "https://hoducation.tech/blog/crm-vs-erp-difference",
+              "description": "System architecture, pipeline synchronization, and operational boundaries"
+            },
+            {
+              "title": "10 Business Processes You Can Automate With AI",
+              "url": "https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai",
+              "description": "Enterprise deployment patterns and agentic workflows"
+            },
+            {
+              "title": "AI Agents vs Traditional Automation",
+              "url": "https://hoducation.tech/blog/ai-agents-vs-traditional-automation",
+              "description": "Deterministic RPA vs LLM autonomous decision systems"
+            },
+            {
+              "title": "Modern School ERP Essential Features",
+              "url": "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
+              "description": "Cloud ERP architecture for K-12 and higher education"
+            },
+            {
+              "title": "7 Signs You Have Outgrown Spreadsheets",
+              "url": "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
+              "description": "When manual spreadsheets jeopardize business growth"
+            },
+            {
+              "title": "CRM Automation for Sales Follow-ups",
+              "url": "https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups",
+              "description": "Eliminating deal leakage with instantaneous messaging"
+            },
+            {
+              "title": "Turn Your Website into a 24/7 Lead Machine",
+              "url": "https://hoducation.tech/blog/website-crm-integration-lead-machine",
+              "description": "Web-to-CRM architecture and visitor intent scoring"
+            },
+            {
+              "title": "How AI is Transforming Business in 2026",
+              "url": "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026",
+              "description": "Enterprise strategic modernization roadmap"
+            }
+          ]
         },
         "quality": {
-          "score": 0,
-          "issues": [
-            "\ud83d\udd34 No llms.txt found"
-          ],
-          "suggestions": [
-            "Create /llms.txt with site name, description, and key page links"
-          ]
+          "score": 100,
+          "issues": [],
+          "suggestions": []
         },
         "error": null
       },
@@ -230,16 +468,23 @@
             "status": 429,
             "error": null,
             "redirect": null,
-            "response_time_ms": 783
+            "response_time_ms": 919
           },
           {
             "url": "https://www.linkedin.com/in/abhishek-agarwal-97007313a/",
             "anchor_text": "[no text]",
             "is_internal": false,
-            "status": 429,
+            "status": 999,
             "error": null,
-            "redirect": null,
-            "response_time_ms": 978
+            "redirect": {
+              "from": "https://www.linkedin.com/in/abhishek-agarwal-97007313a/",
+              "to": "https://www.linkedin.com/in/abhishek-agarwal-97007313a",
+              "hops": 1,
+              "codes": [
+                301
+              ]
+            },
+            "response_time_ms": 341
           }
         ],
         "redirected": [
@@ -257,7 +502,7 @@
                 302
               ]
             },
-            "response_time_ms": 720
+            "response_time_ms": 670
           }
         ],
         "timeout": [],
@@ -282,25 +527,13 @@
         "unique_pages_found": 9,
         "max_depth_reached": 1,
         "pages": {
-          "https://hoducation.tech": {
-            "outgoing_links": 8,
-            "incoming_links": 0
-          },
-          "https://hoducation.tech/blog/modern-school-erp-features": {
-            "outgoing_links": 3,
-            "incoming_links": 1
-          },
-          "https://hoducation.tech/blog/custom-software-vs-ready-made-software": {
-            "outgoing_links": 2,
-            "incoming_links": 1
-          },
           "https://hoducation.tech/blog/ai-agents-vs-traditional-automation": {
             "outgoing_links": 2,
             "incoming_links": 1
           },
-          "https://hoducation.tech/contact": {
-            "outgoing_links": 0,
-            "incoming_links": 5
+          "https://hoducation.tech/faqs": {
+            "outgoing_links": 4,
+            "incoming_links": 3
           },
           "https://hoducation.tech/blog": {
             "outgoing_links": 0,
@@ -310,13 +543,25 @@
             "outgoing_links": 4,
             "incoming_links": 3
           },
-          "https://hoducation.tech/faqs": {
-            "outgoing_links": 4,
-            "incoming_links": 3
+          "https://hoducation.tech": {
+            "outgoing_links": 8,
+            "incoming_links": 0
           },
           "https://hoducation.tech/terms": {
             "outgoing_links": 4,
             "incoming_links": 3
+          },
+          "https://hoducation.tech/blog/modern-school-erp-features": {
+            "outgoing_links": 3,
+            "incoming_links": 1
+          },
+          "https://hoducation.tech/blog/custom-software-vs-ready-made-software": {
+            "outgoing_links": 2,
+            "incoming_links": 1
+          },
+          "https://hoducation.tech/contact": {
+            "outgoing_links": 0,
+            "incoming_links": 5
           }
         },
         "anchor_texts": {
@@ -388,7 +633,11 @@
               "https://www.linkedin.com/in/abhishek-agarwal-97007313a/",
               "https://www.linkedin.com/in/rohit-jain-522138177/"
             ],
-            "logo": "https://hoducation.tech/ht-logo.jpg",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://hoducation.tech/ht-logo.jpg",
+              "caption": "Hoducation Technologies Logo"
+            },
             "description": "",
             "identifier": ""
           }
@@ -421,7 +670,7 @@
           "issues": [
             {
               "severity": "Warning",
-              "finding": "sameAs URL returns HTTP 429: https://www.linkedin.com/in/rohit-jain-522138177/",
+              "finding": "sameAs URL returns HTTP 405: https://www.linkedin.com/in/rohit-jain-522138177/",
               "fix": "Update sameAs URL for LinkedIn to a valid, non-redirecting destination."
             }
           ],
@@ -476,7 +725,7 @@
           },
           {
             "severity": "Warning",
-            "finding": "sameAs URL returns HTTP 429: https://www.linkedin.com/in/rohit-jain-522138177/",
+            "finding": "sameAs URL returns HTTP 405: https://www.linkedin.com/in/rohit-jain-522138177/",
             "fix": "Update sameAs URL for LinkedIn to a valid, non-redirecting destination."
           }
         ],
@@ -492,23 +741,24 @@
         }
       },
       "link_profile": {
-        "pages_crawled": 17,
-        "total_internal_links": 121,
+        "pages_crawled": 18,
+        "total_internal_links": 123,
         "total_external_links": 9,
         "unique_internal_targets": 9,
         "unique_external_domains": 2,
-        "avg_internal_links_per_page": 7.1,
+        "avg_internal_links_per_page": 6.8,
         "orphan_pages": {
-          "count": 8,
+          "count": 9,
           "urls": [
-            "https://hoducation.tech/blog/website-crm-integration-lead-machine",
-            "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
             "https://hoducation.tech/blog/custom-software-development-cost-india",
-            "https://hoducation.tech/blog/crm-vs-erp-difference",
-            "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
             "https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups",
+            "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
+            "https://hoducation.tech/blog/website-crm-integration-lead-machine",
+            "https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026",
+            "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026",
             "https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai",
-            "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026"
+            "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
+            "https://hoducation.tech/blog/crm-vs-erp-difference"
           ]
         },
         "dead_end_pages": {
@@ -525,11 +775,11 @@
           },
           {
             "url": "https://hoducation.tech/",
-            "inbound_links": 35
+            "inbound_links": 36
           },
           {
             "url": "https://hoducation.tech/blog",
-            "inbound_links": 20
+            "inbound_links": 21
           },
           {
             "url": "https://hoducation.tech/faqs",
@@ -570,17 +820,18 @@
           {
             "type": "orphan_pages",
             "severity": "High",
-            "count": 8,
-            "finding": "8 orphan page(s) with zero inbound internal links.",
+            "count": 9,
+            "finding": "9 orphan page(s) with zero inbound internal links.",
             "pages": [
-              "https://hoducation.tech/blog/website-crm-integration-lead-machine",
-              "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
               "https://hoducation.tech/blog/custom-software-development-cost-india",
-              "https://hoducation.tech/blog/crm-vs-erp-difference",
-              "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
               "https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups",
+              "https://hoducation.tech/blog/what-should-a-modern-school-erp-include",
+              "https://hoducation.tech/blog/website-crm-integration-lead-machine",
+              "https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026",
+              "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026",
               "https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai",
-              "https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026"
+              "https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets",
+              "https://hoducation.tech/blog/crm-vs-erp-difference"
             ],
             "fix": "Add internal links from relevant content pages to these orphan pages."
           },
@@ -1038,22 +1289,34 @@
             "@types": [
               "Organization"
             ],
-            "@id": null,
+            "@id": "https://hoducation.tech/#organization",
             "@context": "https://schema.org",
             "status": "active",
             "note": "",
             "has_context": true,
             "has_type": true,
-            "from_graph": false,
+            "from_graph": true,
             "raw": {
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://hoducation.tech/#organization",
               "name": "Hoducation Technologies Pvt Ltd",
               "alternateName": "Hoducation Technologies",
               "url": "https://hoducation.tech",
-              "logo": "https://hoducation.tech/ht-logo.jpg",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://hoducation.tech/ht-logo.jpg",
+                "caption": "Hoducation Technologies Logo"
+              },
+              "image": "https://hoducation.tech/ht-logo.jpg",
               "telephone": "+919660034117",
               "email": "hoducationtechnologies@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jaipur",
+                "addressRegion": "Rajasthan",
+                "addressCountry": "IN"
+              },
               "sameAs": [
                 "https://www.linkedin.com/in/abhishek-agarwal-97007313a/",
                 "https://www.linkedin.com/in/rohit-jain-522138177/"
@@ -1074,19 +1337,82 @@
                 "Enterprise Software Development",
                 "AcadOS EdTech Platform",
                 "Custom ERP Systems",
-                "Intelligent Automations"
+                "Intelligent Automations",
+                "OMR Software & CBT Systems"
               ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@types": [
+              "WebSite"
+            ],
+            "@id": "https://hoducation.tech/#website",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://hoducation.tech/#website",
+              "url": "https://hoducation.tech",
+              "name": "Hoducation Technologies",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Hoducation Technologies Pvt Ltd"
+              },
+              "inLanguage": "en-US"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@types": [
+              "SoftwareApplication"
+            ],
+            "@id": "https://hoducation.tech/#acados",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "@id": "https://hoducation.tech/#acados",
+              "name": "AcadOS",
+              "applicationCategory": "EducationalApplication",
+              "operatingSystem": "Web, Android, Cloud",
+              "description": "5-in-1 institutional EdTech operating system featuring AI question paper creation, computer-vision smartphone OMR evaluation, and NTA-grade CBT simulator.",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "INR"
+              }
             }
           }
         ],
         "open_graph": {
           "og:type": "website",
           "og:url": "https://hoducation.tech/",
-          "og:title": "Hoducation Technologies | Software Engineered To Power Education",
+          "og:title": "Hoducation Technologies | Custom Software & ERP Systems",
           "og:description": "Hoducation Technologies builds custom software, enterprise ERPs, CRMs, and intelligent automations.",
-          "og:site_name": "Hoducation Technologies"
+          "og:site_name": "Hoducation Technologies",
+          "og:image": "https://hoducation.tech/ht-logo.jpg",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Hoducation Technologies - Enterprise Software & AI"
         },
-        "twitter_card": {},
+        "twitter_card": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Hoducation Technologies | Custom Software & ERP Systems",
+          "twitter:description": "Engineering bespoke software, institutional ERPs, AcadOS EdTech platforms, and automated workflows.",
+          "twitter:image": "https://hoducation.tech/ht-logo.jpg",
+          "twitter:image:alt": "Hoducation Technologies"
+        },
         "word_count": 351,
         "hreflang": []
       },
@@ -1129,147 +1455,7 @@
         ]
       },
       "article": {
-        "url": "https://hoducation.tech",
-        "cms_detected": "generic",
-        "title": "Hoducation Technologies | Software Engineered To Power Education",
-        "meta_description": "Hoducation Technologies builds custom software, enterprise ERPs, CRMs, CMS platforms, and intelligent automations alongside our flagship product AcadOS.",
-        "og_description": "Hoducation Technologies builds custom software, enterprise ERPs, CRMs, and intelligent automations.",
-        "author": "",
-        "publish_date": "",
-        "labels": [],
-        "headings": {
-          "h1": [
-            "We Build SoftwareThat Grows Your Business"
-          ],
-          "h2": [],
-          "h3": []
-        },
-        "paragraphs": [
-          "Hoducation Technologies builds custom software, ERPs, CRMs, CMS platforms,\n          and intelligent automations engineered to scale modern organizations."
-        ],
-        "images": [
-          {
-            "src": "/client-1-xavier.png",
-            "alt": "St. Xavier's School",
-            "width": "",
-            "height": "",
-            "loading": ""
-          },
-          {
-            "src": "/client-2-b2e.png",
-            "alt": "B2E Learning",
-            "width": "",
-            "height": "",
-            "loading": ""
-          },
-          {
-            "src": "/client-3-lecturewala.png",
-            "alt": "Lecturewala",
-            "width": "",
-            "height": "",
-            "loading": ""
-          },
-          {
-            "src": "/client-4-samriya.png",
-            "alt": "Samriya Classes",
-            "width": "",
-            "height": "",
-            "loading": ""
-          },
-          {
-            "src": "/client-5-scholars.png",
-            "alt": "Scholars' International School",
-            "width": "",
-            "height": "",
-            "loading": ""
-          }
-        ],
-        "structured_data": [
-          {
-            "@type": "Organization",
-            "@context": "https://schema.org",
-            "status": "active",
-            "note": "",
-            "has_context": true,
-            "has_type": true,
-            "raw": {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Hoducation Technologies Pvt Ltd",
-              "alternateName": "Hoducation Technologies",
-              "url": "https://hoducation.tech",
-              "logo": "https://hoducation.tech/ht-logo.jpg",
-              "telephone": "+919660034117",
-              "email": "hoducationtechnologies@gmail.com",
-              "sameAs": [
-                "https://www.linkedin.com/in/abhishek-agarwal-97007313a/",
-                "https://www.linkedin.com/in/rohit-jain-522138177/"
-              ],
-              "founder": [
-                {
-                  "@type": "Person",
-                  "name": "Abhishek Agarwal",
-                  "jobTitle": "Chief Technology Officer (CTO)"
-                },
-                {
-                  "@type": "Person",
-                  "name": "Rohit Jain",
-                  "jobTitle": "Chief Operating Officer (COO)"
-                }
-              ],
-              "knowsAbout": [
-                "Enterprise Software Development",
-                "AcadOS EdTech Platform",
-                "Custom ERP Systems",
-                "Intelligent Automations"
-              ]
-            }
-          }
-        ],
-        "readability": {
-          "flesch_reading_ease": 0,
-          "fkgl": 19.5,
-          "grade_label": "Difficult (technical / specialist audience)",
-          "word_count": 23,
-          "sentence_count": 1,
-          "avg_sentence_length": 23.0,
-          "avg_syllables_per_word": 2.22
-        },
-        "target_keyword": "",
-        "extracted_keywords": [],
-        "related_keywords": [],
-        "seo_issues": [
-          {
-            "severity": "Critical",
-            "area": "Content",
-            "finding": "Very thin content (23 words).",
-            "fix": "Expand content to at least 1,500 words for blog posts."
-          },
-          {
-            "severity": "Warning",
-            "area": "E-E-A-T",
-            "finding": "No author attribution detected.",
-            "fix": "Add a visible author byline with credentials. Critical post-Dec 2025 E-E-A-T update."
-          },
-          {
-            "severity": "Info",
-            "area": "Freshness",
-            "finding": "No publish date detected in markup.",
-            "fix": "Add visible publish/update date and datePublished in Article schema."
-          },
-          {
-            "severity": "Info",
-            "area": "Images",
-            "finding": "5 image(s) without loading='lazy'.",
-            "fix": "Add loading='lazy' to below-the-fold images to improve LCP."
-          },
-          {
-            "severity": "Info",
-            "area": "Readability",
-            "finding": "Content is very difficult to read (Flesch score: 0).",
-            "fix": "Simplify sentences. Aim for Flesch score \u2265 50 for broader audience reach."
-          }
-        ]
+        "error": "[article_seo.py] Traceback (most recent call last):\n  File \"C:\\Users\\ADMIN\\.gemini\\config\\skills\\agentic-seo-skill\\scripts\\article_seo.py\", line 637, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\ADMIN\\.gemini\\config\\skills\\agentic-seo-skill\\scripts\\article_seo.py\", line 537, in main\n    structured_data = extract_structured_data(soup)\n  File \"C:\\Users\\ADMIN\\.gemini\\config\\skills\\agentic-seo-skill\\scripts\\article_seo.py\", line 268, in extract_structured_data\n    schema_type = data.get(\"@type\", \"Unknown\")\n                  ^^^^^^^^\nAttributeError: 'list' object has no attribute 'get'"
       }
     },
     "environment": {
@@ -1284,27 +1470,9 @@
     "environment_fixes": [
       {
         "severity": "warning",
-        "title": "1 security headers missing",
-        "reason": "Missing headers reduce trust and can expose the site to browser/security risks.",
-        "fix": "Set missing security headers at web server or CDN layer."
-      },
-      {
-        "severity": "warning",
-        "title": "No llms.txt found",
-        "reason": "AI crawlers and assistants have no curated machine-readable guidance for key pages.",
-        "fix": "Add `/llms.txt` at site root with concise site description and key URLs."
-      },
-      {
-        "severity": "warning",
         "title": "2 broken links detected",
         "reason": "Broken internal links hurt crawl flow and user trust.",
         "fix": "Repair or remove broken internal links and refresh outdated navigation targets."
-      },
-      {
-        "severity": "warning",
-        "title": "Social meta tags are incomplete",
-        "reason": "Missing OG/Twitter tags weakens social previews and share quality.",
-        "fix": "Update page templates to set complete title/meta/OG/Twitter tags."
       },
       {
         "severity": "info",

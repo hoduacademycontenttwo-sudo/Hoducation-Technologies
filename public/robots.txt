@@ -45,6 +45,9 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+
 User-agent: cohere-ai
 Allow: /
 
