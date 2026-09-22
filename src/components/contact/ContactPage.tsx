@@ -62,7 +62,7 @@ export const ContactPage: React.FC = () => {
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const serviceParam = params.get('service')?.toLowerCase();
+      const serviceParam = (params.get('service') || params.get('subject'))?.toLowerCase();
       if (serviceParam) {
         if (serviceParam.includes('edtech') || serviceParam.includes('acados') || serviceParam.includes('testmaker')) {
           setFormData((prev) => ({ ...prev, industry: 'EdTech & AcadOS (TestMaker, CBT, OMR)' }));

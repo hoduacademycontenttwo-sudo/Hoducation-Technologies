@@ -1192,3 +1192,91 @@
     white-space: nowrap;
   }
 }
+
+.freehand-cta-title {
+  color: #ffffff !important;
+}
+
+.freehand-orange-text {
+  color: var(--fh-orange) !important;
+}
+
+.demo-btn-short {
+  display: none;
+}
+
+@media screen and (max-width: 860px) {
+  .freehand-nav-links {
+    display: none;
+  }
+
+  .freehand-nav-wrapper {
+    padding: 0 12px;
+    top: 10px;
+  }
+
+  .freehand-pill-navbar {
+    padding: 6px 12px;
+    min-height: 52px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .freehand-nav-wrapper {
+    padding: 0 8px;
+    top: 8px;
+  }
+
+  .freehand-pill-navbar {
+    padding: 4px 6px 4px 10px;
+    min-height: 48px;
+    gap: 8px;
+  }
+
+  .freehand-nav-brand {
+    gap: 8px;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .freehand-nav-logo {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .freehand-nav-brand-text {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .freehand-brand-suffix {
+    display: none;
+  }
+
+  .freehand-nav-demo-btn {
+    padding: 0 12px;
+    height: 36px;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .freehand-nav-brand-text {
+    font-size: 0.78rem;
+  }
+
+  .freehand-nav-demo-btn {
+    padding: 0 9px;
+    font-size: 0.68rem;
+  }
+
+  .demo-btn-full {
+    display: none;
+  }
+
+  .demo-btn-short {
+    display: inline;
+  }
+}

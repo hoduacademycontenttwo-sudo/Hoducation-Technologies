@@ -62,8 +62,8 @@ export const FreehandCardMedia: React.FC<FreehandCardMediaProps> = ({ post, vari
       {/* Top Floating Badge Row */}
       <div className="freehand-media-header">
         <div className="freehand-brand-mark">
-          <span className="freehand-brand-asterisk">✱</span>
-          <span className="freehand-brand-name">hoducation</span>
+          <img src="/ht-logo.jpg" alt="Hoducation Logo" className="freehand-brand-logo-img" width="18" height="18" />
+          <span className="freehand-brand-name">HODUCATION</span>
         </div>
         <div className="freehand-topic-badge">
           {post.imageBadgeText || visual.badgeText}

@@ -1,4 +1,4 @@
-﻿/* ============================================================= */
+/* ============================================================= */
 /* FREEHAND CARD MEDIA COMPONENT STYLES                          */
 /* High-Resolution Editorial Topic Images, Vignettes & Badges    */
 /* ============================================================= */
@@ -66,29 +66,32 @@
 .freehand-brand-mark {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(255, 255, 255, 0.92);
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 4px 10px;
   border-radius: 9999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #111111;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.freehand-brand-asterisk {
-  color: #fe6200;
-  font-size: 0.85rem;
-  line-height: 1;
+.freehand-brand-logo-img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .freehand-brand-name {
-  text-transform: uppercase;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  color: #111827 !important;
+  text-transform: uppercase !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1;
 }
 
 .freehand-topic-badge {
