@@ -10,7 +10,7 @@
    - Area: `link_profile`
    - Evidence: See audit output.
    - Fix: Add internal links from relevant content pages to these orphan pages.
-2. **sameAs URL returns HTTP 405: https://www.linkedin.com/in/rohit-jain-522138177/**
+2. **sameAs URL returns HTTP 429: https://www.linkedin.com/in/rohit-jain-522138177/**
    - Priority: `Warning`
    - Area: `entity`
    - Evidence: See audit output.
