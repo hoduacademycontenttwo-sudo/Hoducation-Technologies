@@ -3,17 +3,7 @@ import { TESTIMONIALS_DATA, TestimonialItem } from './testimonialsData';
 import './TestimonialsSection.css';
 
 export const TestimonialsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'all' | 'school' | 'coaching'>('all');
   const [selectedTestimonial, setSelectedTestimonial] = useState<TestimonialItem | null>(null);
-
-  // Filter items based on selected tab
-  const filteredTestimonials = TESTIMONIALS_DATA.filter((item) => {
-    if (activeTab === 'all') return true;
-    return item.type === activeTab;
-  });
-
-  const schoolCount = TESTIMONIALS_DATA.filter((i) => i.type === 'school').length;
-  const coachingCount = TESTIMONIALS_DATA.filter((i) => i.type === 'coaching').length;
 
   // Close modal on ESC key
   useEffect(() => {
@@ -29,13 +19,6 @@ export const TestimonialsSection: React.FC = () => {
       <div className="testimonials-container">
         {/* Section Header */}
         <header className="testimonials-header">
-          <div className="section-badge-row">
-            <span className="testimonials-eyebrow">
-              <i className="fa-solid fa-shield-halved"></i>
-              INSTITUTIONAL SOCIAL PROOF
-            </span>
-          </div>
-
           <h2 className="testimonials-main-title">
             Trusted by Leading <span className="title-accent">Organizations</span>
           </h2>
@@ -43,36 +26,11 @@ export const TestimonialsSection: React.FC = () => {
           <p className="testimonials-subtitle">
             See how premier schools, test preparation academies, and educational institutions power their examinations, ERP workflows, and learner apps with AcadOS.
           </p>
-
-          {/* Filter Tabs */}
-          <nav className="testimonials-filter-tabs" aria-label="Filter organizations by category">
-            <button
-              type="button"
-              className={`tab-btn ${activeTab === 'all' ? 'active' : ''}`}
-              onClick={() => setActiveTab('all')}
-            >
-              All Organizations ({TESTIMONIALS_DATA.length})
-            </button>
-            <button
-              type="button"
-              className={`tab-btn ${activeTab === 'school' ? 'active' : ''}`}
-              onClick={() => setActiveTab('school')}
-            >
-              K-12 Schools ({schoolCount})
-            </button>
-            <button
-              type="button"
-              className={`tab-btn ${activeTab === 'coaching' ? 'active' : ''}`}
-              onClick={() => setActiveTab('coaching')}
-            >
-              Coaching Academies ({coachingCount})
-            </button>
-          </nav>
         </header>
 
         {/* 8 Cards Responsive Grid */}
         <div className="testimonials-grid">
-          {filteredTestimonials.map((item) => (
+          {TESTIMONIALS_DATA.map((item) => (
             <div
               key={item.id}
               className="testimonial-card-wrapper"

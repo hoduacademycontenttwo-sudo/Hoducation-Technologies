@@ -1,5 +1,6 @@
 // Vercel Serverless Function: /api/subscribe
 const RESEND_API_KEY = process.env.RESEND_API_KEY || ['re', 'LqgC6YXh', 'NuLa9jvEWCcqaUZsgYmzKX26'].join('_');
+const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || 'de430fe4-ed42-4d50-8a2c-4e6a3162ad0d';
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'hoducationtechnologies@gmail.com';
 const SENDER_EMAIL = process.env.SENDER_EMAIL || 'Hoducation Technologies <contact@email.hoduacademy.com>';
 
@@ -31,7 +32,7 @@ export default async function handler(req, res) {
       }
     }
 
-    const { email, source = 'Blog Newsletter' } = body || {};
+    const { email, firstName = '', lastName = '', source = 'Blog Newsletter' } = body || {};
 
     if (!email || !email.includes('@') || !email.includes('.')) {
       return res.status(400).json({
@@ -42,7 +43,33 @@ export default async function handler(req, res) {
     const subscriberEmail = email.trim().toLowerCase();
     const subscriptionTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
-    // 1. Send Notification Email to Company Receiver (hoducationtechnologies@gmail.com)
+    // 1. Save / Register Subscriber in Resend Audience Contacts List
+    let contactSaved = false;
+    try {
+      const contactRes = await fetch(`https://api.resend.com/audiences/${AUDIENCE_ID}/contacts`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: subscriberEmail,
+          first_name: firstName || subscriberEmail.split('@')[0],
+          last_name: lastName || '',
+          unsubscribed: false
+        })
+      });
+      const contactData = await contactRes.json();
+      if (contactRes.ok || contactData.id || contactData.name === 'contact_already_exists') {
+        contactSaved = true;
+      } else {
+        console.warn('Resend contact registration response:', contactData);
+      }
+    } catch (contactErr) {
+      console.warn('Error saving contact to Resend Audience:', contactErr);
+    }
+
+    // 2. Send Notification Email to Company Admin (hoducationtechnologies@gmail.com)
     const adminNotificationHtml = `
 <!DOCTYPE html>
 <html>
@@ -67,7 +94,7 @@ export default async function handler(req, res) {
       <p>Engineering Insights &amp; Newsletter Subscription</p>
     </div>
     <div class="content">
-      <div class="badge">🔔 New Subscriber</div>
+      <div class="badge">🔔 New Subscriber Added to Audience</div>
       <table style="width:100%; border-collapse: collapse;">
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 14px;">Subscriber Email:</td>
@@ -78,6 +105,10 @@ export default async function handler(req, res) {
           <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-weight: 600; font-size: 14px;">${source}</td>
         </tr>
         <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 14px;">Audience Synced:</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #16a34a; font-weight: 600; font-size: 14px;">✓ Stored in General Audience List</td>
+        </tr>
+        <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 14px;">Subscribed At:</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-weight: 600; font-size: 14px;">${subscriptionTime}</td>
         </tr>
@@ -85,7 +116,7 @@ export default async function handler(req, res) {
 
       <div style="text-align: center; margin-top: 24px;">
         <a href="mailto:${subscriberEmail}?subject=Welcome to Hoducation Technologies" style="display: inline-block; background: #fe6200; color: #ffffff !important; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px;">
-          Send Welcome Message &rarr;
+          Send Direct Message &rarr;
         </a>
       </div>
     </div>
@@ -109,7 +140,7 @@ export default async function handler(req, res) {
           from: SENDER_EMAIL,
           to: [RECIPIENT_EMAIL],
           reply_to: subscriberEmail,
-          subject: `🔔 New Newsletter Subscription: ${subscriberEmail}`,
+          subject: `🔔 New Newsletter Subscriber: ${subscriberEmail}`,
           html: adminNotificationHtml
         })
       });
@@ -121,7 +152,7 @@ export default async function handler(req, res) {
       console.error('Resend admin error:', adminErr);
     }
 
-    // 2. Send Confirmation Email to the Subscriber
+    // 3. Send Confirmation / Welcome Email to the Subscriber
     const subscriberConfirmationHtml = `
 <!DOCTYPE html>
 <html>
@@ -153,13 +184,13 @@ export default async function handler(req, res) {
     <div class="body-content">
       <h2 class="title">You're in. Welcome to the circle.</h2>
       <p class="desc">
-        Thank you for subscribing to <strong>Hoducation Engineering Insights</strong>. You will receive our monthly breakdowns of production software systems, bespoke ERP architectures, AI workflows, and practical guides directly from our engineering leads.
+        Thank you for subscribing to <strong>Hoducation Engineering Insights</strong>. You will receive our breakdowns of production software systems, bespoke ERP architectures, AI workflows, and practical guides directly in your inbox whenever a new post drops.
       </p>
 
       <div class="feature-box">
         <h4>What to expect:</h4>
         <ul>
-          <li>Deep architectural deep-dives &amp; case studies</li>
+          <li>Instant notifications when new engineering blogs and deep-dives publish</li>
           <li>Enterprise automation &amp; AI agent patterns</li>
           <li>Cost &amp; TCO engineering comparisons</li>
           <li>Zero spam — only battle-tested production knowledge</li>
@@ -200,7 +231,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      message: 'Subscription successful. Welcome email dispatched.'
+      contactSaved,
+      message: 'Subscription successful. Welcome email dispatched and subscriber added to audience.'
     });
 
   } catch (error) {

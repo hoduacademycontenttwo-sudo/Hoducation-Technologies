@@ -750,7 +750,7 @@
               Engineering modern software, institutional ERPs, and automated workflows.
             </p>
 
-            <form class="footer-newsletter-pill" onsubmit="event.preventDefault(); const email = this.querySelector('input').value; if(email) { alert('Thank you for subscribing! We will connect with you shortly.'); this.reset(); }">
+            <form class="footer-newsletter-pill" onsubmit="event.preventDefault(); const input = this.querySelector('input'); const btn = this.querySelector('button'); const email = input.value; if(!email) return; btn.textContent = '...'; fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'Homepage Footer' }) }).then(() => { btn.textContent = 'Subscribed!'; input.value = ''; setTimeout(() => { btn.textContent = 'Subscribe'; }, 4000); }).catch(() => { btn.textContent = 'Subscribe'; });">
               <input 
                 type="email" 
                 placeholder="you@email.com" 
@@ -759,7 +759,7 @@
                 aria-label="Email address"
               />
               <button type="submit" class="footer-submit-btn">
-                Get Demo
+                Subscribe
               </button>
             </form>
 
