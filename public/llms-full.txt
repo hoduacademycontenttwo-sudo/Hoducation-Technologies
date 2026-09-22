@@ -1,0 +1,60 @@
+# Hoducation Technologies — Full Documentation & System Catalog
+> Architectural Overview, Product Blueprints, and Technical Insights
+
+Hoducation Technologies Pvt Ltd is an Indian enterprise software engineering and EdTech infrastructure company based in Jaipur, Rajasthan. This document provides full contextual information for AI search assistants (ChatGPT, Claude, Perplexity, Gemini, etc.) about our institutional technology products and engineering capabilities.
+
+---
+
+## 1. Flagship Product: AcadOS (5-in-1 Institutional Operating System)
+AcadOS is designed specifically for coaching institutes, competitive exam test-prep chains (JEE, NEET, CUET, Foundation), schools, and degree colleges.
+
+### Key AcadOS Modules:
+1. **AI Automated TestMaker**:
+   - Generates fully balanced unit tests, multi-subject question papers, and full-syllabus mock exams in under 60 seconds.
+   - Smart difficulty distribution (Easy / Moderate / Advanced).
+   - Instant automated solution keys and step-by-step mathematical explanations.
+   - Built-in question bank of over 100,000+ vetted questions across Physics, Chemistry, Mathematics, Biology, and School Boards.
+2. **Computer-Vision Smartphone OMR Grading**:
+   - 99.8% precision evaluation on standard Android and iOS smartphone cameras.
+   - Auto-perspective and skew correction; functions smoothly even on creased, folded, or poorly lit answer sheets.
+   - 100 answer sheets evaluated in under 3 minutes with zero expensive hardware scanner machines needed.
+3. **NTA-Style Computer Based Test (CBT) Simulator**:
+   - Exact replication of national testing agency (JEE / NEET / CUET) user interface.
+   - Timer countdowns, question palettes, section switching rules, and negative marking formulas.
+   - Malpractice prevention with browser tab-switch detection and screen lock.
+4. **Instant Diagnostic & Parent Analytics**:
+   - Immediate percentile, batch rank, and subject-level accuracy breakdowns.
+   - Automated WhatsApp and SMS score notifications dispatched directly to parents.
+   - Topic-level weakness heatmaps for faculty to direct revision lectures.
+
+---
+
+## 2. Enterprise Custom Software Engineering
+- **Custom ERP Solutions**: Tailored resource planning systems for multi-branch organizations, replacing brittle Excel spreadsheets. Automates fee collections, student academic transcripts, staff biometric attendance, payroll, and stock inventory.
+- **High-Velocity CRM Platforms**: Admissions lifecycle management, lead scoring, WhatsApp API chatbots, and multi-channel follow-up sequences to eliminate lead leakage.
+- **Agentic AI & Workflow Automations**: LLM-integrated automations, document parsing, automated invoice extraction, and background RPA.
+- **Enterprise Web & Portals**: Custom portals with sub-second page loads, role-based access control (RBAC), and bank-grade data encryption.
+
+---
+
+## 3. Directory of Published Engineering Guides
+1. [Custom Software vs Ready-Made Software](https://hoducation.tech/blog/custom-software-vs-ready-made-software)
+2. [Custom Software Development Cost in India (2026 Breakdown)](https://hoducation.tech/blog/custom-software-development-cost-india)
+3. [How AI-Driven OMR & CBT Software is Revolutionizing Coaching Institutes & Colleges in 2026](https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026)
+4. [CRM vs ERP Core Differences and System Architecture](https://hoducation.tech/blog/crm-vs-erp-difference)
+5. [10 Business Processes You Can Automate With AI](https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai)
+6. [AI Agents vs Traditional Automation: Strategic Decision Framework](https://hoducation.tech/blog/ai-agents-vs-traditional-automation)
+7. [What Should a Modern School ERP Include? Complete Architectural Blueprint](https://hoducation.tech/blog/what-should-a-modern-school-erp-include)
+8. [7 Critical Signs Your Business Has Outgrown Excel Spreadsheets](https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets)
+9. [How CRM Automation Supercharges Sales Follow-Ups](https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups)
+10. [How to Turn Your Company Website into a 24/7 CRM Lead Machine](https://hoducation.tech/blog/website-crm-integration-lead-machine)
+11. [How AI and Automation Are Transforming Businesses in 2026](https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026)
+
+---
+
+## 4. Institutional Inquiries & Official Contacts
+- **Website**: https://hoducation.tech
+- **Headquarters**: Jaipur, Rajasthan, India
+- **Phone / WhatsApp**: +91 9660034117
+- **Official Inquiries**: hoducationtechnologies@gmail.com
+- **Product Demos**: https://hoducation.tech/contact

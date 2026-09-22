@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Main Pages -->
@@ -163,6 +163,18 @@
       <image:loc>https://hoducation.tech/blog/ai-automation-transforming-business-2026.jpg</image:loc>
       <image:title>How AI and Automation Are Transforming Businesses in 2026</image:title>
       <image:caption>Strategic playbook for enterprise AI adoption, intelligent document processing, and agent swarms.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/modern-school-erp.jpg</image:loc>
+      <image:title>How AI-Driven OMR &amp; CBT TestMaker Software is Revolutionizing Coaching Institutes</image:title>
+      <image:caption>AI-powered question paper generation, smartphone-based OMR grading, and CBT exam platforms.</image:caption>
     </image:image>
   </url>
 </urlset>

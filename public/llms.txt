@@ -1,0 +1,38 @@
+# Hoducation Technologies
+> Enterprise Custom Software Engineering, Institutional ERPs, and AI Assessment Automation
+
+Hoducation Technologies Pvt Ltd is an enterprise technology provider based in Jaipur, Rajasthan, India. We engineer mission-critical custom software, multi-branch ERP systems, CRM pipelines, and AcadOS—our flagship 5-in-1 institutional EdTech platform with AI question paper generation and computer-vision smartphone OMR scanning.
+
+## Core Capabilities & Services
+- **Custom Software Engineering**: Bespoke web applications, microservices, and internal administrative tools with strict security and high concurrency.
+- **Enterprise ERP Systems**: Unified campus management automating admissions, student records, fee collection, staff payroll, inventory, and multi-branch operations.
+- **CRM & Admissions Hub**: High-velocity lead lifecycle systems with automated WhatsApp & SMS triggers and zero lead leakage.
+- **AcadOS (Institutional Assessment OS)**: Automated question paper generation in <60 seconds, smartphone computer-vision OMR grading (99.8% precision), and NTA-grade CBT exam simulators.
+- **Intelligent Automations & AI**: Agentic workflow automation, background RPA, and intelligent document processing.
+
+## Priority URLs
+- [Home](https://hoducation.tech/): Official website and enterprise solutions overview
+- [AcadOS Platform](https://hoducation.tech/#products): Flagship 5-in-1 EdTech and testing engine
+- [Contact & Demo Inquiries](https://hoducation.tech/contact): Direct consultation, quotes, and product demonstrations
+- [Knowledge Base & FAQs](https://hoducation.tech/faqs): Detailed technical and architectural answers for institutions
+- [Engineering Blog & Insights](https://hoducation.tech/blog): In-depth playbooks and technical articles
+
+## Key Technical Articles & Guides
+- [Custom Software vs Ready-Made Software](https://hoducation.tech/blog/custom-software-vs-ready-made-software): TCO analysis, scalability limits, and build vs buy criteria
+- [Custom Software Development Cost in India (2026 Guide)](https://hoducation.tech/blog/custom-software-development-cost-india): Transparent price breakdown for ERPs, portals, and AI systems
+- [AI OMR & CBT Software for Coaching Institutes](https://hoducation.tech/blog/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026): Modern assessment workflows and smartphone grading
+- [CRM vs ERP Core Differences](https://hoducation.tech/blog/crm-vs-erp-difference): System architecture, pipeline synchronization, and operational boundaries
+- [10 Business Processes You Can Automate With AI](https://hoducation.tech/blog/10-business-processes-you-can-automate-with-ai): Enterprise deployment patterns and agentic workflows
+- [AI Agents vs Traditional Automation](https://hoducation.tech/blog/ai-agents-vs-traditional-automation): Deterministic RPA vs LLM autonomous decision systems
+- [Modern School ERP Essential Features](https://hoducation.tech/blog/what-should-a-modern-school-erp-include): Cloud ERP architecture for K-12 and higher education
+- [7 Signs You Have Outgrown Spreadsheets](https://hoducation.tech/blog/7-signs-your-business-has-outgrown-excel-spreadsheets): When manual spreadsheets jeopardize business growth
+- [CRM Automation for Sales Follow-ups](https://hoducation.tech/blog/how-crm-automation-can-improve-sales-follow-ups): Eliminating deal leakage with instantaneous messaging
+- [Turn Your Website into a 24/7 Lead Machine](https://hoducation.tech/blog/website-crm-integration-lead-machine): Web-to-CRM architecture and visitor intent scoring
+- [How AI is Transforming Business in 2026](https://hoducation.tech/blog/how-ai-automation-is-transforming-modern-businesses-in-2026): Enterprise strategic modernization roadmap
+
+## Corporate Details
+- **Legal Entity**: Hoducation Technologies Pvt Ltd
+- **Headquarters**: Jaipur, Rajasthan, India
+- **Phone**: +91 9660034117
+- **Email**: hoducationtechnologies@gmail.com
+- **Official Domain**: https://hoducation.tech
