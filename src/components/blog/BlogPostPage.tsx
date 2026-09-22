@@ -405,9 +405,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
           <div className="post-meta-action-row">
             <div className="post-author-block">
               <img
-                src={post.author.avatar || '/leader-abhishek.png'}
+                src={post.author.avatar || '/abhishek-agarwal.jpg'}
                 alt={post.author.name}
                 className="post-author-avatar-img"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/abhishek-agarwal.jpg';
+                }}
               />
               <div className="post-author-meta">
                 <span className="post-author-name">{post.author.name}</span>
@@ -546,9 +549,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ initialSlug }) => {
               {/* End of Article Author Bio Card */}
               <div className="post-author-bio-footer">
                 <img
-                  src={post.author.avatar || '/leader-abhishek.png'}
+                  src={post.author.avatar || '/abhishek-agarwal.jpg'}
                   alt={post.author.name}
                   className="author-bio-avatar"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/abhishek-agarwal.jpg';
+                  }}
                 />
                 <div className="author-bio-text">
                   <div className="author-bio-head">

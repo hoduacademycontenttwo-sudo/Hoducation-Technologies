@@ -31,6 +31,8 @@ export const FreehandCardMedia: React.FC<FreehandCardMediaProps> = ({ post, vari
         return { bgGradient: 'linear-gradient(135deg, #2b1109 0%, #120602 100%)', badgeText: 'Revenue Engine' };
       case 'website-crm-lead-machine':
         return { bgGradient: 'linear-gradient(135deg, #1b1c20 0%, #0c0d10 100%)', badgeText: 'Lead Machine' };
+      case 'ai-omr-cbt-software-revolutionizing-coaching-institutes-2026':
+        return { bgGradient: 'linear-gradient(135deg, #261506 0%, #0f0701 100%)', badgeText: 'AcadOS & AI Assessment' };
       case 'ai-automation-transforming-business-2026':
       default:
         return { bgGradient: 'linear-gradient(135deg, #180d2b 0%, #090314 100%)', badgeText: 'AI Enterprise' };
