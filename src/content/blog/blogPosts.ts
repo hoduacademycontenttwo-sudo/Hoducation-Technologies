@@ -9,8 +9,10 @@ import { postSignsOutgrownExcelSpreadsheets } from './posts/signs-outgrown-excel
 import { postCrmAutomationSalesFollowUps } from './posts/crm-automation-sales-follow-ups';
 import { postWebsiteCrmLeadMachine } from './posts/website-crm-lead-machine';
 import { postAiAutomationTransformingBusiness2026 } from './posts/ai-automation-transforming-business-2026';
+import { postAiOmrCbtSoftware2026 } from './posts/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026';
 
 export const BLOG_POSTS: BlogPost[] = [
+  postAiOmrCbtSoftware2026,
   postCustomSoftwareVsReadyMade,
   postCustomSoftwareCostIndia,
   postCrmVsErpDifference,
