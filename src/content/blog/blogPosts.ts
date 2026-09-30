@@ -10,8 +10,12 @@ import { postCrmAutomationSalesFollowUps } from './posts/crm-automation-sales-fo
 import { postWebsiteCrmLeadMachine } from './posts/website-crm-lead-machine';
 import { postAiAutomationTransformingBusiness2026 } from './posts/ai-automation-transforming-business-2026';
 import { postAiOmrCbtSoftware2026 } from './posts/ai-omr-cbt-software-revolutionizing-coaching-institutes-2026';
+import { postWhatsappCrmAutomation2026 } from './posts/whatsapp-crm-automation-for-educational-institutions-2026';
+import { postEnterpriseAiAgentsBlueprint2026 } from './posts/building-enterprise-ai-agents-architecture-blueprint-2026';
 
 export const BLOG_POSTS: BlogPost[] = [
+  postWhatsappCrmAutomation2026,
+  postEnterpriseAiAgentsBlueprint2026,
   postAiOmrCbtSoftware2026,
   postCustomSoftwareVsReadyMade,
   postCustomSoftwareCostIndia,

@@ -177,4 +177,28 @@
       <image:caption>AI-powered question paper generation, smartphone-based OMR grading, and CBT exam platforms.</image:caption>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://hoducation.tech/blog/whatsapp-crm-automation-for-educational-institutions-2026</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/crm-automation-sales-follow-ups.jpg</image:loc>
+      <image:title>WhatsApp CRM &amp; Business Automation for Schools and Coaching Institutes</image:title>
+      <image:caption>WhatsApp Cloud API, automated enquiry routing, fee payment reminders, and attendance bots for educational institutions.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://hoducation.tech/blog/building-enterprise-ai-agents-architecture-blueprint-2026</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://hoducation.tech/blog/ai-agents-vs-traditional-automation.jpg</image:loc>
+      <image:title>Building Enterprise AI Agents: A CTO's Architectural Blueprint for Production in 2026</image:title>
+      <image:caption>Designing multi-agent workflows, stateful orchestration, hybrid RAG retrieval boundaries, and enterprise security guardrails.</image:caption>
+    </image:image>
+  </url>
 </urlset>
